@@ -1,4 +1,4 @@
-package com.example.crud.dashBoard;
+package com.example.crud.dashboard;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -18,10 +18,10 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class DashboardAdapter extends RecyclerView.Adapter<DashboardViewHolder> {
-    public ArrayList<Dashboard> dashboardArray;
+    public ArrayList<Dashboard> dashboards;
 
     public void setData(ArrayList<Dashboard> dashboardsList){
-        dashboardArray = dashboardsList;
+        dashboards = dashboardsList;
         notifyDataSetChanged();
 
     }
@@ -35,10 +35,10 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull DashboardViewHolder holder, int position) {
-        Dashboard dashboard = dashboardArray.get(position);
-        Picasso.get().load(dashboard.imageUrl).into(holder.imageImg);
+        Dashboard dashboard = dashboards.get(position);
+        Picasso.get().load(dashboard.imageUrl).into(holder.dashboardImg);
         holder.titleTxt.setText(dashboard.title);
-        holder.dashBoardLL.setOnClickListener(view -> {
+        holder.itemView.setOnClickListener(view -> {
             if(holder.titleTxt.getText().toString().equalsIgnoreCase("Messages")) {
                 Intent intent = new Intent(holder.itemView.getContext(), MessagesActivity.class);
                 holder.itemView.getContext().startActivity(intent);
@@ -57,6 +57,6 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardViewHolder> 
     @Override
     public int getItemCount() {
 
-        return dashboardArray.size();
+        return dashboards.size();
     }
 }

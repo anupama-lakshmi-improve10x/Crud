@@ -1,4 +1,4 @@
-package com.example.crud.dashBoard;
+package com.example.crud.dashboard;
 
 public class Dashboard {
     public String imageUrl;

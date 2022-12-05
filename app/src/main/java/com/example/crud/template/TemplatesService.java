@@ -10,17 +10,17 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
-public interface TemplateService {
+public interface TemplatesService {
 
     @GET("anupamaTemplates")
-    Call<List<Template>> fetchMessages();
+    Call<List<Template>> fetchTemplates();
 
     @POST("anupamaTemplates")
-    Call<Template> createMessage(@Body Template template);
+    Call<Template> createTemplate(@Body Template template);
 
     @DELETE("anupamaTemplates/{id}")
-    Call<Void> deleteMessage(@Path("id") String id);
+    Call<Void> deleteTemplate(@Path("id") String id);
 
     @PUT("anupamaTemplates/{id}")
-    Call<Void> updateMessage(@Path("id") String id, @Body Template template);
+    Call<Void> updateTemplate(@Path("id") String id, @Body Template template);
 }

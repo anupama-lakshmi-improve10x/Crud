@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -26,7 +25,7 @@ import retrofit2.Response;
 public class TemplatesActivity extends AppCompatActivity {
     public ArrayList<Template> templates = new ArrayList<>();
     public RecyclerView templatesRv;
-    public TemplateAdapter templateAdapter;
+    public TemplatesAdapter templatesAdapter;
     public ProgressBar progressBar;
 
     @Override
@@ -68,21 +67,21 @@ public class TemplatesActivity extends AppCompatActivity {
 
     public void editMessage(Template template) {
         Intent intent = new Intent(this, AddEditTemplateActivity.class);
-        intent.putExtra("message", template);
+        intent.putExtra("template", template);
         startActivity(intent);
     }
 
     public void fetchData() {
         showVisible();
-        TemplateApi templateApi = new TemplateApi();
-        TemplateService templateService = templateApi.createTemplateService();
-        Call<List<Template>> call = templateService.fetchMessages();
+        TemplatesApi templateApi = new TemplatesApi();
+        TemplatesService templateService = templateApi.createTemplateService();
+        Call<List<Template>> call = templateService.fetchTemplates();
         call.enqueue(new Callback<List<Template>>() {
             @Override
             public void onResponse(Call<List<Template>> call, Response<List<Template>> response) {
                 hideVisible();
                 List<Template> templates = response.body();
-                templateAdapter.setData(templates);
+                templatesAdapter.setData(templates);
                 Toast.makeText(TemplatesActivity.this, "successfully loaded data", Toast.LENGTH_SHORT).show();
             }
 
@@ -96,9 +95,9 @@ public class TemplatesActivity extends AppCompatActivity {
 
     public void setupTemplatesRv() {
         templatesRv.setLayoutManager(new LinearLayoutManager(this));
-        templateAdapter = new TemplateAdapter();
-        templateAdapter.setData(templates);
-        templateAdapter.setOnItemActionListener(new OnItemActionListener() {
+        templatesAdapter = new TemplatesAdapter();
+        templatesAdapter.setData(templates);
+        templatesAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onDelete(String id) {
                 Toast.makeText(TemplatesActivity.this, "Successfully Deleted", Toast.LENGTH_SHORT).show();
@@ -111,7 +110,7 @@ public class TemplatesActivity extends AppCompatActivity {
                 editMessage(template);
             }
         });
-        templatesRv.setAdapter(templateAdapter);
+        templatesRv.setAdapter(templatesAdapter);
     }
 
     public void showVisible() {
@@ -123,9 +122,9 @@ public class TemplatesActivity extends AppCompatActivity {
     }
 
     public void deleteMessage(String id) {
-        TemplateApi templateApi = new TemplateApi();
-        TemplateService templateService = templateApi.createTemplateService();
-        Call<Void> call = templateService.deleteMessage(id);
+        TemplatesApi templateApi = new TemplatesApi();
+        TemplatesService templateService = templateApi.createTemplateService();
+        Call<Void> call = templateService.deleteTemplate(id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

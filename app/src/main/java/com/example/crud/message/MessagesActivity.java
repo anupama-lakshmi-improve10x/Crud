@@ -24,7 +24,7 @@ import retrofit2.Response;
 
 public class MessagesActivity extends AppCompatActivity {
     public ArrayList<Message> messageList = new ArrayList<>();
-    public RecyclerView messageRv;
+    public RecyclerView messagesRv;
     public MessagesAdapter messagesAdapter;
     public ProgressBar progressBar;
 
@@ -33,7 +33,7 @@ public class MessagesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messages);
         getSupportActionBar().setTitle("Messages");
-        setupMessageRv();
+        setupMessagesRv();
     }
 
     @Override
@@ -82,10 +82,10 @@ public class MessagesActivity extends AppCompatActivity {
         });
     }
 
-    public void setupMessageRv() {
+    public void setupMessagesRv() {
         progressBar = findViewById(R.id.progress_bar);
-        messageRv = findViewById(R.id.message_rv);
-        messageRv.setLayoutManager(new LinearLayoutManager(this));
+        messagesRv = findViewById(R.id.message_rv);
+        messagesRv.setLayoutManager(new LinearLayoutManager(this));
         messagesAdapter = new MessagesAdapter();
         messagesAdapter.setData(messageList);
         messagesAdapter.setOnItemActionListener(new OnItemActionListener() {
@@ -102,7 +102,7 @@ public class MessagesActivity extends AppCompatActivity {
 
             }
         });
-        messageRv.setAdapter(messagesAdapter);
+        messagesRv.setAdapter(messagesAdapter);
     }
 
     public void showVisible() {

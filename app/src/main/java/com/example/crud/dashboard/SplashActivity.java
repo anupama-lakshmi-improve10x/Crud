@@ -1,4 +1,4 @@
-package com.example.crud.dashBoard;
+package com.example.crud.dashboard;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.crud.R;
-import com.example.crud.dashBoard.DashboardActivity;
 
 public class SplashActivity extends AppCompatActivity {
 

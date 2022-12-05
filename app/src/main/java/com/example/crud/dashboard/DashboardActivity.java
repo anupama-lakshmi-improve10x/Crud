@@ -1,4 +1,4 @@
-package com.example.crud.dashBoard;
+package com.example.crud.dashboard;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class DashboardActivity extends AppCompatActivity {
     public ArrayList<Dashboard> dashboardList;
-    public RecyclerView dashBoardRv;
+    public RecyclerView dashboardRv;
     public DashboardAdapter dashboardAdapter;
 
     @Override
@@ -21,7 +21,7 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
         getSupportActionBar().setTitle("Dashboard");
         setupData();
-        setupDashBoardRecyclerView();
+        setupDashboardsRV();
     }
 
     public void setupData() {
@@ -47,11 +47,11 @@ public class DashboardActivity extends AppCompatActivity {
         dashboardList.add(dashboardFour);
     }
 
-    public void setupDashBoardRecyclerView() {
-        dashBoardRv = findViewById(R.id.dash_board_rv);
-        dashBoardRv.setLayoutManager(new LinearLayoutManager(this));
+    public void setupDashboardsRV() {
+        dashboardRv = findViewById(R.id.dash_board_rv);
+        dashboardRv.setLayoutManager(new LinearLayoutManager(this));
         dashboardAdapter = new DashboardAdapter();
         dashboardAdapter.setData(dashboardList);
-        dashBoardRv.setAdapter(dashboardAdapter);
+        dashboardRv.setAdapter(dashboardAdapter);
     }
 }

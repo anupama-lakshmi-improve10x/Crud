@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -24,9 +23,10 @@ public class AddEditTemplateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit_template);
-        if(getIntent().hasExtra("message")) {
+        messageTxt = findViewById(R.id.message_txt);
+        if (getIntent().hasExtra("template")) {
             getSupportActionBar().setTitle("Edit Template");
-            template = (Template) getIntent().getSerializableExtra("message");
+            template = (Template) getIntent().getSerializableExtra("template");
             showData();
         } else {
             getSupportActionBar().setTitle("Add Template");
@@ -35,33 +35,33 @@ public class AddEditTemplateActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-       getMenuInflater().inflate(R.menu.add_edit_message_menu, menu);
-       return true;
+        getMenuInflater().inflate(R.menu.add_edit_message_menu, menu);
+        return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-  if(item.getItemId() == R.id.done){
-      String message = messageTxt.getText().toString();
-      messageTxt = findViewById(R.id.message_txt);
-      if(template == null){
-          addMessage(message);
-      }else {
-          updateMessage(template.id, message);
-      }
-      return true;
-  } else {
-      return super.onOptionsItemSelected(item);
-  }
+        if (item.getItemId() == R.id.done) {
+            String message = messageTxt.getText().toString();
+
+            if (this.template == null) {
+                addMessage(message);
+            } else {
+                updateMessage(template.id, message);
+            }
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
 
     public void addMessage(String message) {
         Template template = new Template();
         template.messageText = message;
 
-        TemplateApi templateApi = new TemplateApi();
-        TemplateService templateService = templateApi.createTemplateService();
-        Call<Template> call = templateService.createMessage(template);
+        TemplatesApi templateApi = new TemplatesApi();
+        TemplatesService templateService = templateApi.createTemplateService();
+        Call<Template> call = templateService.createTemplate(template);
         call.enqueue(new Callback<Template>() {
             @Override
             public void onResponse(Call<Template> call, Response<Template> response) {
@@ -84,9 +84,9 @@ public class AddEditTemplateActivity extends AppCompatActivity {
         Template template = new Template();
         template.messageText = message;
 
-        TemplateApi templateApi = new TemplateApi();
-        TemplateService templateService = templateApi.createTemplateService();
-        Call<Void> call = templateService.updateMessage(id, template);
+        TemplatesApi templateApi = new TemplatesApi();
+        TemplatesService templateService = templateApi.createTemplateService();
+        Call<Void> call = templateService.updateTemplate(id, template);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
