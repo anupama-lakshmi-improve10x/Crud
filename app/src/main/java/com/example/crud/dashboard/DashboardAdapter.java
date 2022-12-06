@@ -50,6 +50,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardViewHolder> 
                 holder.itemView.getContext().startActivity(intent);
             } else if(holder.titleTxt.getText().toString().equalsIgnoreCase("Movies")) {
                 Intent intent = new Intent(holder.itemView.getContext(), MoviesActivity.class);
+                holder.itemView.getContext().startActivity(intent);
             }
         });
     }

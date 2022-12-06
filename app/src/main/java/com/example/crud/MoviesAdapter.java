@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.crud.series.Series;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MoviesViewHolder holder, int position) {
-        Movies movies = new Movies();
+        Movies movies = moviesArray.get(position);
         Picasso.get().load(movies.imageUrl).into(holder.moviesImg);
         holder.moviesTxt.setText(movies.title);
     }
