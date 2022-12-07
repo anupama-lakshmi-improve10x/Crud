@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class MoviesViewHolder extends RecyclerView.ViewHolder {
     ImageView moviesImg;
     TextView moviesTxt;
-    public ImageButton deleteBtn;
+    ImageButton deleteBtn;
 
     public MoviesViewHolder(@NonNull View itemView) {
         super(itemView);

@@ -19,12 +19,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AddEditSeriesActivity extends AppCompatActivity {
-    public Series series;
-    public EditText seriesId;
-    public EditText seriesName;
-    public EditText imageUrl;
-    public SeriesApi seriesApi;
-    public SeriesService seriesService;
+    private Series series;
+    private EditText seriesId;
+    private EditText seriesName;
+    private EditText imageUrl;
+    private SeriesApi seriesApi;
+    private SeriesService seriesService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class AddEditSeriesActivity extends AppCompatActivity {
         }
     }
 
-    public void showData() {
+    private void showData() {
         seriesId.setText(series.id);
         seriesName.setText(series.title);
         imageUrl.setText(series.imageUrl);
@@ -69,14 +69,14 @@ public class AddEditSeriesActivity extends AppCompatActivity {
         }
     }
 
-    public void initView() {
+    private void initView() {
         seriesId = findViewById(R.id.series_id_txt);
         seriesName = findViewById(R.id.series_name_txt);
         imageUrl = findViewById(R.id.img_url_txt);
     }
 
 
-    public void addSeries(String id, String title, String imageUrl) {
+    private void addSeries(String id, String title, String imageUrl) {
         series = new Series();
         series.seriesId = id;
         series.title = title;
@@ -99,7 +99,7 @@ public class AddEditSeriesActivity extends AppCompatActivity {
         });
     }
 
-    public void upDateSeries(String id, String title, String imageUrl) {
+    private void upDateSeries(String id, String title, String imageUrl) {
         series = new Series();
         series.seriesId = id;
         series.title = title;

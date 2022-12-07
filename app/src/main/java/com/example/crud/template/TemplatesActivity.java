@@ -24,10 +24,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TemplatesActivity extends AppCompatActivity {
-    public ArrayList<Template> templates = new ArrayList<>();
-    public RecyclerView templatesRv;
-    public TemplatesAdapter templatesAdapter;
-    public ProgressBar progressBar;
+    private ArrayList<Template> templates = new ArrayList<>();
+    private RecyclerView templatesRv;
+    private TemplatesAdapter templatesAdapter;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,18 +61,18 @@ public class TemplatesActivity extends AppCompatActivity {
        }
     }
 
-    public void initView() {
+    private void initView() {
         templatesRv = findViewById(R.id.templates_rv);
         progressBar = findViewById(R.id.progress_bar);
     }
 
-    public void editMessage(Template template) {
+    private void editMessage(Template template) {
         Intent intent = new Intent(this, AddEditTemplateActivity.class);
         intent.putExtra(Constants.KEY_TEMPLATE, template);
         startActivity(intent);
     }
 
-    public void fetchData() {
+    private void fetchData() {
         showVisible();
         TemplatesApi templateApi = new TemplatesApi();
         TemplatesService templateService = templateApi.createTemplateService();
@@ -94,7 +94,7 @@ public class TemplatesActivity extends AppCompatActivity {
         });
     }
 
-    public void setupTemplatesRv() {
+    private void setupTemplatesRv() {
         templatesRv.setLayoutManager(new LinearLayoutManager(this));
         templatesAdapter = new TemplatesAdapter();
         templatesAdapter.setData(templates);
@@ -114,15 +114,15 @@ public class TemplatesActivity extends AppCompatActivity {
         templatesRv.setAdapter(templatesAdapter);
     }
 
-    public void showVisible() {
+    private void showVisible() {
         progressBar.setVisibility(View.VISIBLE);
     }
 
-    public void hideVisible(){
+    private void hideVisible(){
         progressBar.setVisibility(View.GONE);
     }
 
-    public void deleteMessage(String id) {
+    private void deleteMessage(String id) {
         TemplatesApi templateApi = new TemplatesApi();
         TemplatesService templateService = templateApi.createTemplateService();
         Call<Void> call = templateService.deleteTemplate(id);

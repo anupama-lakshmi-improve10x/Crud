@@ -1,4 +1,4 @@
-package com.example.crud;
+package com.example.crud.movie;
 
 import com.google.gson.annotations.SerializedName;
 

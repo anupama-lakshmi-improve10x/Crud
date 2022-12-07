@@ -28,10 +28,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SeriesActivity extends AppCompatActivity {
-    public ArrayList<Series> series = new ArrayList<>();
-    public RecyclerView seriesRv;
-    public SeriesAdapter seriesAdapter;
-    public ProgressBar progressBar;
+    private ArrayList<Series> series = new ArrayList<>();
+    private RecyclerView seriesRv;
+    private SeriesAdapter seriesAdapter;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +66,7 @@ public class SeriesActivity extends AppCompatActivity {
         }
     }
 
-    public void fetchData() {
+    private void fetchData() {
         showVisible();
         SeriesApi seriesApi = new SeriesApi();
         SeriesService seriesService = seriesApi.createSeriesService();

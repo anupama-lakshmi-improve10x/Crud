@@ -14,7 +14,6 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.crud.Constants;
-import com.example.crud.Movies;
 import com.example.crud.R;
 
 import java.util.ArrayList;
@@ -25,10 +24,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MoviesActivity extends AppCompatActivity {
-    public ArrayList<Movies> movies = new ArrayList<>();
-    public RecyclerView moviesRv;
-    public MoviesAdapter moviesAdapter;
-    public ProgressBar progressBar;
+    private ArrayList<Movies> movies = new ArrayList<>();
+    private RecyclerView moviesRv;
+    private MoviesAdapter moviesAdapter;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +61,7 @@ public class MoviesActivity extends AppCompatActivity {
         }
     }
 
-    public void fetchData() {
+    private void fetchData() {
         showVisible();
         MoviesApi moviesApi = new MoviesApi();
         MoviesService moviesService = moviesApi.createMoviesService();
@@ -83,7 +82,7 @@ public class MoviesActivity extends AppCompatActivity {
         });
     }
 
-    public void setupMoviesRv() {
+    private void setupMoviesRv() {
         moviesRv = findViewById(R.id.movies_rv);
         progressBar = findViewById(R.id.movie_progress_bar);
         moviesRv.setLayoutManager(new GridLayoutManager(this,2));
@@ -104,15 +103,15 @@ public class MoviesActivity extends AppCompatActivity {
         moviesRv.setAdapter(moviesAdapter);
     }
 
-    public void showVisible() {
+    private void showVisible() {
         progressBar.setVisibility(View.VISIBLE);
     }
 
-    public  void hideVisible(){
+    private  void hideVisible(){
         progressBar.setVisibility(View.GONE);
     }
 
-    public void deleteMovie(String id) {
+    private void deleteMovie(String id) {
         MoviesApi moviesApi = new MoviesApi();
         MoviesService moviesService = moviesApi.createMoviesService();
         Call<Void> call = moviesService.deleteMovie(id);
@@ -129,7 +128,7 @@ public class MoviesActivity extends AppCompatActivity {
         });
     }
 
-    public void editMovies(Movies movies) {
+    private void editMovies(Movies movies) {
         Intent intent = new Intent(this, AddEditMovieActivity.class);
         intent.putExtra(Constants.KEY_MOVIES, movies);
         startActivity(intent);

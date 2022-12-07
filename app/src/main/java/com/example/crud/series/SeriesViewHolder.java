@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.crud.R;
 
 public class SeriesViewHolder extends RecyclerView.ViewHolder {
-    public ImageView seriesImg;
-    public TextView seriesTxt;
-    public ImageButton deleteBtn;
+    ImageView seriesImg;
+    TextView seriesTxt;
+    ImageButton deleteBtn;
 
     public SeriesViewHolder(@NonNull View itemView) {
         super(itemView);

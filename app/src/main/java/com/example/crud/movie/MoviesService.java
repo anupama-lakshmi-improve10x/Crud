@@ -1,7 +1,6 @@
 package com.example.crud.movie;
 
 import com.example.crud.Constants;
-import com.example.crud.Movies;
 
 import java.util.List;
 

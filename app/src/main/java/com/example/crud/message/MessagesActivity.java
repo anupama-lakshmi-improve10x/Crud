@@ -24,10 +24,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MessagesActivity extends AppCompatActivity {
-    public ArrayList<Message> messageList = new ArrayList<>();
-    public RecyclerView messagesRv;
-    public MessagesAdapter messagesAdapter;
-    public ProgressBar progressBar;
+    private ArrayList<Message> messageList = new ArrayList<>();
+    private RecyclerView messagesRv;
+    private MessagesAdapter messagesAdapter;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +61,7 @@ public class MessagesActivity extends AppCompatActivity {
        }
     }
 
-    public void fetchData() {
+    private void fetchData() {
         showVisible();
         MessagesApi messagesApi = new MessagesApi();
         MessagesService messagesService = messagesApi.createMessagesService();
@@ -83,7 +83,7 @@ public class MessagesActivity extends AppCompatActivity {
         });
     }
 
-    public void setupMessagesRv() {
+    private void setupMessagesRv() {
         progressBar = findViewById(R.id.progress_bar);
         messagesRv = findViewById(R.id.message_rv);
         messagesRv.setLayoutManager(new LinearLayoutManager(this));
@@ -106,15 +106,15 @@ public class MessagesActivity extends AppCompatActivity {
         messagesRv.setAdapter(messagesAdapter);
     }
 
-    public void showVisible() {
+    private void showVisible() {
         progressBar.setVisibility(View.VISIBLE);
     }
 
-    public  void hideVisible(){
+    private   void hideVisible(){
         progressBar.setVisibility(View.GONE);
     }
 
-    public void deleteMessage(String id) {
+    private void deleteMessage(String id) {
         MessagesApi messagesApi = new MessagesApi();
         MessagesService messagesService = messagesApi.createMessagesService();
         Call<Void> call = messagesService.deleteMessage(id);
@@ -132,7 +132,7 @@ public class MessagesActivity extends AppCompatActivity {
         });
     }
 
-    public void editMessage(Message message) {
+    private void editMessage(Message message) {
         Intent intent = new Intent(this, AddEditMessageActivity.class);
         intent.putExtra(Constants.KEY_MESSAGE, message);
         startActivity(intent);

@@ -7,15 +7,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.crud.Movies;
 import com.example.crud.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesViewHolder> {
-    public List<Movies> movieList;
-    public MovieOnItemActionListener movieOnItemActionListener;
+    private List<Movies> movieList;
+    private MovieOnItemActionListener movieOnItemActionListener;
 
     public void setData(List<Movies> moviesList){
         this.movieList = moviesList;

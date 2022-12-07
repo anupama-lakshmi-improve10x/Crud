@@ -12,8 +12,8 @@ import com.example.crud.R;
 import java.util.List;
 
 public class TemplatesAdapter extends RecyclerView.Adapter<TemplateViewHolder> {
-    public List<Template> templates;
-    public OnItemActionListener onItemActionListener;
+    private List<Template> templates;
+    private OnItemActionListener onItemActionListener;
 
     public void setData(List<Template> templateList) {
         templates = templateList;

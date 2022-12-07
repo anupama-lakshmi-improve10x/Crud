@@ -11,9 +11,9 @@ import com.example.crud.R;
 import java.util.ArrayList;
 
 public class DashboardActivity extends AppCompatActivity {
-    public ArrayList<Dashboard> dashboardList;
-    public RecyclerView dashboardRv;
-    public DashboardAdapter dashboardAdapter;
+    private ArrayList<Dashboard> dashboardList;
+    private RecyclerView dashboardRv;
+    private DashboardAdapter dashboardAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class DashboardActivity extends AppCompatActivity {
         setupDashboardsRV();
     }
 
-    public void setupData() {
+    private void setupData() {
         dashboardList = new ArrayList<>();
         Dashboard dashboardOne = new Dashboard();
         dashboardOne.imageUrl = "https://upload.wikimedia.org/wikipedia/commons/7/72/Message-icon-grey.png";
@@ -47,7 +47,7 @@ public class DashboardActivity extends AppCompatActivity {
         dashboardList.add(dashboardFour);
     }
 
-    public void setupDashboardsRV() {
+    private void setupDashboardsRV() {
         dashboardRv = findViewById(R.id.dash_board_rv);
         dashboardRv.setLayoutManager(new LinearLayoutManager(this));
         dashboardAdapter = new DashboardAdapter();

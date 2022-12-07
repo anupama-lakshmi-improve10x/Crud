@@ -17,12 +17,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AddEditMessageActivity extends AppCompatActivity {
-    public Message message;
-    public EditText nameTxt;
-    public EditText phoneNumberTxt;
-    public EditText messageTxt;
-    public MessagesApi messagesApi;
-    public MessagesService messagesService;
+    private Message message;
+    private EditText nameTxt;
+    private EditText phoneNumberTxt;
+    private EditText messageTxt;
+    private MessagesApi messagesApi;
+    private MessagesService messagesService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +68,7 @@ public class AddEditMessageActivity extends AppCompatActivity {
     }
 
 
-    public void addMessage(String name, String phoneNumber, String message) {
+    private void addMessage(String name, String phoneNumber, String message) {
         this.message = new Message(name, phoneNumber, message);
         networkMethods();
         Call<Message> call = messagesService.createMessage(this.message);
@@ -86,13 +86,13 @@ public class AddEditMessageActivity extends AppCompatActivity {
         });
     }
 
-    public void showData() {
+    private void showData() {
         nameTxt.setText(this.message.name);
         phoneNumberTxt.setText(this.message.mobileNumber);
         messageTxt.setText(this.message.message);
     }
 
-    public void updateMessage(String id, String name, String phoneNumber, String message) {
+    private void updateMessage(String id, String name, String phoneNumber, String message) {
         this.message = new Message(name, phoneNumber, message);
 
         networkMethods();
@@ -111,7 +111,7 @@ public class AddEditMessageActivity extends AppCompatActivity {
         });
     }
 
-    public void networkMethods() {
+    private void networkMethods() {
         messagesApi = new MessagesApi();
         messagesService = messagesApi.createMessagesService();
     }
