@@ -1,6 +1,6 @@
 package com.example.crud.series;
 
-import com.example.crud.message.Message;
+import com.example.crud.Constants;
 
 import java.util.List;
 
@@ -13,15 +13,15 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface SeriesService {
-    @GET("anupamaseries")
+    @GET(Constants.SERIES_END_POINT)
     Call<List<Series>> fetchSeries();
 
-    @POST("anupamaseries")
+    @POST(Constants.SERIES_END_POINT)
     Call<Series> createSeries(@Body Series series);
 
-    @DELETE("anupamaseries/{id}")
+    @DELETE(Constants.SERIES_END_POINT + "/{id}")
     Call<Void> deleteSeries(@Path("id") String id);
 
-    @PUT("anupamaseries/{id}")
+    @PUT(Constants.SERIES_END_POINT + "/{id}")
     Call<Void> updateSeries(@Path("id") String id, @Body Series series);
 }

@@ -1,4 +1,4 @@
-package com.example.crud;
+package com.example.crud.movie;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,8 +13,9 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.crud.series.AddEditSeriesActivity;
-import com.example.crud.series.Series;
+import com.example.crud.Constants;
+import com.example.crud.Movies;
+import com.example.crud.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -130,7 +131,7 @@ public class MoviesActivity extends AppCompatActivity {
 
     public void editMovies(Movies movies) {
         Intent intent = new Intent(this, AddEditMovieActivity.class);
-        intent.putExtra("Movies", movies);
+        intent.putExtra(Constants.KEY_MOVIES, movies);
         startActivity(intent);
     }
 }

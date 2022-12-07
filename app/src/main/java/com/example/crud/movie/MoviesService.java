@@ -1,7 +1,7 @@
-package com.example.crud;
+package com.example.crud.movie;
 
-import com.example.crud.message.Message;
-import com.example.crud.series.Series;
+import com.example.crud.Constants;
+import com.example.crud.Movies;
 
 import java.util.List;
 
@@ -14,15 +14,15 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface MoviesService {
-    @GET("anupamaMovies")
+    @GET(Constants.MOVIES_END_POINT)
     Call<List<Movies>> fetchMovies();
 
-    @POST("anupamaMovies")
+    @POST(Constants.MOVIES_END_POINT)
     Call<Movies> createMovie(@Body Movies movies);
 
-    @DELETE("anupamaMovies/{id}")
+    @DELETE(Constants.MOVIES_END_POINT + "/{id}")
     Call<Void> deleteMovie(@Path("id") String id);
 
-    @PUT("anupamaMovies/{id}")
+    @PUT(Constants.MOVIES_END_POINT + "/{id}")
     Call<Void> updateMovie(@Path("id") String id, @Body Movies movies);
 }

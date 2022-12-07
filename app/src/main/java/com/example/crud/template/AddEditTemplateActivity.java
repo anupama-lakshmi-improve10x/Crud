@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.crud.Constants;
 import com.example.crud.R;
 
 import retrofit2.Call;
@@ -24,9 +25,9 @@ public class AddEditTemplateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit_template);
         messageTxt = findViewById(R.id.message_txt);
-        if (getIntent().hasExtra("template")) {
+        if (getIntent().hasExtra(Constants.KEY_TEMPLATE)) {
             getSupportActionBar().setTitle("Edit Template");
-            template = (Template) getIntent().getSerializableExtra("template");
+            template = (Template) getIntent().getSerializableExtra(Constants.KEY_TEMPLATE);
             showData();
         } else {
             getSupportActionBar().setTitle("Add Template");

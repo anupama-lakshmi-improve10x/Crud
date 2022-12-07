@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.crud.Constants;
 import com.example.crud.R;
 import com.example.crud.message.AddEditMessageActivity;
 import com.example.crud.message.Message;
@@ -136,7 +137,7 @@ public class SeriesActivity extends AppCompatActivity {
 
     public void editSeries(Series series) {
         Intent intent = new Intent(this, AddEditSeriesActivity.class);
-        intent.putExtra("Series", series);
+        intent.putExtra(Constants.KEY_SERIES, series);
         startActivity(intent);
     }
 }

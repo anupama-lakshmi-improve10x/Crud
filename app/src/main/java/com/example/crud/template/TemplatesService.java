@@ -1,5 +1,7 @@
 package com.example.crud.template;
 
+import com.example.crud.Constants;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -12,15 +14,15 @@ import retrofit2.http.Path;
 
 public interface TemplatesService {
 
-    @GET("anupamaTemplates")
+    @GET(Constants.TEMPLATES_END_POINT)
     Call<List<Template>> fetchTemplates();
 
-    @POST("anupamaTemplates")
+    @POST(Constants.TEMPLATES_END_POINT)
     Call<Template> createTemplate(@Body Template template);
 
-    @DELETE("anupamaTemplates/{id}")
+    @DELETE(Constants.TEMPLATES_END_POINT + "/{id}")
     Call<Void> deleteTemplate(@Path("id") String id);
 
-    @PUT("anupamaTemplates/{id}")
+    @PUT(Constants.TEMPLATES_END_POINT + "/{id}")
     Call<Void> updateTemplate(@Path("id") String id, @Body Template template);
 }

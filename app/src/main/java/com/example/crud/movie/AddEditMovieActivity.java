@@ -1,4 +1,4 @@
-package com.example.crud;
+package com.example.crud.movie;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.crud.Constants;
+import com.example.crud.Movies;
+import com.example.crud.R;
 import com.example.crud.series.Series;
 import com.example.crud.series.SeriesApi;
 import com.example.crud.series.SeriesService;
@@ -38,9 +41,9 @@ public class AddEditMovieActivity extends AppCompatActivity {
         initViews();
         setupSeriesListSp();
         fetchSeriesList();
-        if(getIntent().hasExtra("Movies")) {
+        if(getIntent().hasExtra(Constants.KEY_MOVIES)) {
             getSupportActionBar().setTitle("Add Movie");
-            movies = (Movies) getIntent().getSerializableExtra("Movies");
+            movies = (Movies) getIntent().getSerializableExtra(Constants.KEY_MOVIES);
             showData();
         } else{
             getSupportActionBar().setTitle("Edit Movie");
