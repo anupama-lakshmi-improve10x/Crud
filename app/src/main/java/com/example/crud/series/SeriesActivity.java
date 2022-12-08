@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,6 +38,7 @@ public class SeriesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_series);
+        Log.i("SeriesActivity", "onCreate");
         getSupportActionBar().setTitle("Series");
         progressBar = findViewById(R.id.series_progress_bar);
         setupSeriesRv();
@@ -45,6 +47,7 @@ public class SeriesActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        Log.i("SeriesActivity", "onResume");
         fetchData();
     }
 
