@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.example.crud.Constants;
 import com.example.crud.R;
+import com.example.crud.api.CrudApi;
+import com.example.crud.api.CrudService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,7 @@ public class TemplatesActivity extends AppCompatActivity {
     private RecyclerView templatesRv;
     private TemplatesAdapter templatesAdapter;
     private ProgressBar progressBar;
+    private CrudService crudService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,12 @@ public class TemplatesActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Templates");
         initView();
         setupTemplatesRv();
+        setupApiService();
+    }
+
+    private void setupApiService() {
+        CrudApi crudApi = new CrudApi();
+        crudService = crudApi.createCrudService();
     }
 
     protected void onResume() {
@@ -57,7 +66,7 @@ public class TemplatesActivity extends AppCompatActivity {
        if(item.getItemId() == R.id.add) {
            Intent intent = new Intent(this, AddEditTemplateActivity.class);
            startActivity(intent);
-           Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+           setupToast("Success");
            return true;
        } else{
            return super.onOptionsItemSelected(item);
@@ -77,22 +86,21 @@ public class TemplatesActivity extends AppCompatActivity {
 
     private void fetchData() {
         showVisible();
-        TemplatesApi templateApi = new TemplatesApi();
-        TemplatesService templateService = templateApi.createTemplateService();
-        Call<List<Template>> call = templateService.fetchTemplates();
+        setupApiService();
+        Call<List<Template>> call = crudService.fetchTemplates();
         call.enqueue(new Callback<List<Template>>() {
             @Override
             public void onResponse(Call<List<Template>> call, Response<List<Template>> response) {
                 hideVisible();
                 List<Template> templates = response.body();
                 templatesAdapter.setData(templates);
-                Toast.makeText(TemplatesActivity.this, "successfully loaded data", Toast.LENGTH_SHORT).show();
+                setupToast("successfully loaded data");
             }
 
             @Override
             public void onFailure(Call<List<Template>> call, Throwable t) {
                 hideVisible();
-                Toast.makeText(TemplatesActivity.this, "Failed to load data", Toast.LENGTH_SHORT).show();
+                setupToast("Failed to load data");
             }
         });
     }
@@ -104,13 +112,13 @@ public class TemplatesActivity extends AppCompatActivity {
         templatesAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onDelete(String id) {
-                Toast.makeText(TemplatesActivity.this, "Successfully Deleted", Toast.LENGTH_SHORT).show();
+               setupToast("Successfully Deleted");
                 deleteMessage(id);
             }
 
             @Override
             public void onEdit(Template template) {
-                Toast.makeText(TemplatesActivity.this, "Message Selected", Toast.LENGTH_SHORT).show();
+                setupToast("Message Selected");
                 editMessage(template);
             }
         });
@@ -126,20 +134,23 @@ public class TemplatesActivity extends AppCompatActivity {
     }
 
     private void deleteMessage(String id) {
-        TemplatesApi templateApi = new TemplatesApi();
-        TemplatesService templateService = templateApi.createTemplateService();
-        Call<Void> call = templateService.deleteTemplate(id);
+        setupApiService();
+        Call<Void> call = crudService.deleteTemplate(id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Toast.makeText(TemplatesActivity.this, "Successfully Deleted Message", Toast.LENGTH_SHORT).show();
+               setupToast("Successfully loaded Message");
                 fetchData();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(TemplatesActivity.this, "Failed Delete Message", Toast.LENGTH_SHORT).show();
+                setupToast("Failed Delete Message");
             }
         });
+    }
+
+    public void setupToast(String message){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

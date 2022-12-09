@@ -12,9 +12,9 @@ import android.widget.Toast;
 
 import com.example.crud.Constants;
 import com.example.crud.R;
+import com.example.crud.api.CrudApi;
+import com.example.crud.api.CrudService;
 import com.example.crud.series.Series;
-import com.example.crud.series.SeriesApi;
-import com.example.crud.series.SeriesService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +32,7 @@ public class AddEditMovieActivity extends AppCompatActivity {
     private CustomSeriesAdapter customSeriesAdapter;
     private ArrayList<Series> seriesList = new ArrayList<>();
     private Movies movies;
+    private CrudService crudService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class AddEditMovieActivity extends AppCompatActivity {
         initViews();
         setupSeriesListSp();
         fetchSeriesList();
+        setupApiService();
         if(getIntent().hasExtra(Constants.KEY_MOVIES)) {
             getSupportActionBar().setTitle("Add Movie");
             movies = (Movies) getIntent().getSerializableExtra(Constants.KEY_MOVIES);
@@ -47,6 +49,11 @@ public class AddEditMovieActivity extends AppCompatActivity {
         } else{
             getSupportActionBar().setTitle("Edit Movie");
         }
+    }
+
+    private void setupApiService() {
+        CrudApi crudApi = new CrudApi();
+        crudService = crudApi.createCrudService();
     }
 
     private void showData() {
@@ -103,9 +110,8 @@ public class AddEditMovieActivity extends AppCompatActivity {
     }
 
     private void fetchSeriesList() {
-        SeriesApi seriesApi = new SeriesApi();
-        SeriesService seriesService = seriesApi.createSeriesService();
-        Call<List<Series>> call = seriesService.fetchSeries();
+        setupApiService();
+        Call<List<Series>> call = crudService.fetchSeries();
         call.enqueue(new Callback<List<Series>>() {
             @Override
             public void onResponse(Call<List<Series>> call, Response<List<Series>> response) {
@@ -130,19 +136,18 @@ public class AddEditMovieActivity extends AppCompatActivity {
         movies.imageUrl = imageUrl;
         movies.description = description;
 
-        MoviesApi moviesApi = new MoviesApi();
-        MoviesService moviesService = moviesApi.createMoviesService();
-        Call<Movies> call = moviesService.createMovie(movies);
+       setupApiService();
+        Call<Movies> call = crudService.createMovie(movies);
         call.enqueue(new Callback<Movies>() {
             @Override
             public void onResponse(Call<Movies> call, Response<Movies> response) {
-                Toast.makeText(AddEditMovieActivity.this, "Successfully Loaded Movie", Toast.LENGTH_SHORT).show();
+                setupToast("Successfully Loaded Movie");
                 finish();
             }
 
             @Override
             public void onFailure(Call<Movies> call, Throwable t) {
-                Toast.makeText(AddEditMovieActivity.this, "Failed to add movie", Toast.LENGTH_SHORT).show();
+                setupToast("Failed to add movie");
             }
         });
     }
@@ -155,9 +160,8 @@ public class AddEditMovieActivity extends AppCompatActivity {
         movies.imageUrl = imageUrl;
         movies.description = description;
 
-        MoviesApi moviesApi = new MoviesApi();
-        MoviesService moviesService = moviesApi.createMoviesService();
-        Call<Void> call = moviesService.updateMovie(id, movies);
+        setupApiService();
+        Call<Void> call = crudService.updateMovie(id, movies);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -166,8 +170,12 @@ public class AddEditMovieActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(AddEditMovieActivity.this, "Failed to edit", Toast.LENGTH_SHORT).show();
+                setupToast("Failed to edit");
             }
         });
+    }
+
+    private void setupToast(String message){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
