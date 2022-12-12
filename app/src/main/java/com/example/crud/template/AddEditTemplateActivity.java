@@ -13,12 +13,13 @@ import com.example.crud.Constants;
 import com.example.crud.R;
 import com.example.crud.api.CrudApi;
 import com.example.crud.api.CrudService;
+import com.example.crud.base.BaseActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddEditTemplateActivity extends AppCompatActivity {
+public class AddEditTemplateActivity extends BaseActivity {
     private Template template;
     private EditText messageTxt;
     private CrudService crudService;
@@ -74,13 +75,13 @@ public class AddEditTemplateActivity extends AppCompatActivity {
         call.enqueue(new Callback<Template>() {
             @Override
             public void onResponse(Call<Template> call, Response<Template> response) {
-                setupToast("Successfully Added Message");
+                showToast("Successfully Added Message");
                 finish();
             }
 
             @Override
             public void onFailure(Call<Template> call, Throwable t) {
-                setupToast("Failed to Add Message");
+                showToast("Failed to Add Message");
             }
         });
     }
@@ -99,18 +100,15 @@ public class AddEditTemplateActivity extends AppCompatActivity {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                setupToast("Successfully Updated Message");
+                showToast("Successfully Updated Message");
                 finish();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                setupToast("Failed to Update Message");
+                showToast("Failed to Update Message");
             }
         });
     }
-    
-    public void setupToast(String message){
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
+
 }

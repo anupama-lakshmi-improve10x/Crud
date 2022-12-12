@@ -18,6 +18,7 @@ import com.example.crud.Constants;
 import com.example.crud.R;
 import com.example.crud.api.CrudApi;
 import com.example.crud.api.CrudService;
+import com.example.crud.base.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MoviesActivity extends AppCompatActivity {
+public class MoviesActivity extends BaseActivity {
     private ArrayList<Movies> movies = new ArrayList<>();
     private RecyclerView moviesRv;
     private MoviesAdapter moviesAdapter;
@@ -37,7 +38,7 @@ public class MoviesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movies);
-        Log.i("MoviesActivity", "onCreate Started");
+        log("onCreate");
         getSupportActionBar().setTitle("Movies");
         setupMoviesRv();
         setupApiService();
@@ -51,7 +52,7 @@ public class MoviesActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("MoviesActivity","onResume");
+        log("onResume");
         fetchData();
     }
 
@@ -66,7 +67,7 @@ public class MoviesActivity extends AppCompatActivity {
         if(item.getItemId() == R.id.add) {
             Intent intent = new Intent(this, AddEditMovieActivity.class);
             startActivity(intent);
-            setupToast("Success");
+            showToast("Success");
             return true;
         } else {
             return super.onOptionsItemSelected(item);
@@ -88,7 +89,7 @@ public class MoviesActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<Movies>> call, Throwable t) {
                 hideVisible();
-                setupToast("Failed to load data");
+                showToast("Failed to load data");
             }
         });
     }
@@ -133,7 +134,7 @@ public class MoviesActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-              setupToast("Failed to delete Movie");
+              showToast("Failed to delete Movie");
             }
         });
     }
@@ -144,7 +145,4 @@ public class MoviesActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void setupToast(String message) {
-        Toast.makeText(MoviesActivity.this, message, Toast.LENGTH_SHORT).show();
-    }
 }

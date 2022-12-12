@@ -13,12 +13,13 @@ import com.example.crud.Constants;
 import com.example.crud.R;
 import com.example.crud.api.CrudApi;
 import com.example.crud.api.CrudService;
+import com.example.crud.base.BaseActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddEditSeriesActivity extends AppCompatActivity {
+public class AddEditSeriesActivity extends BaseActivity {
     private Series series;
     private EditText seriesId;
     private EditText seriesName;
@@ -92,13 +93,13 @@ public class AddEditSeriesActivity extends AppCompatActivity {
         call.enqueue(new Callback<Series>() {
             @Override
             public void onResponse(Call<Series> call, Response<Series> response) {
-                setupToast("Sucessfully added");
+                showToast("Sucessfully added");
                 finish();
             }
 
             @Override
             public void onFailure(Call<Series> call, Throwable t) {
-                setupToast("Failed to add");
+                showToast("Failed to add");
             }
         });
     }
@@ -114,18 +115,14 @@ public class AddEditSeriesActivity extends AppCompatActivity {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                setupToast("Successfully edited series");
+                showToast("Successfully edited series");
                 finish();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-               setupToast("Failed to edit");
+               showToast("Failed to edit");
             }
         });
-    }
-
-    private void setupToast(String message){
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

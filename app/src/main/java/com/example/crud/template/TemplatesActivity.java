@@ -18,6 +18,7 @@ import com.example.crud.Constants;
 import com.example.crud.R;
 import com.example.crud.api.CrudApi;
 import com.example.crud.api.CrudService;
+import com.example.crud.base.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TemplatesActivity extends AppCompatActivity {
+public class TemplatesActivity extends BaseActivity {
     private ArrayList<Template> templates = new ArrayList<>();
     private RecyclerView templatesRv;
     private TemplatesAdapter templatesAdapter;
@@ -37,7 +38,7 @@ public class TemplatesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_templates);
-        Log.i("TemplateActivity","onCreate");
+        log("onCreate");
         getSupportActionBar().setTitle("Templates");
         initView();
         setupTemplatesRv();
@@ -51,7 +52,7 @@ public class TemplatesActivity extends AppCompatActivity {
 
     protected void onResume() {
         super.onResume();
-        Log.i("TemplatesActivity", "onResume");
+        log("onResume");
         fetchData();
     }
 
@@ -66,7 +67,7 @@ public class TemplatesActivity extends AppCompatActivity {
        if(item.getItemId() == R.id.add) {
            Intent intent = new Intent(this, AddEditTemplateActivity.class);
            startActivity(intent);
-           setupToast("Success");
+           showToast("Success");
            return true;
        } else{
            return super.onOptionsItemSelected(item);
@@ -94,13 +95,13 @@ public class TemplatesActivity extends AppCompatActivity {
                 hideVisible();
                 List<Template> templates = response.body();
                 templatesAdapter.setData(templates);
-                setupToast("successfully loaded data");
+                showToast("successfully loaded data");
             }
 
             @Override
             public void onFailure(Call<List<Template>> call, Throwable t) {
                 hideVisible();
-                setupToast("Failed to load data");
+                showToast("Failed to load data");
             }
         });
     }
@@ -112,13 +113,13 @@ public class TemplatesActivity extends AppCompatActivity {
         templatesAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onDelete(String id) {
-               setupToast("Successfully Deleted");
+               showToast("Successfully Deleted");
                 deleteMessage(id);
             }
 
             @Override
             public void onEdit(Template template) {
-                setupToast("Message Selected");
+                showToast("Message Selected");
                 editMessage(template);
             }
         });
@@ -139,18 +140,14 @@ public class TemplatesActivity extends AppCompatActivity {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-               setupToast("Successfully loaded Message");
+               showToast("Successfully loaded Message");
                 fetchData();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                setupToast("Failed Delete Message");
+                showToast("Failed Delete Message");
             }
         });
-    }
-
-    public void setupToast(String message){
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

@@ -18,6 +18,7 @@ import com.example.crud.Constants;
 import com.example.crud.R;
 import com.example.crud.api.CrudApi;
 import com.example.crud.api.CrudService;
+import com.example.crud.base.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SeriesListActivity extends AppCompatActivity {
+public class SeriesListActivity extends BaseActivity {
     private ArrayList<Series> series = new ArrayList<>();
     private RecyclerView seriesRv;
     private SeriesAdapter seriesAdapter;
@@ -37,7 +38,7 @@ public class SeriesListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_series);
-        Log.i("SeriesActivity", "onCreate");
+        log("onCreate");
         getSupportActionBar().setTitle("Series");
         progressBar = findViewById(R.id.series_progress_bar);
         setupSeriesRv();
@@ -52,7 +53,7 @@ public class SeriesListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("SeriesActivity", "onResume");
+        log("onResume");
         fetchData();
     }
 
@@ -67,7 +68,7 @@ public class SeriesListActivity extends AppCompatActivity {
         if(item.getItemId() == R.id.add) {
             Intent intent = new Intent(this, AddEditSeriesActivity.class);
             startActivity(intent);
-           setupToast("Success");
+           showToast("Success");
             return true;
         } else{
             return super.onOptionsItemSelected(item);
@@ -89,7 +90,7 @@ public class SeriesListActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<Series>> call, Throwable t) {
                 hideVisible();
-                setupToast("Failed to load data");
+                showToast("Failed to load data");
             }
         });
     }
@@ -127,13 +128,13 @@ public class SeriesListActivity extends AppCompatActivity {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                setupToast("Successfully deleted message");
+                showToast("Successfully deleted message");
                 fetchData();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                setupToast("Failed to delete message");
+                showToast("Failed to delete message");
             }
         });
     }
@@ -142,10 +143,5 @@ public class SeriesListActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddEditSeriesActivity.class);
         intent.putExtra(Constants.KEY_SERIES, series);
         startActivity(intent);
-    }
-
-    private void setupToast(String message){
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-
     }
 }

@@ -14,6 +14,7 @@ import com.example.crud.Constants;
 import com.example.crud.R;
 import com.example.crud.api.CrudApi;
 import com.example.crud.api.CrudService;
+import com.example.crud.base.BaseActivity;
 import com.example.crud.series.Series;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddEditMovieActivity extends AppCompatActivity {
+public class AddEditMovieActivity extends BaseActivity {
     private EditText moviesIdTxt;
     private EditText movieNameTxt;
     private Spinner seriesSp;
@@ -141,13 +142,13 @@ public class AddEditMovieActivity extends AppCompatActivity {
         call.enqueue(new Callback<Movies>() {
             @Override
             public void onResponse(Call<Movies> call, Response<Movies> response) {
-                setupToast("Successfully Loaded Movie");
+                showToast("Successfully Loaded Movie");
                 finish();
             }
 
             @Override
             public void onFailure(Call<Movies> call, Throwable t) {
-                setupToast("Failed to add movie");
+                showToast("Failed to add movie");
             }
         });
     }
@@ -170,12 +171,8 @@ public class AddEditMovieActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                setupToast("Failed to edit");
+                showToast("Failed to edit");
             }
         });
-    }
-
-    private void setupToast(String message){
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

@@ -18,6 +18,7 @@ import com.example.crud.Constants;
 import com.example.crud.R;
 import com.example.crud.api.CrudApi;
 import com.example.crud.api.CrudService;
+import com.example.crud.base.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MessagesActivity extends AppCompatActivity {
+public class MessagesActivity extends BaseActivity {
     private ArrayList<Message> messageList = new ArrayList<>();
     private RecyclerView messagesRv;
     private MessagesAdapter messagesAdapter;
@@ -37,7 +38,7 @@ public class MessagesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messages);
-        Log.i("MessagesActivity","onCreate Started");
+        log("onCreate");
         getSupportActionBar().setTitle("Messages");
         setupApiService();
         setupMessagesRv();
@@ -51,7 +52,7 @@ public class MessagesActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("MessagesActivity","onResume");
+        log("onResume");
         fetchData();
     }
 
@@ -66,7 +67,7 @@ public class MessagesActivity extends AppCompatActivity {
        if(item.getItemId() == R.id.add) {
            Intent intent = new Intent(this, AddEditMessageActivity.class);
            startActivity(intent);
-           setupToast("Success");
+           showToast("Success");
            return true;
        } else {
           return super.onOptionsItemSelected(item);
@@ -83,13 +84,13 @@ public class MessagesActivity extends AppCompatActivity {
                 hideVisible();
                 List<Message> messages = response.body();
                 messagesAdapter.setData(messages);
-                setupToast("Successfully loaded Message");
+                showToast("Successfully loaded Message");
             }
 
             @Override
             public void onFailure(Call<List<Message>> call, Throwable t) {
                 hideVisible();
-                setupToast("Failed to load Message");
+                showToast("Failed to load Message");
             }
         });
     }
@@ -103,13 +104,13 @@ public class MessagesActivity extends AppCompatActivity {
         messagesAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onDelete(String id) {
-                setupToast("Successfully Deleted Message");
+                showToast("Successfully Deleted Message");
                 deleteMessage(id);
             }
 
             @Override
             public void onEdit(Message message) {
-               setupToast("Successfully Edited Message");
+               showToast("Successfully Edited Message");
                 editMessage(message);
             }
         });
@@ -130,13 +131,13 @@ public class MessagesActivity extends AppCompatActivity {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-               setupToast("Successfully deleted message");
+               showToast("Successfully deleted message");
                 fetchData();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                setupToast("Failed to delete message");
+                showToast("Failed to delete message");
             }
         });
     }
@@ -145,9 +146,5 @@ public class MessagesActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddEditMessageActivity.class);
         intent.putExtra(Constants.KEY_MESSAGE, message);
         startActivity(intent);
-    }
-
-    private void setupToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
