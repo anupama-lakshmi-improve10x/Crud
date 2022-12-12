@@ -9,7 +9,7 @@
     android:paddingTop="12dp"
     android:paddingRight="12dp"
     android:paddingBottom="4dp"
-    tools:context=".message.AddEditMessageActivity">
+    tools:context=".message.BaseAddEditMessageActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

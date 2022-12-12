@@ -57,7 +57,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".message.AddEditMessageActivity"
+            android:name=".message.EditMessageActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".message.AddMessageActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

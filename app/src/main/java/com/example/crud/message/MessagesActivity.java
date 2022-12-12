@@ -1,18 +1,15 @@
 package com.example.crud.message;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.example.crud.Constants;
 import com.example.crud.R;
@@ -65,7 +62,7 @@ public class MessagesActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
        if(item.getItemId() == R.id.add) {
-           Intent intent = new Intent(this, AddEditMessageActivity.class);
+           Intent intent = new Intent(this, AddMessageActivity.class);
            startActivity(intent);
            showToast("Success");
            return true;
@@ -143,7 +140,7 @@ public class MessagesActivity extends BaseActivity {
     }
 
     private void editMessage(Message message) {
-        Intent intent = new Intent(this, AddEditMessageActivity.class);
+        Intent intent = new Intent(this, EditMessageActivity.class);
         intent.putExtra(Constants.KEY_MESSAGE, message);
         startActivity(intent);
     }
