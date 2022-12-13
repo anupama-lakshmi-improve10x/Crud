@@ -43,7 +43,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".template.AddEditTemplateActivity"
+            android:name=".template.EditTemplateActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".template.AddTemplateActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
