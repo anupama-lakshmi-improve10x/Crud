@@ -1,7 +1,6 @@
 package com.example.crud.movie;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -32,7 +31,7 @@ public class AddEditMovieActivity extends BaseActivity {
     private EditText descriptionTxt;
     private CustomSeriesAdapter customSeriesAdapter;
     private ArrayList<Series> seriesList = new ArrayList<>();
-    private Movies movies;
+    private Movie movies;
     private CrudService crudService;
 
     @Override
@@ -45,7 +44,7 @@ public class AddEditMovieActivity extends BaseActivity {
         setupApiService();
         if(getIntent().hasExtra(Constants.KEY_MOVIES)) {
             getSupportActionBar().setTitle("Add Movie");
-            movies = (Movies) getIntent().getSerializableExtra(Constants.KEY_MOVIES);
+            movies = (Movie) getIntent().getSerializableExtra(Constants.KEY_MOVIES);
             showData();
         } else{
             getSupportActionBar().setTitle("Edit Movie");
@@ -130,7 +129,7 @@ public class AddEditMovieActivity extends BaseActivity {
     }
 
     private void addMovie(String movieId, String movieName, String seriesId, String imageUrl, String description) {
-        movies = new Movies();
+        movies = new Movie();
         movies.movieId = movieId;
         movies.title = movieName;
         movies.seriesId = seriesId;
@@ -138,23 +137,23 @@ public class AddEditMovieActivity extends BaseActivity {
         movies.description = description;
 
        setupApiService();
-        Call<Movies> call = crudService.createMovie(movies);
-        call.enqueue(new Callback<Movies>() {
+        Call<Movie> call = crudService.createMovie(movies);
+        call.enqueue(new Callback<Movie>() {
             @Override
-            public void onResponse(Call<Movies> call, Response<Movies> response) {
+            public void onResponse(Call<Movie> call, Response<Movie> response) {
                 showToast("Successfully Loaded Movie");
                 finish();
             }
 
             @Override
-            public void onFailure(Call<Movies> call, Throwable t) {
+            public void onFailure(Call<Movie> call, Throwable t) {
                 showToast("Failed to add movie");
             }
         });
     }
 
     private void upDateMovies(String id, String movieId, String movieName, String seriesId, String imageUrl, String description) {
-        movies = new Movies();
+        movies = new Movie();
         movies.movieId = movieId;
         movies.title = movieName;
         movies.seriesId = seriesId;

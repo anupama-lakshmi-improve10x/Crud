@@ -1,18 +1,15 @@
 package com.example.crud.movie;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.example.crud.Constants;
 import com.example.crud.R;
@@ -28,7 +25,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MoviesActivity extends BaseActivity {
-    private ArrayList<Movies> movies = new ArrayList<>();
+    private ArrayList<Movie> movie = new ArrayList<>();
     private RecyclerView moviesRv;
     private MoviesAdapter moviesAdapter;
     private ProgressBar progressBar;
@@ -77,17 +74,17 @@ public class MoviesActivity extends BaseActivity {
     private void fetchData() {
         showVisible();
         setupApiService();
-        Call<List<Movies>> call = crudService.fetchMovies();
-        call.enqueue(new Callback<List<Movies>>() {
+        Call<List<Movie>> call = crudService.fetchMovies();
+        call.enqueue(new Callback<List<Movie>>() {
             @Override
-            public void onResponse(Call<List<Movies>> call, Response<List<Movies>> response) {
+            public void onResponse(Call<List<Movie>> call, Response<List<Movie>> response) {
                 hideVisible();
-                List<Movies> movies = response.body();
+                List<Movie> movies = response.body();
                 moviesAdapter.setData(movies);
             }
 
             @Override
-            public void onFailure(Call<List<Movies>> call, Throwable t) {
+            public void onFailure(Call<List<Movie>> call, Throwable t) {
                 hideVisible();
                 showToast("Failed to load data");
             }
@@ -99,7 +96,7 @@ public class MoviesActivity extends BaseActivity {
         progressBar = findViewById(R.id.movie_progress_bar);
         moviesRv.setLayoutManager(new GridLayoutManager(this,2));
         moviesAdapter = new MoviesAdapter();
-        moviesAdapter.setData(movies);
+        moviesAdapter.setData(movie);
         moviesAdapter.setMovieOnItemActionListener(new MovieOnItemActionListener() {
             @Override
             public void onDelete(String id) {
@@ -108,7 +105,7 @@ public class MoviesActivity extends BaseActivity {
             }
 
             @Override
-            public void onEdit(Movies movies) {
+            public void onEdit(Movie movies) {
                 editMovies(movies);
             }
         });
@@ -139,7 +136,7 @@ public class MoviesActivity extends BaseActivity {
         });
     }
 
-    private void editMovies(Movies movies) {
+    private void editMovies(Movie movies) {
         Intent intent = new Intent(this, AddEditMovieActivity.class);
         intent.putExtra(Constants.KEY_MOVIES, movies);
         startActivity(intent);

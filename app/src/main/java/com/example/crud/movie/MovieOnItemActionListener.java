@@ -3,6 +3,6 @@ package com.example.crud.movie;
 public interface MovieOnItemActionListener {
     void onDelete(String id);
 
-    void onEdit(Movies movies);
+    void onEdit(Movie movies);
 
 }

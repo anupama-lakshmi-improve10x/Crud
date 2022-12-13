@@ -12,11 +12,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class MoviesAdapter extends RecyclerView.Adapter<MoviesViewHolder> {
-    private List<Movies> movieList;
+public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
+    private List<Movie> movieList;
     private MovieOnItemActionListener movieOnItemActionListener;
 
-    public void setData(List<Movies> moviesList){
+    public void setData(List<Movie> moviesList){
         this.movieList = moviesList;
         notifyDataSetChanged();
     }
@@ -28,15 +28,15 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesViewHolder> {
 
     @NonNull
     @Override
-    public MoviesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.movies_item, parent, false);
-        MoviesViewHolder moviesViewHolder = new MoviesViewHolder(view);
+        MovieViewHolder moviesViewHolder = new MovieViewHolder(view);
         return moviesViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MoviesViewHolder holder, int position) {
-        Movies movies = movieList.get(position);
+    public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
+        Movie movies = movieList.get(position);
         Picasso.get().load(movies.imageUrl).into(holder.moviesImg);
         holder.moviesTxt.setText(movies.title);
         holder.deleteBtn.setOnClickListener(view -> {

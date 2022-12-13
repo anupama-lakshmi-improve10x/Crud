@@ -30,14 +30,14 @@ public class BaseAddEditTemplateActivity extends BaseActivity {
         setupApiService();
     }
 
-    private void setupApiService() {
-        CrudApi crudApi = new CrudApi();
-        crudService = crudApi.createCrudService();
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.add_edit_message_menu, menu);
         return true;
+    }
+
+    private void setupApiService() {
+        CrudApi crudApi = new CrudApi();
+        crudService = crudApi.createCrudService();
     }
 }

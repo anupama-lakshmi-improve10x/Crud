@@ -10,14 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.crud.R;
 
-import java.util.ArrayList;
-
-public class MoviesViewHolder extends RecyclerView.ViewHolder {
+public class MovieViewHolder extends RecyclerView.ViewHolder {
     ImageView moviesImg;
     TextView moviesTxt;
     ImageButton deleteBtn;
 
-    public MoviesViewHolder(@NonNull View itemView) {
+    public MovieViewHolder(@NonNull View itemView) {
         super(itemView);
         moviesImg = itemView.findViewById(R.id.movies_img);
         moviesTxt = itemView.findViewById(R.id.movies_txt);
