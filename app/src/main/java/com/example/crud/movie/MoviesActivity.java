@@ -62,7 +62,7 @@ public class MoviesActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.add) {
-            Intent intent = new Intent(this, AddEditMovieActivity.class);
+            Intent intent = new Intent(this, AddMovieActivity.class);
             startActivity(intent);
             showToast("Success");
             return true;
@@ -137,7 +137,7 @@ public class MoviesActivity extends BaseActivity {
     }
 
     private void editMovies(Movie movies) {
-        Intent intent = new Intent(this, AddEditMovieActivity.class);
+        Intent intent = new Intent(this, EditMovieActivity.class);
         intent.putExtra(Constants.KEY_MOVIES, movies);
         startActivity(intent);
     }
