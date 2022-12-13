@@ -73,7 +73,6 @@ public class MoviesActivity extends BaseActivity {
 
     private void fetchData() {
         showVisible();
-        setupApiService();
         Call<List<Movie>> call = crudService.fetchMovies();
         call.enqueue(new Callback<List<Movie>>() {
             @Override

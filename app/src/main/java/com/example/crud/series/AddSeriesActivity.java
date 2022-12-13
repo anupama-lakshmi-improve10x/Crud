@@ -6,7 +6,6 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 
 import com.example.crud.R;
-import com.example.crud.base.BaseActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,9 +21,9 @@ public class AddSeriesActivity extends BaseAddEditSeriesActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.save) {
-            String id = seriesId.getText().toString();
-            String title = seriesName.getText().toString();
-            String image = imageUrl.getText().toString();
+            String id = seriesIdTxt.getText().toString();
+            String title = seriesNameTxt.getText().toString();
+            String image = imageUrlTxt.getText().toString();
             addSeries(id, title, image);
                 return true;
             } else {
