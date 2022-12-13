@@ -25,7 +25,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SeriesListActivity extends BaseActivity {
-    private ArrayList<Series> series = new ArrayList<>();
+
+    private ArrayList<Series> seriesList = new ArrayList<>();
     private RecyclerView seriesRv;
     private SeriesAdapter seriesAdapter;
     private ProgressBar progressBar;
@@ -65,21 +66,20 @@ public class SeriesListActivity extends BaseActivity {
         if(item.getItemId() == R.id.add) {
             Intent intent = new Intent(this, AddSeriesActivity.class);
             startActivity(intent);
-           showToast("Success");
             return true;
         } else{
             return super.onOptionsItemSelected(item);
         }
     }
-
+//Change fetch-data Method to "fetchSeriesList"
     private void fetchData() {
         showVisible();
-        setupApiService();
         Call<List<Series>> call = crudService.fetchSeries();
         call.enqueue(new Callback<List<Series>>() {
             @Override
             public void onResponse(Call<List<Series>> call, Response<List<Series>> response) {
                 hideVisible();
+                // Display Toast Message
                 List<Series> series = response.body();
                 seriesAdapter.setData(series);
             }
@@ -87,17 +87,18 @@ public class SeriesListActivity extends BaseActivity {
             @Override
             public void onFailure(Call<List<Series>> call, Throwable t) {
                 hideVisible();
-                showToast("Failed to load data");
+                showToast("Failed to load series");
             }
         });
     }
-
+//Do we need change the method setupSeriesListRV.
     public void setupSeriesRv() {
         seriesRv = findViewById(R.id.series_rv);
         seriesRv.setLayoutManager(new LinearLayoutManager(this));
         seriesAdapter = new SeriesAdapter();
-        seriesAdapter.setData(series);
+        seriesAdapter.setData(seriesList);
         seriesAdapter.setSeriesOnItemActionListener(new SeriesOnItemActionListener() {
+
             @Override
             public void onDelete(String id) {
                 deleteSeries(id);
@@ -120,18 +121,17 @@ public class SeriesListActivity extends BaseActivity {
     }
 
     private void deleteSeries(String id) {
-        setupApiService();
         Call<Void> call = crudService.deleteSeries(id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                showToast("Successfully deleted message");
+                showToast("Successfully deleted Series");
                 fetchData();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                showToast("Failed to delete message");
+                showToast("Failed to delete series");
             }
         });
     }

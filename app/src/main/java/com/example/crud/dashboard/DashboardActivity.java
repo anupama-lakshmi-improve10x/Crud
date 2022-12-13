@@ -8,10 +8,12 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.crud.R;
+import com.example.crud.base.BaseActivity;
 
 import java.util.ArrayList;
 
-public class DashboardActivity extends AppCompatActivity {
+public class DashboardActivity extends BaseActivity {
+
     private ArrayList<Dashboard> dashboardList;
     private RecyclerView dashboardRv;
     private DashboardAdapter dashboardAdapter;
@@ -19,6 +21,7 @@ public class DashboardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Call Log Method
         Log.i("DashboardActivity", "onCreate");
         setContentView(R.layout.activity_dashboard);
         getSupportActionBar().setTitle("Dashboard");
@@ -48,7 +51,7 @@ public class DashboardActivity extends AppCompatActivity {
         dashboardFour.title = "Movies";
         dashboardList.add(dashboardFour);
     }
-
+//Do we use DashBoardRv
     private void setupDashboardsRV() {
         dashboardRv = findViewById(R.id.dash_board_rv);
         dashboardRv.setLayoutManager(new LinearLayoutManager(this));

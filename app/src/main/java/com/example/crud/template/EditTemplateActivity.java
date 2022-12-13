@@ -13,6 +13,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EditTemplateActivity extends BaseAddEditTemplateActivity{
+
     private Template template;
 
     @Override
@@ -35,25 +36,24 @@ public class EditTemplateActivity extends BaseAddEditTemplateActivity{
         }
     }
     private void showData() {
-
         messageTxt.setText(template.messageText);
     }
-
+// change the method name updateMessage to updateTemplate
     private void updateMessage(String id, String message) {
-        Template template = new Template();
+        template = new Template();
         template.messageText = message;
 
         Call<Void> call = crudService.updateTemplate(id, template);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                showToast("Successfully Updated Message");
+                showToast("Successfully Updated Template");
                 finish();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                showToast("Failed to Update Message");
+                showToast("Failed to Update Template");
             }
         });
     }

@@ -13,6 +13,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EditSeriesActivity extends BaseAddEditSeriesActivity{
+
     private Series series;
 
     @Override
@@ -20,18 +21,18 @@ public class EditSeriesActivity extends BaseAddEditSeriesActivity{
         super.onCreate(savedInstanceState);
         getSupportActionBar().setTitle("Edit Series");
         if (getIntent().hasExtra(Constants.KEY_SERIES)) {
-            getSupportActionBar().setTitle("Edit Series");
             this.series = (Series) getIntent().getSerializableExtra(Constants.KEY_SERIES);
             showData();
         }
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.save) {
             String id = seriesIdTxt.getText().toString();
             String title = seriesNameTxt.getText().toString();
             String image = imageUrlTxt.getText().toString();
-            upDateSeries(id, title, image);
+            updateSeries(id, title, image);
             return true;
         } else {
             return super.onOptionsItemSelected(item);
@@ -44,7 +45,7 @@ public class EditSeriesActivity extends BaseAddEditSeriesActivity{
         imageUrlTxt.setText(series.imageUrl);
     }
 
-    private void upDateSeries(String id, String title, String imageUrl) {
+    private void updateSeries(String id, String title, String imageUrl) {
         series = new Series();
         series.seriesId = id;
         series.title = title;
@@ -60,7 +61,7 @@ public class EditSeriesActivity extends BaseAddEditSeriesActivity{
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                showToast("Failed to edit");
+                showToast("Failed to edit series");
             }
         });
     }

@@ -12,6 +12,7 @@ import com.example.crud.R;
 import java.util.List;
 
 public class TemplatesAdapter extends RecyclerView.Adapter<TemplateViewHolder> {
+
     private List<Template> templates;
     private OnItemActionListener onItemActionListener;
 
@@ -27,6 +28,7 @@ public class TemplatesAdapter extends RecyclerView.Adapter<TemplateViewHolder> {
     @NonNull
     @Override
     public TemplateViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //Change the id as Template_item to Templates_item
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.template_item, parent, false);
         TemplateViewHolder templateViewHolder = new TemplateViewHolder(view);
         return templateViewHolder;
@@ -42,7 +44,6 @@ public class TemplatesAdapter extends RecyclerView.Adapter<TemplateViewHolder> {
         holder.itemView.setOnClickListener(view -> {
             onItemActionListener.onEdit(template);
         });
-
     }
 
     @Override

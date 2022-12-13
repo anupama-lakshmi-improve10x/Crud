@@ -19,7 +19,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class BaseAddEditMovieActivity extends BaseActivity {
-    protected EditText moviesIdTxt;
+
+    protected EditText movieIdTxt;
     protected EditText movieNameTxt;
     protected Spinner seriesSp;
     protected EditText imageUrlTxt;
@@ -50,7 +51,7 @@ public class BaseAddEditMovieActivity extends BaseActivity {
     }
 
     private void initViews() {
-        moviesIdTxt = findViewById(R.id.movie_id_txt);
+        movieIdTxt = findViewById(R.id.movie_id_txt);
         movieNameTxt = findViewById(R.id.movie_name_txt);
         seriesSp = findViewById(R.id.series_sp);
         imageUrlTxt = findViewById(R.id.image_url_txt);
@@ -83,7 +84,7 @@ public class BaseAddEditMovieActivity extends BaseActivity {
     }
 
     protected void showData() {
-        moviesIdTxt.setText(movie.movieId);
+        movieIdTxt.setText(movie.movieId);
         movieNameTxt.setText(movie.title);
         imageUrlTxt.setText(movie.imageUrl);
         descriptionTxt.setText(movie.description);

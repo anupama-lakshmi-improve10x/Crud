@@ -2,7 +2,6 @@ package com.example.crud.movie;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -14,16 +13,17 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AddMovieActivity extends BaseAddEditMovieActivity{
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setTitle("Edit Movie");
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.save) {
-            Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show();
-            String movieId = moviesIdTxt.getText().toString();
+            String movieId = movieIdTxt.getText().toString();
             String movieName = movieNameTxt.getText().toString();
             Series series = (Series) seriesSp.getSelectedItem();
             String seriesId = series.seriesId;
@@ -48,6 +48,7 @@ public class AddMovieActivity extends BaseAddEditMovieActivity{
         call.enqueue(new Callback<Movie>() {
             @Override
             public void onResponse(Call<Movie> call, Response<Movie> response) {
+                //Change the Toast Message as "Successfully added the movie"
                 showToast("Successfully Loaded Movie");
                 finish();
             }
@@ -58,5 +59,4 @@ public class AddMovieActivity extends BaseAddEditMovieActivity{
             }
         });
     }
-
 }

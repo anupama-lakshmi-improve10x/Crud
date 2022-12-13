@@ -12,6 +12,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AddTemplateActivity extends BaseAddEditTemplateActivity{
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,9 @@ public class AddTemplateActivity extends BaseAddEditTemplateActivity{
             return super.onOptionsItemSelected(item);
         }
     }
+
+    //Change the Method name addMessage name to addTemplate
+
     private void addMessage(String message) {
         Template template = new Template();
         template.messageText = message;
@@ -36,13 +40,13 @@ public class AddTemplateActivity extends BaseAddEditTemplateActivity{
         call.enqueue(new Callback<Template>() {
             @Override
             public void onResponse(Call<Template> call, Response<Template> response) {
-                showToast("Successfully Added Message");
+                showToast("Successfully Added Template");
                 finish();
             }
 
             @Override
             public void onFailure(Call<Template> call, Throwable t) {
-                showToast("Failed to Add Message");
+                showToast("Failed to Add Template");
             }
         });
     }

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.crud.R;
 
 public class MessageViewHolder extends RecyclerView.ViewHolder {
+
     TextView nameTxt;
     TextView mobileNumberTxt;
     TextView messageTxt;

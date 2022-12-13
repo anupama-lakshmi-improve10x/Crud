@@ -8,25 +8,23 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.crud.R;
-import com.example.crud.template.OnItemActionListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class SeriesAdapter extends RecyclerView.Adapter<SeriesViewHolder> {
-    private List<Series> seriesArray;
+
+    private List<Series> seriesList;
     private SeriesOnItemActionListener seriesOnItemActionListener;
 
     public void setData(List<Series> seriesList) {
-        seriesArray = seriesList;
+        this.seriesList = seriesList;
         notifyDataSetChanged();
     }
 
     public void setSeriesOnItemActionListener(SeriesOnItemActionListener actionListener){
         seriesOnItemActionListener = actionListener;
     }
-
-
 
     @NonNull
     @Override
@@ -38,7 +36,7 @@ public class SeriesAdapter extends RecyclerView.Adapter<SeriesViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull SeriesViewHolder holder, int position) {
-        Series series = seriesArray.get(position);
+        Series series = this.seriesList.get(position);
         Picasso.get().load(series.imageUrl).into(holder.seriesImg);
         holder.seriesTxt.setText(series.title);
         holder.deleteBtn.setOnClickListener(view -> {
@@ -51,7 +49,6 @@ public class SeriesAdapter extends RecyclerView.Adapter<SeriesViewHolder> {
 
     @Override
     public int getItemCount() {
-
-        return seriesArray.size();
+        return seriesList.size();
     }
 }

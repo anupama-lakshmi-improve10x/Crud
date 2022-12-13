@@ -25,7 +25,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MoviesActivity extends BaseActivity {
-    private ArrayList<Movie> movie = new ArrayList<>();
+
+    private ArrayList<Movie> movies = new ArrayList<>();
     private RecyclerView moviesRv;
     private MoviesAdapter moviesAdapter;
     private ProgressBar progressBar;
@@ -50,6 +51,7 @@ public class MoviesActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         log("onResume");
+        // change fetchData method to "fetchMovies"
         fetchData();
     }
 
@@ -64,7 +66,6 @@ public class MoviesActivity extends BaseActivity {
         if(item.getItemId() == R.id.add) {
             Intent intent = new Intent(this, AddMovieActivity.class);
             startActivity(intent);
-            showToast("Success");
             return true;
         } else {
             return super.onOptionsItemSelected(item);
@@ -72,20 +73,23 @@ public class MoviesActivity extends BaseActivity {
     }
 
     private void fetchData() {
+        //Change showVisible method name to showProgressBarVisible
         showVisible();
         Call<List<Movie>> call = crudService.fetchMovies();
         call.enqueue(new Callback<List<Movie>>() {
             @Override
             public void onResponse(Call<List<Movie>> call, Response<List<Movie>> response) {
                 hideVisible();
+                // Add toast message
                 List<Movie> movies = response.body();
                 moviesAdapter.setData(movies);
             }
 
             @Override
             public void onFailure(Call<List<Movie>> call, Throwable t) {
+                //Change hideVisible method name to showProgressBarVisible
                 hideVisible();
-                showToast("Failed to load data");
+                showToast("Failed to load Movies");
             }
         });
     }
@@ -95,7 +99,7 @@ public class MoviesActivity extends BaseActivity {
         progressBar = findViewById(R.id.movie_progress_bar);
         moviesRv.setLayoutManager(new GridLayoutManager(this,2));
         moviesAdapter = new MoviesAdapter();
-        moviesAdapter.setData(movie);
+        moviesAdapter.setData(movies);
         moviesAdapter.setMovieOnItemActionListener(new MovieOnItemActionListener() {
             @Override
             public void onDelete(String id) {
@@ -104,28 +108,28 @@ public class MoviesActivity extends BaseActivity {
             }
 
             @Override
-            public void onEdit(Movie movies) {
-                editMovies(movies);
+            public void onEdit(Movie movie) {
+                editMovie(movie);
             }
         });
         moviesRv.setAdapter(moviesAdapter);
     }
-
+// change the method name
     private void showVisible() {
         progressBar.setVisibility(View.VISIBLE);
     }
-
+//change the method name
     private  void hideVisible(){
         progressBar.setVisibility(View.GONE);
     }
 
     private void deleteMovie(String id) {
-        setupApiService();
         Call<Void> call = crudService.deleteMovie(id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 fetchData();
+                // Display Toast message
             }
 
             @Override
@@ -135,10 +139,9 @@ public class MoviesActivity extends BaseActivity {
         });
     }
 
-    private void editMovies(Movie movies) {
+    private void editMovie(Movie movie) {
         Intent intent = new Intent(this, EditMovieActivity.class);
-        intent.putExtra(Constants.KEY_MOVIES, movies);
+        intent.putExtra(Constants.KEY_MOVIES, movie);
         startActivity(intent);
     }
-
 }

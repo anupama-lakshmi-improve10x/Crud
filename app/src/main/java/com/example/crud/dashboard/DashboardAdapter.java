@@ -18,10 +18,11 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class DashboardAdapter extends RecyclerView.Adapter<DashboardViewHolder> {
+    //Do we need to change dashbords as dashboard
     private ArrayList<Dashboard> dashboards;
 
-    public void setData(ArrayList<Dashboard> dashboardsList){
-        dashboards = dashboardsList;
+    public void setData(ArrayList<Dashboard> dashboardList){
+        dashboards = dashboardList;
         notifyDataSetChanged();
 
     }

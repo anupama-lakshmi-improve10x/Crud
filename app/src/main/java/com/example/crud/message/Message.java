@@ -15,6 +15,7 @@ public class Message implements Serializable {
     public String message;
 
     public Message() {
+
     }
 
     public Message(String name, String phoneNumber, String messageText) {

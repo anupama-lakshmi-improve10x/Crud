@@ -25,6 +25,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TemplatesActivity extends BaseActivity {
+
     private ArrayList<Template> templates = new ArrayList<>();
     private RecyclerView templatesRv;
     private TemplatesAdapter templatesAdapter;
@@ -37,7 +38,7 @@ public class TemplatesActivity extends BaseActivity {
         setContentView(R.layout.activity_templates);
         log("onCreate");
         getSupportActionBar().setTitle("Templates");
-        initView();
+        initViews();
         setupTemplatesRv();
         setupApiService();
     }
@@ -55,6 +56,7 @@ public class TemplatesActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        //Change the id to templates_menu
         getMenuInflater().inflate(R.menu.template_menu, menu);
         return true;
     }
@@ -64,14 +66,13 @@ public class TemplatesActivity extends BaseActivity {
        if(item.getItemId() == R.id.add) {
            Intent intent = new Intent(this, AddTemplateActivity.class);
            startActivity(intent);
-           showToast("Success");
            return true;
        } else{
            return super.onOptionsItemSelected(item);
        }
     }
 
-    private void initView() {
+    private void initViews() {
         templatesRv = findViewById(R.id.templates_rv);
         progressBar = findViewById(R.id.progress_bar);
     }
@@ -81,10 +82,9 @@ public class TemplatesActivity extends BaseActivity {
         intent.putExtra(Constants.KEY_TEMPLATE, template);
         startActivity(intent);
     }
-
+//Change the method name to FetchTemplates
     private void fetchData() {
         showVisible();
-        setupApiService();
         Call<List<Template>> call = crudService.fetchTemplates();
         call.enqueue(new Callback<List<Template>>() {
             @Override
@@ -92,13 +92,13 @@ public class TemplatesActivity extends BaseActivity {
                 hideVisible();
                 List<Template> templates = response.body();
                 templatesAdapter.setData(templates);
-                showToast("successfully loaded data");
+                showToast("successfully loaded Templates");
             }
 
             @Override
             public void onFailure(Call<List<Template>> call, Throwable t) {
                 hideVisible();
-                showToast("Failed to load data");
+                showToast("Failed to load Templates");
             }
         });
     }
@@ -110,13 +110,11 @@ public class TemplatesActivity extends BaseActivity {
         templatesAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onDelete(String id) {
-               showToast("Successfully Deleted");
                 deleteMessage(id);
             }
 
             @Override
             public void onEdit(Template template) {
-                showToast("Message Selected");
                 editMessage(template);
             }
         });
@@ -131,19 +129,19 @@ public class TemplatesActivity extends BaseActivity {
         progressBar.setVisibility(View.GONE);
     }
 
+    //Change the method name to "deleteTemplate"
     private void deleteMessage(String id) {
-        setupApiService();
         Call<Void> call = crudService.deleteTemplate(id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-               showToast("Successfully loaded Message");
+               showToast("Successfully loaded Template");
                 fetchData();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                showToast("Failed Delete Message");
+                showToast("Failed to Delete Template");
             }
         });
     }

@@ -2,7 +2,6 @@ package com.example.crud.movie;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -15,6 +14,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EditMovieActivity extends BaseAddEditMovieActivity{
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,21 +28,20 @@ public class EditMovieActivity extends BaseAddEditMovieActivity{
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.save) {
-            Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show();
-            String movieId = moviesIdTxt.getText().toString();
+            String movieId = movieIdTxt.getText().toString();
             String movieName = movieNameTxt.getText().toString();
             Series series = (Series) seriesSp.getSelectedItem();
             String seriesId = series.seriesId;
             String imageUrl = imageUrlTxt.getText().toString();
             String description = descriptionTxt.getText().toString();
-            upDateMovies(movie.id, movieId, movieName, seriesId, imageUrl, description);
+            updateMovie(movie.id, movieId, movieName, seriesId, imageUrl, description);
             return true;
             } else {
             return super.onOptionsItemSelected(item);
         }
     }
 
-    private void upDateMovies(String id, String movieId, String movieName, String seriesId, String imageUrl, String description) {
+    private void updateMovie(String id, String movieId, String movieName, String seriesId, String imageUrl, String description) {
         movie = new Movie();
         movie.movieId = movieId;
         movie.title = movieName;
@@ -54,12 +53,13 @@ public class EditMovieActivity extends BaseAddEditMovieActivity{
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
+                //Show Toast Message
                 finish();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                showToast("Failed to edit");
+                showToast("Failed to update movie");
             }
         });
     }

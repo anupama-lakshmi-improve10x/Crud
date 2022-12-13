@@ -14,6 +14,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AddMessageActivity extends BaseAddEditMessageActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +33,7 @@ public class AddMessageActivity extends BaseAddEditMessageActivity {
             return super.onOptionsItemSelected(item);
         }
     }
+
     private void addMessage(String name, String phoneNumber, String messageTxt) {
         Message message = new Message(name, phoneNumber, messageTxt);
         Call<Message> call = crudService.createMessage(message);

@@ -25,6 +25,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MessagesActivity extends BaseActivity {
+
     private ArrayList<Message> messageList = new ArrayList<>();
     private RecyclerView messagesRv;
     private MessagesAdapter messagesAdapter;
@@ -64,13 +65,14 @@ public class MessagesActivity extends BaseActivity {
        if(item.getItemId() == R.id.add) {
            Intent intent = new Intent(this, AddMessageActivity.class);
            startActivity(intent);
+           // Remove Toast As it not necessary
            showToast("Success");
            return true;
        } else {
           return super.onOptionsItemSelected(item);
        }
     }
-
+//Change the fetchData method to "fetchMessages"
     private void fetchData() {
         showVisible();
         setupApiService();
@@ -81,19 +83,21 @@ public class MessagesActivity extends BaseActivity {
                 hideVisible();
                 List<Message> messages = response.body();
                 messagesAdapter.setData(messages);
-                showToast("Successfully loaded Message");
+                showToast("Successfully loaded Messages");
             }
 
             @Override
             public void onFailure(Call<List<Message>> call, Throwable t) {
                 hideVisible();
-                showToast("Failed to load Message");
+                showToast("Failed to load Messages");
             }
         });
     }
 
     private void setupMessagesRv() {
+        //Change the progress_bar id to message_progress_bar
         progressBar = findViewById(R.id.progress_bar);
+        //change the id as "messages_rv"
         messagesRv = findViewById(R.id.message_rv);
         messagesRv.setLayoutManager(new LinearLayoutManager(this));
         messagesAdapter = new MessagesAdapter();
@@ -113,10 +117,12 @@ public class MessagesActivity extends BaseActivity {
         });
         messagesRv.setAdapter(messagesAdapter);
     }
-
+//Change the method showVisible to showProgressBarVisible.
     private void showVisible() {
         progressBar.setVisibility(View.VISIBLE);
     }
+
+    //Change the method hideVisible to hideProgressBarVisible
 
     private void hideVisible(){
         progressBar.setVisibility(View.GONE);

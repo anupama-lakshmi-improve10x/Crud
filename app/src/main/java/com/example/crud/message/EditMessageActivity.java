@@ -15,7 +15,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EditMessageActivity extends BaseAddEditMessageActivity {
+
     private Message message;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,19 +47,20 @@ public class EditMessageActivity extends BaseAddEditMessageActivity {
         messageTxt.setText(this.message.message);
     }
 
-
     private void updateMessage(String id, String name, String phoneNumber, String message) {
         this.message = new Message(name, phoneNumber, message);
         Call<Void> call = crudService.updateMessage(id,this.message);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
+                //change the toast message as successfully updated the message
                 showToast("Successfully loaded Message");
                 finish();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
+                //change the toast message as Failed to update the message
                 showToast("Failed to Delete Message");
             }
         });

@@ -12,6 +12,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AddSeriesActivity extends BaseAddEditSeriesActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +31,9 @@ public class AddSeriesActivity extends BaseAddEditSeriesActivity {
                 return super.onOptionsItemSelected(item);
             }
         }
+
     private void addSeries(String id, String title, String imageUrl) {
+        // Is it ok if we declare in in BaseEditSeriesActivity
         Series series = new Series();
         series.seriesId = id;
         series.title = title;
@@ -40,13 +43,13 @@ public class AddSeriesActivity extends BaseAddEditSeriesActivity {
         call.enqueue(new Callback<Series>() {
             @Override
             public void onResponse(Call<Series> call, Response<Series> response) {
-                showToast("Successfully added");
+                showToast("Successfully added the Series");
                 finish();
             }
 
             @Override
             public void onFailure(Call<Series> call, Throwable t) {
-                showToast("Failed to add");
+                showToast("Failed to add the series");
             }
         });
     }
