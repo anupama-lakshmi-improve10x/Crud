@@ -23,6 +23,7 @@ public class DashboardActivity extends BaseActivity {
         setContentView(R.layout.activity_dashboard);
         getSupportActionBar().setTitle("Dashboard");
         setupData();
+        setupDashboardItemsAdapter();
         setupDashboardItemsRV();
     }
 
@@ -49,11 +50,14 @@ public class DashboardActivity extends BaseActivity {
         dashboardItems.add(movies);
     }
 
+    private void setupDashboardItemsAdapter() {
+        dashboardAdapter = new DashboardAdapter();
+        dashboardAdapter.setData(dashboardItems);
+    }
+
     private void setupDashboardItemsRV() {
         dashboardRv = findViewById(R.id.dash_board_rv);
         dashboardRv.setLayoutManager(new LinearLayoutManager(this));
-        dashboardAdapter = new DashboardAdapter();
-        dashboardAdapter.setData(dashboardItems);
         dashboardRv.setAdapter(dashboardAdapter);
     }
 }

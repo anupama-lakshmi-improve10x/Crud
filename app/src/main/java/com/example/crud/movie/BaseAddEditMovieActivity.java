@@ -28,21 +28,14 @@ public class BaseAddEditMovieActivity extends BaseActivity {
     protected CustomSeriesAdapter customSeriesAdapter;
     protected ArrayList<Series> seriesList = new ArrayList<>();
     protected Movie movie;
-    protected CrudService crudService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit_movie);
-        setupApiService();
         initViews();
         setupSeriesListSp();
         fetchSeriesList();
-    }
-
-    private void setupApiService() {
-        CrudApi crudApi = new CrudApi();
-        crudService = crudApi.createCrudService();
     }
 
     private void setupSeriesListSp() {

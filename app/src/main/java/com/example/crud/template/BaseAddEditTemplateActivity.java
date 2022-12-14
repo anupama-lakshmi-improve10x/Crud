@@ -12,7 +12,6 @@ import com.example.crud.base.BaseActivity;
 public class BaseAddEditTemplateActivity extends BaseActivity {
 
     protected EditText templateTxt;
-    protected CrudService crudService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

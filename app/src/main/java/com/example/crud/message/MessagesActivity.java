@@ -30,7 +30,6 @@ public class MessagesActivity extends BaseActivity {
     private RecyclerView messagesRv;
     private MessagesAdapter messagesAdapter;
     private ProgressBar progressBar;
-    private CrudService crudService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +37,8 @@ public class MessagesActivity extends BaseActivity {
         setContentView(R.layout.activity_messages);
         log("onCreate");
         getSupportActionBar().setTitle("Messages");
-        setupApiService();
+        setupMessagesAdapter();
         setupMessagesRv();
-    }
-
-    private void setupApiService() {
-        CrudApi crudApi = new CrudApi();
-        crudService = crudApi.createCrudService();
     }
 
     @Override
@@ -73,7 +67,6 @@ public class MessagesActivity extends BaseActivity {
 
     private void fetchMessages() {
         ShowProgressBar();
-        setupApiService();
         Call<List<Message>> call = crudService.fetchMessages();
         call.enqueue(new Callback<List<Message>>() {
             @Override
@@ -92,11 +85,7 @@ public class MessagesActivity extends BaseActivity {
         });
     }
 
-    private void setupMessagesRv() {
-        //Change the progress_bar id to message_progress_bar
-        progressBar = findViewById(R.id.progress_bar);
-        messagesRv = findViewById(R.id.messages_rv);
-        messagesRv.setLayoutManager(new LinearLayoutManager(this));
+    private void setupMessagesAdapter(){
         messagesAdapter = new MessagesAdapter();
         messagesAdapter.setData(messageList);
         messagesAdapter.setOnItemActionListener(new OnItemActionListener() {
@@ -108,10 +97,17 @@ public class MessagesActivity extends BaseActivity {
 
             @Override
             public void onEdit(Message message) {
-               showToast("Successfully Edited Message");
+                showToast("Successfully Edited Message");
                 editMessage(message);
             }
         });
+    }
+
+    private void setupMessagesRv() {
+        //Change the progress_bar id to message_progress_bar
+        progressBar = findViewById(R.id.progress_bar);
+        messagesRv = findViewById(R.id.messages_rv);
+        messagesRv.setLayoutManager(new LinearLayoutManager(this));
         messagesRv.setAdapter(messagesAdapter);
     }
 
@@ -124,7 +120,6 @@ public class MessagesActivity extends BaseActivity {
     }
 
     private void deleteMessage(String id) {
-        setupApiService();
         Call<Void> call = crudService.deleteMessage(id);
         call.enqueue(new Callback<Void>() {
             @Override

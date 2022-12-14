@@ -13,8 +13,6 @@ import android.widget.ProgressBar;
 
 import com.example.crud.Constants;
 import com.example.crud.R;
-import com.example.crud.api.CrudApi;
-import com.example.crud.api.CrudService;
 import com.example.crud.base.BaseActivity;
 
 import java.util.ArrayList;
@@ -30,7 +28,6 @@ public class TemplatesActivity extends BaseActivity {
     private RecyclerView templatesRv;
     private TemplatesAdapter templatesAdapter;
     private ProgressBar progressBar;
-    private CrudService crudService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +36,8 @@ public class TemplatesActivity extends BaseActivity {
         log("onCreate");
         getSupportActionBar().setTitle("Templates");
         initViews();
+        setupTemplatesAdapter();
         setupTemplatesRv();
-        setupApiService();
-    }
-
-    private void setupApiService() {
-        CrudApi crudApi = new CrudApi();
-        crudService = crudApi.createCrudService();
     }
 
     protected void onResume() {
@@ -102,8 +94,7 @@ public class TemplatesActivity extends BaseActivity {
         });
     }
 
-    private void setupTemplatesRv() {
-        templatesRv.setLayoutManager(new LinearLayoutManager(this));
+    private void setupTemplatesAdapter() {
         templatesAdapter = new TemplatesAdapter();
         templatesAdapter.setData(templates);
         templatesAdapter.setOnItemActionListener(new OnItemActionListener() {
@@ -117,6 +108,10 @@ public class TemplatesActivity extends BaseActivity {
                 editMessage(template);
             }
         });
+    }
+
+    private void setupTemplatesRv() {
+        templatesRv.setLayoutManager(new LinearLayoutManager(this));
         templatesRv.setAdapter(templatesAdapter);
     }
 

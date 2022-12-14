@@ -14,19 +14,12 @@ public class BaseAddEditSeriesActivity extends BaseActivity {
     protected EditText seriesIdTxt;
     protected EditText seriesNameTxt;
     protected EditText imageUrlTxt;
-    protected CrudService crudService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit_series);
         initViews();
-        setupApiService();
-    }
-
-    private void setupApiService() {
-        CrudApi crudApi = new CrudApi();
-        crudService = crudApi.createCrudService();
     }
 
     @Override

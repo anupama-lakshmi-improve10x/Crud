@@ -30,7 +30,6 @@ public class MoviesActivity extends BaseActivity {
     private RecyclerView moviesRv;
     private MoviesAdapter moviesAdapter;
     private ProgressBar progressBar;
-    private CrudService crudService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +37,8 @@ public class MoviesActivity extends BaseActivity {
         setContentView(R.layout.activity_movies);
         log("onCreate");
         getSupportActionBar().setTitle("Movies");
+        setupMovieAdapter();
         setupMoviesRv();
-        setupApiService();
-    }
-
-    private void setupApiService() {
-        CrudApi crudApi = new CrudApi();
-        crudService = crudApi.createCrudService();
     }
 
     @Override
@@ -91,10 +85,7 @@ public class MoviesActivity extends BaseActivity {
         });
     }
 
-    private void setupMoviesRv() {
-        moviesRv = findViewById(R.id.movies_rv);
-        progressBar = findViewById(R.id.movie_progress_bar);
-        moviesRv.setLayoutManager(new GridLayoutManager(this,2));
+    private void setupMovieAdapter(){
         moviesAdapter = new MoviesAdapter();
         moviesAdapter.setData(movies);
         moviesAdapter.setMovieOnItemActionListener(new MovieOnItemActionListener() {
@@ -108,6 +99,13 @@ public class MoviesActivity extends BaseActivity {
                 editMovie(movie);
             }
         });
+
+    }
+
+    private void setupMoviesRv() {
+        moviesRv = findViewById(R.id.movies_rv);
+        progressBar = findViewById(R.id.movie_progress_bar);
+        moviesRv.setLayoutManager(new GridLayoutManager(this,2));
         moviesRv.setAdapter(moviesAdapter);
     }
 
