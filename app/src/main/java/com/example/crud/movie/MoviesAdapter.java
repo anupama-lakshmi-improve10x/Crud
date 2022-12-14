@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
-
+//Todo: Change movieList to movies
     private List<Movie> movieList;
     private MovieOnItemActionListener movieOnItemActionListener;
 

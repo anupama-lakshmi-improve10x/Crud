@@ -18,8 +18,8 @@ public class EditMovieActivity extends BaseAddEditMovieActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("Edit Movie");
         if(getIntent().hasExtra(Constants.KEY_MOVIES)) {
-            getSupportActionBar().setTitle("Edit Movie");
             movie = (Movie) getIntent().getSerializableExtra(Constants.KEY_MOVIES);
             showData();
         }
@@ -42,6 +42,7 @@ public class EditMovieActivity extends BaseAddEditMovieActivity{
     }
 
     private void updateMovie(String id, String movieId, String movieName, String seriesId, String imageUrl, String description) {
+        //Todo: Add Movie class before movie object
         movie = new Movie();
         movie.movieId = movieId;
         movie.title = movieName;

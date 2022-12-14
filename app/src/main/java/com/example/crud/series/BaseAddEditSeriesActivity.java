@@ -10,6 +10,7 @@ import com.example.crud.api.CrudService;
 import com.example.crud.base.BaseActivity;
 
 public class BaseAddEditSeriesActivity extends BaseActivity {
+    //Todo: BaseAddEditSeriesItemsActivity
 
     protected EditText seriesIdTxt;
     protected EditText seriesNameTxt;

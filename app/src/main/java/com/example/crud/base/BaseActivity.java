@@ -30,6 +30,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected void log(String message) {
+        // Todo: change "MessageActivity"
         Log.i("MessagesActivity", message);
     }
 

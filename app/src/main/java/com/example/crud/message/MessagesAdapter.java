@@ -17,10 +17,12 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessageViewHolder> {
     private OnItemActionListener onItemActionListener;
 
     public void setData(List<Message> messageList){
+        //Todo: use this keyword
         messages = messageList;
         notifyDataSetChanged();
     }
 
+    //Todo: use public to default for setOnItemActionListener and setData method for all Adapter classes
     public void setOnItemActionListener(OnItemActionListener actionListener) {
         onItemActionListener = actionListener;
     }

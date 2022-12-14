@@ -17,6 +17,7 @@ public class BaseAddEditTemplateActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit_template);
+        //Todo: add separate method to find view and add progressBar
         templateTxt = findViewById(R.id.template_txt);
         setupApiService();
     }

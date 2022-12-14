@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.crud.R;
 
 public class MovieViewHolder extends RecyclerView.ViewHolder {
-
+//Todo: change moviesImg to movieImg, nameTxt
     ImageView moviesImg;
     TextView moviesTxt;
     ImageButton deleteBtn;

@@ -11,8 +11,10 @@ import com.example.crud.base.BaseActivity;
 import java.util.ArrayList;
 
 public class DashboardActivity extends BaseActivity {
+    //Todo: change DashboardActivity to DashboardItemsActivity.
 
     private ArrayList<Dashboard> dashboardItems;
+    //Todo: change dashboard variables to dashBoardItemsRv, dashboardItemsAdapter
     private RecyclerView dashboardRv;
     private DashboardAdapter dashboardAdapter;
 
@@ -24,12 +26,14 @@ public class DashboardActivity extends BaseActivity {
         getSupportActionBar().setTitle("Dashboard");
         setupData();
         setupDashboardItemsAdapter();
+        //Todo: In the method setupDashboardItemsRV the letter 'v' should be small
         setupDashboardItemsRV();
     }
 
     private void setupData() {
         dashboardItems = new ArrayList<>();
         Dashboard messages = new Dashboard();
+        // Todo: use Constructor for all.
         messages.imageUrl = "https://upload.wikimedia.org/wikipedia/commons/7/72/Message-icon-grey.png";
         messages.title = "Messages";
         dashboardItems.add(messages);
@@ -56,6 +60,7 @@ public class DashboardActivity extends BaseActivity {
     }
 
     private void setupDashboardItemsRV() {
+        //Todo: create separate method for id's and add ProgressBar
         dashboardRv = findViewById(R.id.dash_board_rv);
         dashboardRv.setLayoutManager(new LinearLayoutManager(this));
         dashboardRv.setAdapter(dashboardAdapter);

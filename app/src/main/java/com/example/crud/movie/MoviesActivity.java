@@ -13,8 +13,6 @@ import android.widget.ProgressBar;
 
 import com.example.crud.Constants;
 import com.example.crud.R;
-import com.example.crud.api.CrudApi;
-import com.example.crud.api.CrudService;
 import com.example.crud.base.BaseActivity;
 
 import java.util.ArrayList;
@@ -37,7 +35,7 @@ public class MoviesActivity extends BaseActivity {
         setContentView(R.layout.activity_movies);
         log("onCreate");
         getSupportActionBar().setTitle("Movies");
-        setupMovieAdapter();
+        setupMoviesAdapter();
         setupMoviesRv();
     }
 
@@ -85,7 +83,7 @@ public class MoviesActivity extends BaseActivity {
         });
     }
 
-    private void setupMovieAdapter(){
+    private void setupMoviesAdapter(){
         moviesAdapter = new MoviesAdapter();
         moviesAdapter.setData(movies);
         moviesAdapter.setMovieOnItemActionListener(new MovieOnItemActionListener() {
@@ -99,7 +97,6 @@ public class MoviesActivity extends BaseActivity {
                 editMovie(movie);
             }
         });
-
     }
 
     private void setupMoviesRv() {

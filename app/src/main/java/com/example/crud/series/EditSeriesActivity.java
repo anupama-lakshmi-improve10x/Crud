@@ -13,6 +13,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EditSeriesActivity extends BaseAddEditSeriesActivity{
+    //Todo: Change EditSeriesItemsActivity
 
     private Series series;
 
@@ -21,7 +22,7 @@ public class EditSeriesActivity extends BaseAddEditSeriesActivity{
         super.onCreate(savedInstanceState);
         getSupportActionBar().setTitle("Edit Series");
         if (getIntent().hasExtra(Constants.KEY_SERIES)) {
-            this.series = (Series) getIntent().getSerializableExtra(Constants.KEY_SERIES);
+            series = (Series) getIntent().getSerializableExtra(Constants.KEY_SERIES);
             showData();
         }
     }

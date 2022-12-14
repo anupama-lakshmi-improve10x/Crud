@@ -1,4 +1,4 @@
-package com.example.crud.dashboard;
+package com.example.crud;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.crud.R;
+import com.example.crud.dashboard.DashboardActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -21,6 +22,5 @@ public class SplashActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }, 3000);
-
     }
 }

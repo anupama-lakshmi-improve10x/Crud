@@ -6,8 +6,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.crud.R;
-import com.example.crud.api.CrudApi;
-import com.example.crud.api.CrudService;
 import com.example.crud.base.BaseActivity;
 import com.example.crud.series.Series;
 
@@ -26,7 +24,7 @@ public class BaseAddEditMovieActivity extends BaseActivity {
     protected EditText imageUrlTxt;
     protected EditText descriptionTxt;
     protected CustomSeriesAdapter customSeriesAdapter;
-    protected ArrayList<Series> seriesList = new ArrayList<>();
+    private ArrayList<Series> seriesList = new ArrayList<>();
     protected Movie movie;
 
     @Override
@@ -35,9 +33,9 @@ public class BaseAddEditMovieActivity extends BaseActivity {
         setContentView(R.layout.activity_add_edit_movie);
         initViews();
         setupSeriesListSp();
-        fetchSeriesList();
+        fetchSeriesItems();
     }
-
+//Todo: setupSeriesListSp to setupSeriesItemsSp
     private void setupSeriesListSp() {
         customSeriesAdapter = new CustomSeriesAdapter(this, android.R.layout.simple_list_item_1, seriesList);
         seriesSp.setAdapter(customSeriesAdapter);
@@ -57,7 +55,7 @@ public class BaseAddEditMovieActivity extends BaseActivity {
         return true;
     }
 
-    private void fetchSeriesList() {
+    private void fetchSeriesItems() {
         Call<List<Series>> call = crudService.fetchSeriesList();
         call.enqueue(new Callback<List<Series>>() {
             @Override

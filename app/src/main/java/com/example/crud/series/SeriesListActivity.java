@@ -25,8 +25,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SeriesListActivity extends BaseActivity {
+    //Todo: Change seriesListActivity to SeriesItemsActivity
+    //Todo: change seriesList to seriesItems
 
     private ArrayList<Series> seriesList = new ArrayList<>();
+    //Todo: change seriesRv and SeriesAdapter to seriesItemsRv,seriesItemsAdapter
     private RecyclerView seriesRv;
     private SeriesAdapter seriesAdapter;
     private ProgressBar progressBar;
@@ -85,7 +88,7 @@ public class SeriesListActivity extends BaseActivity {
             }
         });
     }
-
+//Todo: change MethodName to setupSeriesItemsAdapter
     private void setupSeriesAdapter() {
         seriesAdapter = new SeriesAdapter();
         seriesAdapter.setData(seriesList);
@@ -103,7 +106,7 @@ public class SeriesListActivity extends BaseActivity {
         });
 
     }
-
+//Todo: setupSeriesItemsRv
     public void setupSeriesListRv() {
         seriesRv = findViewById(R.id.series_rv);
         seriesRv.setLayoutManager(new LinearLayoutManager(this));

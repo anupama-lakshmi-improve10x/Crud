@@ -17,6 +17,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface CrudService {
+
     @GET(Constants.MESSAGES_END_POINT)
     Call<List<Message>> fetchMessages();
 
@@ -28,7 +29,6 @@ public interface CrudService {
 
     @PUT(Constants.MESSAGES_END_POINT + "/{id}")
     Call<Void> updateMessage(@Path("id") String id, @Body Message message);
-
 
     @GET(Constants.TEMPLATES_END_POINT)
     Call<List<Template>> fetchTemplates();
@@ -43,6 +43,7 @@ public interface CrudService {
     Call<Void> updateTemplate(@Path("id") String id, @Body Template template);
 
     @GET(Constants.SERIES_END_POINT)
+    //Todo: change methodName to fetchSeriesItems,createSeriesItem, deleteSeriesItem, updateSeriesItem
     Call<List<Series>> fetchSeriesList();
 
     @POST(Constants.SERIES_END_POINT)
@@ -54,11 +55,11 @@ public interface CrudService {
     @PUT(Constants.SERIES_END_POINT + "/{id}")
     Call<Void> updateSeries(@Path("id") String id, @Body Series series);
 
-
     @GET(Constants.MOVIES_END_POINT)
     Call<List<Movie>> fetchMovies();
 
     @POST(Constants.MOVIES_END_POINT)
+    //Todo: Change obj name to movie in createMovie and updateMovie methods
     Call<Movie> createMovie(@Body Movie movies);
 
     @DELETE(Constants.MOVIES_END_POINT + "/{id}")
@@ -66,5 +67,4 @@ public interface CrudService {
 
     @PUT(Constants.MOVIES_END_POINT + "/{id}")
     Call<Void> updateMovie(@Path("id") String id, @Body Movie movies);
-
 }

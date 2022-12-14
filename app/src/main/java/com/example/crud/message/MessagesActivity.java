@@ -13,8 +13,6 @@ import android.widget.ProgressBar;
 
 import com.example.crud.Constants;
 import com.example.crud.R;
-import com.example.crud.api.CrudApi;
-import com.example.crud.api.CrudService;
 import com.example.crud.base.BaseActivity;
 
 import java.util.ArrayList;
@@ -25,7 +23,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MessagesActivity extends BaseActivity {
-
+//Todo : change messageList to messages
     private ArrayList<Message> messageList = new ArrayList<>();
     private RecyclerView messagesRv;
     private MessagesAdapter messagesAdapter;
@@ -66,7 +64,7 @@ public class MessagesActivity extends BaseActivity {
     }
 
     private void fetchMessages() {
-        ShowProgressBar();
+        showProgressBar();
         Call<List<Message>> call = crudService.fetchMessages();
         call.enqueue(new Callback<List<Message>>() {
             @Override
@@ -104,14 +102,13 @@ public class MessagesActivity extends BaseActivity {
     }
 
     private void setupMessagesRv() {
-        //Change the progress_bar id to message_progress_bar
         progressBar = findViewById(R.id.progress_bar);
         messagesRv = findViewById(R.id.messages_rv);
         messagesRv.setLayoutManager(new LinearLayoutManager(this));
         messagesRv.setAdapter(messagesAdapter);
     }
 
-    private void ShowProgressBar() {
+    private void showProgressBar() {
         progressBar.setVisibility(View.VISIBLE);
     }
 
@@ -120,16 +117,19 @@ public class MessagesActivity extends BaseActivity {
     }
 
     private void deleteMessage(String id) {
+        showProgressBar();
         Call<Void> call = crudService.deleteMessage(id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
+                hideProgressBar();
                showToast("Successfully deleted message");
-                fetchMessages();
+               fetchMessages();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
+                hideProgressBar();
                 showToast("Failed to delete message");
             }
         });

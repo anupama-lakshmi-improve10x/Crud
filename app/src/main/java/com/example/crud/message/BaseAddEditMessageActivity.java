@@ -13,6 +13,7 @@ public class BaseAddEditMessageActivity extends BaseActivity {
 
     protected EditText nameTxt;
     protected EditText phoneNumberTxt;
+    //Todo : change messageTxt to messageTextTxt
     protected EditText messageTxt;
 
     @Override
