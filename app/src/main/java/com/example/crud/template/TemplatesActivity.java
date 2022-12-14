@@ -51,13 +51,12 @@ public class TemplatesActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         log("onResume");
-        fetchData();
+        fetchTemplates();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //Change the id to templates_menu
-        getMenuInflater().inflate(R.menu.template_menu, menu);
+        getMenuInflater().inflate(R.menu.templates_menu, menu);
         return true;
     }
 
@@ -82,14 +81,14 @@ public class TemplatesActivity extends BaseActivity {
         intent.putExtra(Constants.KEY_TEMPLATE, template);
         startActivity(intent);
     }
-//Change the method name to FetchTemplates
-    private void fetchData() {
-        showVisible();
+
+    private void fetchTemplates() {
+        showProgressBar();
         Call<List<Template>> call = crudService.fetchTemplates();
         call.enqueue(new Callback<List<Template>>() {
             @Override
             public void onResponse(Call<List<Template>> call, Response<List<Template>> response) {
-                hideVisible();
+                hideProgressBar();
                 List<Template> templates = response.body();
                 templatesAdapter.setData(templates);
                 showToast("successfully loaded Templates");
@@ -97,7 +96,7 @@ public class TemplatesActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<List<Template>> call, Throwable t) {
-                hideVisible();
+                hideProgressBar();
                 showToast("Failed to load Templates");
             }
         });
@@ -110,7 +109,7 @@ public class TemplatesActivity extends BaseActivity {
         templatesAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onDelete(String id) {
-                deleteMessage(id);
+                deleteTemplate(id);
             }
 
             @Override
@@ -121,22 +120,21 @@ public class TemplatesActivity extends BaseActivity {
         templatesRv.setAdapter(templatesAdapter);
     }
 
-    private void showVisible() {
+    private void showProgressBar() {
         progressBar.setVisibility(View.VISIBLE);
     }
 
-    private void hideVisible(){
+    private void hideProgressBar(){
         progressBar.setVisibility(View.GONE);
     }
 
-    //Change the method name to "deleteTemplate"
-    private void deleteMessage(String id) {
+    private void deleteTemplate(String id) {
         Call<Void> call = crudService.deleteTemplate(id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                showToast("Successfully loaded Template");
-                fetchData();
+                fetchTemplates();
             }
 
             @Override

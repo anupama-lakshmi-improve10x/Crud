@@ -51,7 +51,7 @@ public class MessagesActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         log("onResume");
-        fetchData();
+        fetchMessages();
     }
 
     @Override
@@ -65,22 +65,20 @@ public class MessagesActivity extends BaseActivity {
        if(item.getItemId() == R.id.add) {
            Intent intent = new Intent(this, AddMessageActivity.class);
            startActivity(intent);
-           // Remove Toast As it not necessary
-           showToast("Success");
            return true;
        } else {
           return super.onOptionsItemSelected(item);
        }
     }
-//Change the fetchData method to "fetchMessages"
-    private void fetchData() {
-        showVisible();
+
+    private void fetchMessages() {
+        ShowProgressBar();
         setupApiService();
         Call<List<Message>> call = crudService.fetchMessages();
         call.enqueue(new Callback<List<Message>>() {
             @Override
             public void onResponse(Call<List<Message>> call, Response<List<Message>> response) {
-                hideVisible();
+                hideProgressBar();
                 List<Message> messages = response.body();
                 messagesAdapter.setData(messages);
                 showToast("Successfully loaded Messages");
@@ -88,7 +86,7 @@ public class MessagesActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<List<Message>> call, Throwable t) {
-                hideVisible();
+                hideProgressBar();
                 showToast("Failed to load Messages");
             }
         });
@@ -97,8 +95,7 @@ public class MessagesActivity extends BaseActivity {
     private void setupMessagesRv() {
         //Change the progress_bar id to message_progress_bar
         progressBar = findViewById(R.id.progress_bar);
-        //change the id as "messages_rv"
-        messagesRv = findViewById(R.id.message_rv);
+        messagesRv = findViewById(R.id.messages_rv);
         messagesRv.setLayoutManager(new LinearLayoutManager(this));
         messagesAdapter = new MessagesAdapter();
         messagesAdapter.setData(messageList);
@@ -117,14 +114,12 @@ public class MessagesActivity extends BaseActivity {
         });
         messagesRv.setAdapter(messagesAdapter);
     }
-//Change the method showVisible to showProgressBarVisible.
-    private void showVisible() {
+
+    private void ShowProgressBar() {
         progressBar.setVisibility(View.VISIBLE);
     }
 
-    //Change the method hideVisible to hideProgressBarVisible
-
-    private void hideVisible(){
+    private void hideProgressBar(){
         progressBar.setVisibility(View.GONE);
     }
 
@@ -135,7 +130,7 @@ public class MessagesActivity extends BaseActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                showToast("Successfully deleted message");
-                fetchData();
+                fetchMessages();
             }
 
             @Override

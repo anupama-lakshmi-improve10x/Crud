@@ -51,8 +51,7 @@ public class MoviesActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         log("onResume");
-        // change fetchData method to "fetchMovies"
-        fetchData();
+        fetchMovies();
     }
 
     @Override
@@ -72,23 +71,21 @@ public class MoviesActivity extends BaseActivity {
         }
     }
 
-    private void fetchData() {
-        //Change showVisible method name to showProgressBarVisible
-        showVisible();
+    private void fetchMovies() {
+        showProgressBar();
         Call<List<Movie>> call = crudService.fetchMovies();
         call.enqueue(new Callback<List<Movie>>() {
             @Override
             public void onResponse(Call<List<Movie>> call, Response<List<Movie>> response) {
-                hideVisible();
-                // Add toast message
+                hideProgressBar();
+                showToast("Successfully loaded Movies");
                 List<Movie> movies = response.body();
                 moviesAdapter.setData(movies);
             }
 
             @Override
             public void onFailure(Call<List<Movie>> call, Throwable t) {
-                //Change hideVisible method name to showProgressBarVisible
-                hideVisible();
+                hideProgressBar();
                 showToast("Failed to load Movies");
             }
         });
@@ -104,7 +101,6 @@ public class MoviesActivity extends BaseActivity {
             @Override
             public void onDelete(String id) {
                 deleteMovie(id);
-                fetchData();
             }
 
             @Override
@@ -114,12 +110,12 @@ public class MoviesActivity extends BaseActivity {
         });
         moviesRv.setAdapter(moviesAdapter);
     }
-// change the method name
-    private void showVisible() {
+
+    private void showProgressBar() {
         progressBar.setVisibility(View.VISIBLE);
     }
-//change the method name
-    private  void hideVisible(){
+
+    private  void hideProgressBar(){
         progressBar.setVisibility(View.GONE);
     }
 
@@ -128,8 +124,8 @@ public class MoviesActivity extends BaseActivity {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                fetchData();
-                // Display Toast message
+                fetchMovies();
+                showToast("SuccessFully delete Movie");
             }
 
             @Override

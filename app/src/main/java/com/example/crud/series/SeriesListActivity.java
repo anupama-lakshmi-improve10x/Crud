@@ -39,7 +39,7 @@ public class SeriesListActivity extends BaseActivity {
         log("onCreate");
         getSupportActionBar().setTitle("Series");
         progressBar = findViewById(R.id.series_progress_bar);
-        setupSeriesRv();
+        setupSeriesListRv();
         setupApiService();
     }
 
@@ -52,7 +52,7 @@ public class SeriesListActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         log("onResume");
-        fetchData();
+        fetchSeriesList();
     }
 
     @Override
@@ -71,28 +71,28 @@ public class SeriesListActivity extends BaseActivity {
             return super.onOptionsItemSelected(item);
         }
     }
-//Change fetch-data Method to "fetchSeriesList"
-    private void fetchData() {
-        showVisible();
-        Call<List<Series>> call = crudService.fetchSeries();
+
+    private void fetchSeriesList() {
+        showProgressBar();
+        Call<List<Series>> call = crudService.fetchSeriesList();
         call.enqueue(new Callback<List<Series>>() {
             @Override
             public void onResponse(Call<List<Series>> call, Response<List<Series>> response) {
-                hideVisible();
-                // Display Toast Message
+                hideProgressBar();
+                showToast("Successfully loaded Series");
                 List<Series> series = response.body();
                 seriesAdapter.setData(series);
             }
 
             @Override
             public void onFailure(Call<List<Series>> call, Throwable t) {
-                hideVisible();
+                hideProgressBar();
                 showToast("Failed to load series");
             }
         });
     }
-//Do we need change the method setupSeriesListRV.
-    public void setupSeriesRv() {
+
+    public void setupSeriesListRv() {
         seriesRv = findViewById(R.id.series_rv);
         seriesRv.setLayoutManager(new LinearLayoutManager(this));
         seriesAdapter = new SeriesAdapter();
@@ -112,11 +112,11 @@ public class SeriesListActivity extends BaseActivity {
         seriesRv.setAdapter(seriesAdapter);
     }
 
-    private void showVisible() {
+    private void showProgressBar() {
         progressBar.setVisibility(View.VISIBLE);
     }
 
-    private void hideVisible(){
+    private void hideProgressBar(){
         progressBar.setVisibility(View.GONE);
     }
 
@@ -126,7 +126,7 @@ public class SeriesListActivity extends BaseActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 showToast("Successfully deleted Series");
-                fetchData();
+                fetchSeriesList();
             }
 
             @Override

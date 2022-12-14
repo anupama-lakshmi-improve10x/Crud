@@ -16,7 +16,7 @@ public class AddSeriesActivity extends BaseAddEditSeriesActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setTitle("Add Message");
+        getSupportActionBar().setTitle("Add Series");
     }
 
     @Override
@@ -33,7 +33,6 @@ public class AddSeriesActivity extends BaseAddEditSeriesActivity {
         }
 
     private void addSeries(String id, String title, String imageUrl) {
-        // Is it ok if we declare in in BaseEditSeriesActivity
         Series series = new Series();
         series.seriesId = id;
         series.title = title;

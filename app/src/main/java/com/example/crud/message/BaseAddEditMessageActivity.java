@@ -33,7 +33,7 @@ public class BaseAddEditMessageActivity extends BaseActivity {
     private void initViews() {
         nameTxt = findViewById(R.id.name_txt);
         phoneNumberTxt = findViewById(R.id.phone_number_txt);
-        messageTxt = findViewById(R.id.message_txt);
+        messageTxt = findViewById(R.id.template_txt);
     }
 
     private void setupApiService() {

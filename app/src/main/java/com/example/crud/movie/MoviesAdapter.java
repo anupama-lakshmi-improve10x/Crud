@@ -29,7 +29,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
     @NonNull
     @Override
     public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.movies_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_item, parent, false);
         MovieViewHolder moviesViewHolder = new MovieViewHolder(view);
         return moviesViewHolder;
     }
@@ -37,7 +37,9 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
         Movie movie = movieList.get(position);
-        Picasso.get().load(movie.imageUrl).into(holder.moviesImg);
+        if(movie.imageUrl != null && movie.imageUrl.isEmpty() == false) {
+            Picasso.get().load(movie.imageUrl).into(holder.moviesImg);
+        }
         holder.moviesTxt.setText(movie.title);
         holder.deleteBtn.setOnClickListener(view -> {
             movieOnItemActionListener.onDelete(movie.id);

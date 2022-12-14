@@ -34,10 +34,10 @@ public class BaseAddEditMovieActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit_movie);
+        setupApiService();
         initViews();
         setupSeriesListSp();
         fetchSeriesList();
-        setupApiService();
     }
 
     private void setupApiService() {
@@ -65,8 +65,7 @@ public class BaseAddEditMovieActivity extends BaseActivity {
     }
 
     private void fetchSeriesList() {
-        setupApiService();
-        Call<List<Series>> call = crudService.fetchSeries();
+        Call<List<Series>> call = crudService.fetchSeriesList();
         call.enqueue(new Callback<List<Series>>() {
             @Override
             public void onResponse(Call<List<Series>> call, Response<List<Series>> response) {

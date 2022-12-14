@@ -17,7 +17,7 @@ public class AddMovieActivity extends BaseAddEditMovieActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setTitle("Edit Movie");
+        getSupportActionBar().setTitle("Add Movie");
     }
 
     @Override
@@ -48,8 +48,7 @@ public class AddMovieActivity extends BaseAddEditMovieActivity{
         call.enqueue(new Callback<Movie>() {
             @Override
             public void onResponse(Call<Movie> call, Response<Movie> response) {
-                //Change the Toast Message as "Successfully added the movie"
-                showToast("Successfully Loaded Movie");
+                showToast("Successfully added the Movie");
                 finish();
             }
 

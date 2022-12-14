@@ -43,7 +43,7 @@ public interface CrudService {
     Call<Void> updateTemplate(@Path("id") String id, @Body Template template);
 
     @GET(Constants.SERIES_END_POINT)
-    Call<List<Series>> fetchSeries();
+    Call<List<Series>> fetchSeriesList();
 
     @POST(Constants.SERIES_END_POINT)
     Call<Series> createSeries(@Body Series series);

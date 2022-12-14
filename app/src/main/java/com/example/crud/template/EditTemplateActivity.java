@@ -28,18 +28,18 @@ public class EditTemplateActivity extends BaseAddEditTemplateActivity{
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.done) {
-            String message = messageTxt.getText().toString();
-            updateMessage(template.id, message);
+            String template = templateTxt.getText().toString();
+            updateTemplate(this.template.id, template);
             return true;
             } else {
             return super.onOptionsItemSelected(item);
         }
     }
     private void showData() {
-        messageTxt.setText(template.messageText);
+        templateTxt.setText(template.messageText);
     }
-// change the method name updateMessage to updateTemplate
-    private void updateMessage(String id, String message) {
+
+    private void updateTemplate(String id, String message) {
         template = new Template();
         template.messageText = message;
 

@@ -53,13 +53,13 @@ public class EditMovieActivity extends BaseAddEditMovieActivity{
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                //Show Toast Message
+                showToast("Successfully updated Movie");
                 finish();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                showToast("Failed to update movie");
+                showToast("Failed to update the Movie");
             }
         });
     }

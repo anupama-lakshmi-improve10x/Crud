@@ -18,11 +18,11 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class DashboardAdapter extends RecyclerView.Adapter<DashboardViewHolder> {
-    //Do we need to change dashbords as dashboard
-    private ArrayList<Dashboard> dashboards;
+
+    private ArrayList<Dashboard> dashboardItems;
 
     public void setData(ArrayList<Dashboard> dashboardList){
-        dashboards = dashboardList;
+        dashboardItems = dashboardList;
         notifyDataSetChanged();
 
     }
@@ -36,7 +36,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull DashboardViewHolder holder, int position) {
-        Dashboard dashboard = dashboards.get(position);
+        Dashboard dashboard = dashboardItems.get(position);
         Picasso.get().load(dashboard.imageUrl).into(holder.dashboardImg);
         holder.titleTxt.setText(dashboard.title);
         holder.itemView.setOnClickListener(view -> {
@@ -58,7 +58,6 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardViewHolder> 
 
     @Override
     public int getItemCount() {
-
-        return dashboards.size();
+        return dashboardItems.size();
     }
 }
