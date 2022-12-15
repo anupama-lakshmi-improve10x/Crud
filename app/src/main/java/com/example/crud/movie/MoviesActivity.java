@@ -54,7 +54,7 @@ public class MoviesActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.add) {
+        if (item.getItemId() == R.id.add) {
             Intent intent = new Intent(this, AddMovieActivity.class);
             startActivity(intent);
             return true;
@@ -83,7 +83,7 @@ public class MoviesActivity extends BaseActivity {
         });
     }
 
-    private void setupMoviesAdapter(){
+    private void setupMoviesAdapter() {
         moviesAdapter = new MoviesAdapter();
         moviesAdapter.setData(movies);
         moviesAdapter.setMovieOnItemActionListener(new MovieOnItemActionListener() {
@@ -102,7 +102,7 @@ public class MoviesActivity extends BaseActivity {
     private void setupMoviesRv() {
         moviesRv = findViewById(R.id.movies_rv);
         progressBar = findViewById(R.id.movie_progress_bar);
-        moviesRv.setLayoutManager(new GridLayoutManager(this,2));
+        moviesRv.setLayoutManager(new GridLayoutManager(this, 2));
         moviesRv.setAdapter(moviesAdapter);
     }
 
@@ -110,7 +110,7 @@ public class MoviesActivity extends BaseActivity {
         progressBar.setVisibility(View.VISIBLE);
     }
 
-    private  void hideProgressBar(){
+    private void hideProgressBar() {
         progressBar.setVisibility(View.GONE);
     }
 
@@ -125,7 +125,7 @@ public class MoviesActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-              showToast("Failed to delete Movie");
+                showToast("Failed to delete Movie");
             }
         });
     }
