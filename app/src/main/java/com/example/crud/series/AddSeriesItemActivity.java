@@ -11,9 +11,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddSeriesActivity extends BaseAddEditSeriesActivity {
-
-    //Todo: AddSeriesItemActivity
+public class AddSeriesItemActivity extends BaseAddEditSeriesActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
