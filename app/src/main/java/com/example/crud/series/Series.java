@@ -12,4 +12,13 @@ public class Series implements Serializable {
     public String seriesId;
     public String title;
     public String imageUrl;
+
+    public Series() {
+    }
+
+    public Series(String seriesId, String title, String imageUrl) {
+        this.seriesId = seriesId;
+        this.title =  title;
+        this.imageUrl = imageUrl;
+    }
 }
