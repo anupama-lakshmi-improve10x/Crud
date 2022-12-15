@@ -28,25 +28,16 @@ public class DashboardItemsActivity extends BaseActivity {
 
     private void setupData() {
         dashboardItems = new ArrayList<>();
-        DashboardItem messages = new DashboardItem();
-        // Todo: use Constructor for all.
-        messages.imageUrl = "https://upload.wikimedia.org/wikipedia/commons/7/72/Message-icon-grey.png";
-        messages.title = "Messages";
+        DashboardItem messages = new DashboardItem("Messages", "https://upload.wikimedia.org/wikipedia/commons/7/72/Message-icon-grey.png");
         dashboardItems.add(messages);
 
-        DashboardItem templates = new DashboardItem();
-        templates.imageUrl = "https://static.thenounproject.com/png/1021190-200.png";
-        templates.title = "Templates";
+        DashboardItem templates = new DashboardItem("Templates", "https://static.thenounproject.com/png/1021190-200.png");
         dashboardItems.add(templates);
 
-        DashboardItem series = new DashboardItem();
-        series.imageUrl = "https://upload.wikimedia.org/wikipedia/commons/7/72/Message-icon-grey.png";
-        series.title = "Series";
+        DashboardItem series = new DashboardItem("Series", "https://upload.wikimedia.org/wikipedia/commons/7/72/Message-icon-grey.png");
         dashboardItems.add(series);
 
-        DashboardItem movies = new DashboardItem();
-        movies.imageUrl = "https://upload.wikimedia.org/wikipedia/commons/7/72/Message-icon-grey.png";
-        movies.title = "Movies";
+        DashboardItem movies = new DashboardItem("Movies","https://upload.wikimedia.org/wikipedia/commons/7/72/Message-icon-grey.png");
         dashboardItems.add(movies);
     }
 
