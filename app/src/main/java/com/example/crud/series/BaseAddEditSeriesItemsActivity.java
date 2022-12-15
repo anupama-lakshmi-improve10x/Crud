@@ -5,13 +5,9 @@ import android.view.Menu;
 import android.widget.EditText;
 
 import com.example.crud.R;
-import com.example.crud.api.CrudApi;
-import com.example.crud.api.CrudService;
 import com.example.crud.base.BaseActivity;
 
-public class BaseAddEditSeriesActivity extends BaseActivity {
-
-    //Todo: BaseAddEditSeriesItemsActivity
+public class BaseAddEditSeriesItemsActivity extends BaseActivity {
 
     protected EditText seriesIdTxt;
     protected EditText seriesNameTxt;
@@ -26,8 +22,8 @@ public class BaseAddEditSeriesActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-       getMenuInflater().inflate(R.menu.add_edit_series_menu, menu);
-       return true;
+        getMenuInflater().inflate(R.menu.add_edit_series_menu, menu);
+        return true;
     }
 
     private void initViews() {
