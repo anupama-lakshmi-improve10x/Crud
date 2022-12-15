@@ -23,8 +23,7 @@ public class DashboardItemsActivity extends BaseActivity {
         getSupportActionBar().setTitle("Dashboard");
         setupData();
         setupDashboardItemsAdapter();
-        //Todo: In the method setupDashboardItemsRV the letter 'v' should be small
-        setupDashboardItemsRV();
+        setupDashboardItemsRv();
     }
 
     private void setupData() {
@@ -56,7 +55,7 @@ public class DashboardItemsActivity extends BaseActivity {
         dashboardItemsAdapter.setData(dashboardItems);
     }
 
-    private void setupDashboardItemsRV() {
+    private void setupDashboardItemsRv() {
         //Todo: create separate method for id's and add ProgressBar
         dashboardItemsRv = findViewById(R.id.dash_board_rv);
         dashboardItemsRv.setLayoutManager(new LinearLayoutManager(this));
