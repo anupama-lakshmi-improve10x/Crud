@@ -43,7 +43,6 @@ public interface CrudService {
     Call<Void> updateTemplate(@Path("id") String id, @Body Template template);
 
     @GET(Constants.SERIES_END_POINT)
-    //Todo: change methodName to fetchSeriesItems,createSeriesItem, deleteSeriesItem, updateSeriesItem
     Call<List<Series>> fetchSeriesItems();
 
     @POST(Constants.SERIES_END_POINT)
@@ -59,12 +58,11 @@ public interface CrudService {
     Call<List<Movie>> fetchMovies();
 
     @POST(Constants.MOVIES_END_POINT)
-    //Todo: Change obj name to movie in createMovie and updateMovie methods
-    Call<Movie> createMovie(@Body Movie movies);
+    Call<Movie> createMovie(@Body Movie movie);
 
     @DELETE(Constants.MOVIES_END_POINT + "/{id}")
     Call<Void> deleteMovie(@Path("id") String id);
 
     @PUT(Constants.MOVIES_END_POINT + "/{id}")
-    Call<Void> updateMovie(@Path("id") String id, @Body Movie movies);
+    Call<Void> updateMovie(@Path("id") String id, @Body Movie movie);
 }
