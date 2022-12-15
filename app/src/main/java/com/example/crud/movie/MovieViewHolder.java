@@ -13,13 +13,13 @@ import com.example.crud.R;
 public class MovieViewHolder extends RecyclerView.ViewHolder {
 
     ImageView movieImg;
-    TextView movieTxt;
+    TextView nameTxt;
     ImageButton deleteBtn;
 
     public MovieViewHolder(@NonNull View itemView) {
         super(itemView);
         movieImg = itemView.findViewById(R.id.movies_img);
-        movieTxt = itemView.findViewById(R.id.movies_txt);
+        nameTxt = itemView.findViewById(R.id.movies_txt);
         deleteBtn = itemView.findViewById(R.id.delete_btn);
     }
 }
