@@ -25,6 +25,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SeriesListActivity extends BaseActivity {
+
     //Todo: Change seriesListActivity to SeriesItemsActivity
     //Todo: change seriesList to seriesItems
 

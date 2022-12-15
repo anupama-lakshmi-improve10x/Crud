@@ -13,6 +13,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EditSeriesActivity extends BaseAddEditSeriesActivity{
+
     //Todo: Change EditSeriesItemActivity
 
     private Series series;

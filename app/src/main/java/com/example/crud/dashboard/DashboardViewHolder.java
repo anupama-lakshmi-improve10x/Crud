@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.crud.R;
 
 public class DashboardViewHolder extends RecyclerView.ViewHolder {
+
 //Todo : change the DashboardViewHolder to dashboardItemViewHolder
     ImageView dashboardImg;
     TextView titleTxt;
