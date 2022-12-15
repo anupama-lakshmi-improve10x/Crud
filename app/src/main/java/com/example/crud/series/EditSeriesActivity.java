@@ -48,8 +48,8 @@ public class EditSeriesActivity extends BaseAddEditSeriesActivity{
     }
 
     private void updateSeries(String id, String seriesId, String title, String imageUrl) {
-        Series series = new Series(seriesId, title, imageUrl);
-        Call<Void> call = crudService.updateSeriesItem(id, series);
+        Series updatedSeries = new Series(seriesId, title, imageUrl);
+        Call<Void> call = crudService.updateSeriesItem(id, updatedSeries);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

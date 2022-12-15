@@ -15,6 +15,8 @@ import retrofit2.Response;
 
 public class EditMovieActivity extends BaseAddEditMovieActivity {
 
+    private Movie movie;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,8 +44,8 @@ public class EditMovieActivity extends BaseAddEditMovieActivity {
     }
 
     private void updateMovie(String id, String movieId, String seriesId, String movieName, String imageUrl, String description) {
-        Movie updateMovie = new Movie(movieId, seriesId, movieName, imageUrl, description);
-        Call<Void> call = crudService.updateMovie(id, updateMovie);
+        Movie updatedMovie = new Movie(movieId, seriesId, movieName, imageUrl, description);
+        Call<Void> call = crudService.updateMovie(id, updatedMovie);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

@@ -40,8 +40,8 @@ public class EditTemplateActivity extends BaseAddEditTemplateActivity{
     }
 
     private void updateTemplate(String id, String message) {
-        Template template = new Template(message);
-        Call<Void> call = crudService.updateTemplate(id, template);
+        Template updatedTemplate = new Template(message);
+        Call<Void> call = crudService.updateTemplate(id, updatedTemplate);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
