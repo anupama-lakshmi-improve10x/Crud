@@ -11,7 +11,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddSeriesItemActivity extends BaseAddEditSeriesActivity {
+public class AddSeriesItemActivity extends BaseAddEditSeriesItemsActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +26,11 @@ public class AddSeriesItemActivity extends BaseAddEditSeriesActivity {
             String title = seriesNameTxt.getText().toString();
             String image = imageUrlTxt.getText().toString();
             addSeries(seriesId, title, image);
-                return true;
-            } else {
-                return super.onOptionsItemSelected(item);
-            }
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
         }
+    }
 
     private void addSeries(String seriesId, String title, String imageUrl) {
         Series series = new Series(seriesId, title, imageUrl);
