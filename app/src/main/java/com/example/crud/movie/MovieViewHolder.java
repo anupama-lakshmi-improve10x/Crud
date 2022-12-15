@@ -12,15 +12,14 @@ import com.example.crud.R;
 
 public class MovieViewHolder extends RecyclerView.ViewHolder {
 
-//Todo: change moviesImg to movieImg, nameTxt
-    ImageView moviesImg;
-    TextView moviesTxt;
+    ImageView movieImg;
+    TextView movieTxt;
     ImageButton deleteBtn;
 
     public MovieViewHolder(@NonNull View itemView) {
         super(itemView);
-        moviesImg = itemView.findViewById(R.id.movies_img);
-        moviesTxt = itemView.findViewById(R.id.movies_txt);
+        movieImg = itemView.findViewById(R.id.movies_img);
+        movieTxt = itemView.findViewById(R.id.movies_txt);
         deleteBtn = itemView.findViewById(R.id.delete_btn);
     }
 }
