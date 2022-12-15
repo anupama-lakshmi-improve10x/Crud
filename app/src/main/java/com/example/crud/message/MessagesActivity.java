@@ -48,19 +48,19 @@ public class MessagesActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-       getMenuInflater().inflate(R.menu.messages_menu, menu);
-       return true;
+        getMenuInflater().inflate(R.menu.messages_menu, menu);
+        return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-       if(item.getItemId() == R.id.add) {
-           Intent intent = new Intent(this, AddMessageActivity.class);
-           startActivity(intent);
-           return true;
-       } else {
-          return super.onOptionsItemSelected(item);
-       }
+        if (item.getItemId() == R.id.add) {
+            Intent intent = new Intent(this, AddMessageActivity.class);
+            startActivity(intent);
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
 
     private void fetchMessages() {
@@ -83,7 +83,7 @@ public class MessagesActivity extends BaseActivity {
         });
     }
 
-    private void setupMessagesAdapter(){
+    private void setupMessagesAdapter() {
         messagesAdapter = new MessagesAdapter();
         messagesAdapter.setData(messages);
         messagesAdapter.setOnItemActionListener(new OnItemActionListener() {
@@ -112,7 +112,7 @@ public class MessagesActivity extends BaseActivity {
         progressBar.setVisibility(View.VISIBLE);
     }
 
-    private void hideProgressBar(){
+    private void hideProgressBar() {
         progressBar.setVisibility(View.GONE);
     }
 
@@ -123,8 +123,8 @@ public class MessagesActivity extends BaseActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 hideProgressBar();
-               showToast("Successfully deleted message");
-               fetchMessages();
+                showToast("Successfully deleted message");
+                fetchMessages();
             }
 
             @Override
