@@ -13,9 +13,8 @@ import java.util.ArrayList;
 public class DashboardItemsActivity extends BaseActivity {
 
     private ArrayList<DashboardItem> dashboardItems;
-    //Todo: change dashboard variables to dashBoardItemsRv, dashboardItemsAdapter
-    private RecyclerView dashboardRv;
-    private DashboardAdapter dashboardAdapter;
+    private RecyclerView dashboardItemsRv;
+    private DashboardAdapter dashboardItemsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,14 +52,14 @@ public class DashboardItemsActivity extends BaseActivity {
     }
 
     private void setupDashboardItemsAdapter() {
-        dashboardAdapter = new DashboardAdapter();
-        dashboardAdapter.setData(dashboardItems);
+        dashboardItemsAdapter = new DashboardAdapter();
+        dashboardItemsAdapter.setData(dashboardItems);
     }
 
     private void setupDashboardItemsRV() {
         //Todo: create separate method for id's and add ProgressBar
-        dashboardRv = findViewById(R.id.dash_board_rv);
-        dashboardRv.setLayoutManager(new LinearLayoutManager(this));
-        dashboardRv.setAdapter(dashboardAdapter);
+        dashboardItemsRv = findViewById(R.id.dash_board_rv);
+        dashboardItemsRv.setLayoutManager(new LinearLayoutManager(this));
+        dashboardItemsRv.setAdapter(dashboardItemsAdapter);
     }
 }
