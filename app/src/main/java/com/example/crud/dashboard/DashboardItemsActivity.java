@@ -16,7 +16,7 @@ public class DashboardItemsActivity extends BaseActivity {
 
     private ArrayList<DashboardItem> dashboardItems;
     private RecyclerView dashboardItemsRv;
-    private DashboardAdapter dashboardItemsAdapter;
+    private DashboardItemsAdapter dashboardItemsAdapter;
     private ProgressBar progressBar;
 
     @Override
@@ -47,7 +47,7 @@ public class DashboardItemsActivity extends BaseActivity {
     }
 
     private void setupDashboardItemsAdapter() {
-        dashboardItemsAdapter = new DashboardAdapter();
+        dashboardItemsAdapter = new DashboardItemsAdapter();
         dashboardItemsAdapter.setData(dashboardItems);
     }
 
