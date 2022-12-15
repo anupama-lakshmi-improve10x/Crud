@@ -4,6 +4,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.example.crud.R;
 import com.example.crud.base.BaseActivity;
@@ -15,18 +17,21 @@ public class DashboardItemsActivity extends BaseActivity {
     private ArrayList<DashboardItem> dashboardItems;
     private RecyclerView dashboardItemsRv;
     private DashboardAdapter dashboardItemsAdapter;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         getSupportActionBar().setTitle("Dashboard");
+        initViews();
         setupData();
         setupDashboardItemsAdapter();
         setupDashboardItemsRv();
     }
 
     private void setupData() {
+        hideProgressBar();
         dashboardItems = new ArrayList<>();
         DashboardItem messages = new DashboardItem("Messages", "https://upload.wikimedia.org/wikipedia/commons/7/72/Message-icon-grey.png");
         dashboardItems.add(messages);
@@ -47,9 +52,16 @@ public class DashboardItemsActivity extends BaseActivity {
     }
 
     private void setupDashboardItemsRv() {
-        //Todo: create separate method for id's and add ProgressBar
-        dashboardItemsRv = findViewById(R.id.dash_board_rv);
         dashboardItemsRv.setLayoutManager(new LinearLayoutManager(this));
         dashboardItemsRv.setAdapter(dashboardItemsAdapter);
+    }
+
+    private void initViews() {
+        dashboardItemsRv = findViewById(R.id.dash_board_rv);
+        progressBar = findViewById(R.id.progress_bar);
+    }
+
+    private void hideProgressBar(){
+        progressBar.setVisibility(View.GONE);
     }
 }
