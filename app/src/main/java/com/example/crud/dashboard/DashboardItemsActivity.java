@@ -10,9 +10,8 @@ import com.example.crud.base.BaseActivity;
 
 import java.util.ArrayList;
 
-public class DashboardActivity extends BaseActivity {
+public class DashboardItemsActivity extends BaseActivity {
 
-    //Todo: change DashboardActivity to DashboardItemsActivity.
     private ArrayList<DashboardItem> dashboardItems;
     //Todo: change dashboard variables to dashBoardItemsRv, dashboardItemsAdapter
     private RecyclerView dashboardRv;
