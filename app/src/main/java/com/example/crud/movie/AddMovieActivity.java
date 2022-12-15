@@ -12,7 +12,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddMovieActivity extends BaseAddEditMovieActivity{
+public class AddMovieActivity extends BaseAddEditMovieActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class AddMovieActivity extends BaseAddEditMovieActivity{
             String description = descriptionTxt.getText().toString();
             addMovie(movieId, movieName, seriesId, imageUrl, description);
             return true;
-            } else {
+        } else {
             return super.onOptionsItemSelected(item);
         }
     }

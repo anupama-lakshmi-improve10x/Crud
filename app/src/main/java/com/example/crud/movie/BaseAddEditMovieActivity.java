@@ -32,11 +32,11 @@ public class BaseAddEditMovieActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit_movie);
         initViews();
-        setupSeriesListSp();
+        setupSeriesItemsSp();
         fetchSeriesItems();
     }
-//Todo: setupSeriesListSp to setupSeriesItemsSp
-    private void setupSeriesListSp() {
+
+    private void setupSeriesItemsSp() {
         customSeriesAdapter = new CustomSeriesAdapter(this, android.R.layout.simple_list_item_1, seriesList);
         seriesSp.setAdapter(customSeriesAdapter);
     }
@@ -62,7 +62,7 @@ public class BaseAddEditMovieActivity extends BaseActivity {
             public void onResponse(Call<List<Series>> call, Response<List<Series>> response) {
                 List<Series> seriesList = response.body();
                 customSeriesAdapter.addAll(seriesList);
-                if (movie != null){
+                if (movie != null) {
                     showData();
                 }
             }
@@ -78,9 +78,9 @@ public class BaseAddEditMovieActivity extends BaseActivity {
         movieNameTxt.setText(movie.title);
         imageUrlTxt.setText(movie.imageUrl);
         descriptionTxt.setText(movie.description);
-        for(int i = 0; i < customSeriesAdapter.getCount(); i++) {
+        for (int i = 0; i < customSeriesAdapter.getCount(); i++) {
             Series series = customSeriesAdapter.getItem(i);
-            if(movie.seriesId.equals(series.seriesId)) {
+            if (movie.seriesId.equals(series.seriesId)) {
                 seriesSp.setSelection(i);
             }
         }

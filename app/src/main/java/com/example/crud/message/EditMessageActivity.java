@@ -28,13 +28,13 @@ public class EditMessageActivity extends BaseAddEditMessageActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.done) {
+        if (item.getItemId() == R.id.done) {
             String name = nameTxt.getText().toString();
             String phoneNumber = phoneNumberTxt.getText().toString();
             String message = messageTextTxt.getText().toString();
             updateMessage(this.message.id, name, phoneNumber, message);
             return true;
-            } else {
+        } else {
             return super.onOptionsItemSelected(item);
         }
     }
@@ -47,7 +47,7 @@ public class EditMessageActivity extends BaseAddEditMessageActivity {
 
     private void updateMessage(String id, String name, String phoneNumber, String messageTxt) {
         Message message = new Message(name, phoneNumber, messageTxt);
-        Call<Void> call = crudService.updateMessage(id , message);
+        Call<Void> call = crudService.updateMessage(id, message);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
