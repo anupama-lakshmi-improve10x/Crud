@@ -16,12 +16,12 @@ public class TemplatesAdapter extends RecyclerView.Adapter<TemplateViewHolder> {
     private List<Template> templates;
     private OnItemActionListener onItemActionListener;
 //Todo: change templateList to templates
-    public void setData(List<Template> templateList) {
+    void setData(List<Template> templateList) {
         templates = templateList;
         notifyDataSetChanged();
     }
 
-    public  void setOnItemActionListener(OnItemActionListener actionListener) {
+    void setOnItemActionListener(OnItemActionListener actionListener) {
         onItemActionListener = actionListener;
     }
 
