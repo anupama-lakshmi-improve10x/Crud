@@ -7,8 +7,6 @@ import androidx.annotation.NonNull;
 
 import com.example.crud.Constants;
 import com.example.crud.R;
-import com.example.crud.message.BaseAddEditMessageActivity;
-import com.example.crud.message.Message;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,7 +31,7 @@ public class EditMessageActivity extends BaseAddEditMessageActivity {
         if(item.getItemId() == R.id.done) {
             String name = nameTxt.getText().toString();
             String phoneNumber = phoneNumberTxt.getText().toString();
-            String message = messageTxt.getText().toString();
+            String message = messageTextTxt.getText().toString();
             updateMessage(this.message.id, name, phoneNumber, message);
             return true;
             } else {
@@ -44,7 +42,7 @@ public class EditMessageActivity extends BaseAddEditMessageActivity {
     private void showData() {
         nameTxt.setText(message.name);
         phoneNumberTxt.setText(message.mobileNumber);
-        messageTxt.setText(message.message);
+        messageTextTxt.setText(message.message);
     }
 
     private void updateMessage(String id, String name, String phoneNumber, String messageTxt) {

@@ -37,5 +37,4 @@ public class BaseActivity extends AppCompatActivity {
         CrudApi crudApi = new CrudApi();
         crudService = crudApi.createCrudService();
     }
-
 }

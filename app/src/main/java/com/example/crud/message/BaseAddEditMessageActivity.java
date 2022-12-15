@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.widget.EditText;
 
-import com.example.crud.api.CrudApi;
-import com.example.crud.api.CrudService;
 import com.example.crud.R;
 import com.example.crud.base.BaseActivity;
 
@@ -13,8 +11,7 @@ public class BaseAddEditMessageActivity extends BaseActivity {
 
     protected EditText nameTxt;
     protected EditText phoneNumberTxt;
-    //Todo : change messageTxt to messageTextTxt
-    protected EditText messageTxt;
+    protected EditText messageTextTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +29,6 @@ public class BaseAddEditMessageActivity extends BaseActivity {
     private void initViews() {
         nameTxt = findViewById(R.id.name_txt);
         phoneNumberTxt = findViewById(R.id.phone_number_txt);
-        messageTxt = findViewById(R.id.template_txt);
+        messageTextTxt = findViewById(R.id.template_txt);
     }
 }
