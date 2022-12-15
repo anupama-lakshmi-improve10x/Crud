@@ -37,9 +37,9 @@ public class AddMovieActivity extends BaseAddEditMovieActivity {
     }
 
     private void addMovie(String movieId, String seriesId, String movieName, String imageUrl, String description) {
-        Movie addMovie = new Movie(movieId, seriesId, movieName, imageUrl, description);
+        Movie movie = new Movie(movieId, seriesId, movieName, imageUrl, description);
 
-        Call<Movie> call = crudService.createMovie(addMovie);
+        Call<Movie> call = crudService.createMovie(movie);
         call.enqueue(new Callback<Movie>() {
             @Override
             public void onResponse(Call<Movie> call, Response<Movie> response) {
