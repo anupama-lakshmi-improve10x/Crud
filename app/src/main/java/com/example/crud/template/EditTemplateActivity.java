@@ -28,8 +28,8 @@ public class EditTemplateActivity extends BaseAddEditTemplateActivity{
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.done) {
-            String template = templateTxt.getText().toString();
-            updateTemplate(this.template.id, template);
+            String message = templateTxt.getText().toString();
+            updateTemplate(template.id, message);
             return true;
             } else {
             return super.onOptionsItemSelected(item);
@@ -40,10 +40,8 @@ public class EditTemplateActivity extends BaseAddEditTemplateActivity{
     }
 
     private void updateTemplate(String id, String message) {
-        template = new Template();
-        template.messageText = message;
-
-        Call<Void> call = crudService.updateTemplate(id, template);
+        Template updatedTemplate = new Template(message);
+        Call<Void> call = crudService.updateTemplate(id, updatedTemplate);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

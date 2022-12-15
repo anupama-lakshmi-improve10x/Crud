@@ -31,10 +31,10 @@ public class EditSeriesActivity extends BaseAddEditSeriesActivity{
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.save) {
-            String id = seriesIdTxt.getText().toString();
+            String seriesId = seriesIdTxt.getText().toString();
             String title = seriesNameTxt.getText().toString();
-            String image = imageUrlTxt.getText().toString();
-            updateSeries(id, title, image);
+            String imageUrl = imageUrlTxt.getText().toString();
+            updateSeries(series.id, seriesId, title, imageUrl);
             return true;
         } else {
             return super.onOptionsItemSelected(item);
@@ -42,18 +42,14 @@ public class EditSeriesActivity extends BaseAddEditSeriesActivity{
     }
 
     private void showData() {
-        seriesIdTxt.setText(series.id);
+        seriesIdTxt.setText(series.seriesId);
         seriesNameTxt.setText(series.title);
         imageUrlTxt.setText(series.imageUrl);
     }
 
-    private void updateSeries(String id, String title, String imageUrl) {
-        series = new Series();
-        series.seriesId = id;
-        series.title = title;
-        series.imageUrl = imageUrl;
-
-        Call<Void> call = crudService.updateSeriesItem(id,series);
+    private void updateSeries(String id, String seriesId, String title, String imageUrl) {
+        Series updatedSeries = new Series(seriesId, title, imageUrl);
+        Call<Void> call = crudService.updateSeriesItem(id, updatedSeries);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

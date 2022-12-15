@@ -13,13 +13,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EditMovieActivity extends BaseAddEditMovieActivity{
+public class EditMovieActivity extends BaseAddEditMovieActivity {
+
+    private Movie movie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setTitle("Edit Movie");
-        if(getIntent().hasExtra(Constants.KEY_MOVIES)) {
+        if (getIntent().hasExtra(Constants.KEY_MOVIES)) {
             movie = (Movie) getIntent().getSerializableExtra(Constants.KEY_MOVIES);
             showData();
         }
@@ -34,23 +36,16 @@ public class EditMovieActivity extends BaseAddEditMovieActivity{
             String seriesId = series.seriesId;
             String imageUrl = imageUrlTxt.getText().toString();
             String description = descriptionTxt.getText().toString();
-            updateMovie(movie.id, movieId, movieName, seriesId, imageUrl, description);
+            updateMovie(movie.id, movieId, seriesId, movieName, imageUrl, description);
             return true;
-            } else {
+        } else {
             return super.onOptionsItemSelected(item);
         }
     }
 
-    private void updateMovie(String id, String movieId, String movieName, String seriesId, String imageUrl, String description) {
-        //Todo: Add Movie class before movie object
-        movie = new Movie();
-        movie.movieId = movieId;
-        movie.title = movieName;
-        movie.seriesId = seriesId;
-        movie.imageUrl = imageUrl;
-        movie.description = description;
-
-        Call<Void> call = crudService.updateMovie(id, movie);
+    private void updateMovie(String id, String movieId, String seriesId, String movieName, String imageUrl, String description) {
+        Movie updatedMovie = new Movie(movieId, seriesId, movieName, imageUrl, description);
+        Call<Void> call = crudService.updateMovie(id, updatedMovie);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

@@ -29,20 +29,15 @@ public class AddMovieActivity extends BaseAddEditMovieActivity {
             String seriesId = series.seriesId;
             String imageUrl = imageUrlTxt.getText().toString();
             String description = descriptionTxt.getText().toString();
-            addMovie(movieId, movieName, seriesId, imageUrl, description);
+            addMovie(movieId, seriesId, movieName, imageUrl, description);
             return true;
         } else {
             return super.onOptionsItemSelected(item);
         }
     }
 
-    private void addMovie(String movieId, String movieName, String seriesId, String imageUrl, String description) {
-        movie = new Movie();
-        movie.movieId = movieId;
-        movie.title = movieName;
-        movie.seriesId = seriesId;
-        movie.imageUrl = imageUrl;
-        movie.description = description;
+    private void addMovie(String movieId, String seriesId, String movieName, String imageUrl, String description) {
+        Movie movie = new Movie(movieId, seriesId, movieName, imageUrl, description);
 
         Call<Movie> call = crudService.createMovie(movie);
         call.enqueue(new Callback<Movie>() {
