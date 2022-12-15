@@ -23,6 +23,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MessagesActivity extends BaseActivity {
+
 //Todo : change messageList to messages
     private ArrayList<Message> messageList = new ArrayList<>();
     private RecyclerView messagesRv;

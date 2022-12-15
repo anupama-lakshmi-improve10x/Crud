@@ -16,6 +16,7 @@ import com.example.crud.series.Series;
 import java.util.List;
 
 public class CustomSeriesAdapter extends ArrayAdapter<Series> {
+
     //Todo: change CustomSeriesAdapter to CustomSeriesItemsAdapter
 
     public CustomSeriesAdapter(@NonNull Context context, int resource, @NonNull List<Series> objects) {

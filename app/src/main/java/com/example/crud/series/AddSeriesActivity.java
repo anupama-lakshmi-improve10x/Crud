@@ -12,6 +12,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AddSeriesActivity extends BaseAddEditSeriesActivity {
+
     //Todo: AddSeriesItemActivity
 
     @Override
