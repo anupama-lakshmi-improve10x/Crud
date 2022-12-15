@@ -13,8 +13,6 @@ import android.widget.ProgressBar;
 
 import com.example.crud.Constants;
 import com.example.crud.R;
-import com.example.crud.api.CrudApi;
-import com.example.crud.api.CrudService;
 import com.example.crud.base.BaseActivity;
 
 import java.util.ArrayList;
@@ -72,7 +70,7 @@ public class SeriesListActivity extends BaseActivity {
 
     private void fetchSeriesList() {
         showProgressBar();
-        Call<List<Series>> call = crudService.fetchSeriesList();
+        Call<List<Series>> call = crudService.fetchSeriesItems();
         call.enqueue(new Callback<List<Series>>() {
             @Override
             public void onResponse(Call<List<Series>> call, Response<List<Series>> response) {
@@ -123,7 +121,7 @@ public class SeriesListActivity extends BaseActivity {
     }
 
     private void deleteSeries(String id) {
-        Call<Void> call = crudService.deleteSeries(id);
+        Call<Void> call = crudService.deleteSeriesItem(id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

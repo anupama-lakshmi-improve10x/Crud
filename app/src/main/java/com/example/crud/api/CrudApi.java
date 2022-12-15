@@ -13,7 +13,6 @@ public class CrudApi {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         CrudService crudService = retrofit.create(CrudService.class);
-        //Todo: Missing indentation
         return crudService;
     }
 }

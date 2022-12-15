@@ -53,7 +53,7 @@ public class EditSeriesActivity extends BaseAddEditSeriesActivity{
         series.title = title;
         series.imageUrl = imageUrl;
 
-        Call<Void> call = crudService.updateSeries(id,series);
+        Call<Void> call = crudService.updateSeriesItem(id,series);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
