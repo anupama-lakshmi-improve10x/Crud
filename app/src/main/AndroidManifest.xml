@@ -99,7 +99,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".dashboard.DashboardActivity"
+            android:name=".dashboardItem.DashboardActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class DashboardActivity extends BaseActivity {
 
     //Todo: change DashboardActivity to DashboardItemsActivity.
-    private ArrayList<Dashboard> dashboardItems;
+    private ArrayList<DashboardItem> dashboardItems;
     //Todo: change dashboard variables to dashBoardItemsRv, dashboardItemsAdapter
     private RecyclerView dashboardRv;
     private DashboardAdapter dashboardAdapter;
@@ -21,7 +21,6 @@ public class DashboardActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        log("onCreate");
         setContentView(R.layout.activity_dashboard);
         getSupportActionBar().setTitle("Dashboard");
         setupData();
@@ -32,23 +31,23 @@ public class DashboardActivity extends BaseActivity {
 
     private void setupData() {
         dashboardItems = new ArrayList<>();
-        Dashboard messages = new Dashboard();
+        DashboardItem messages = new DashboardItem();
         // Todo: use Constructor for all.
         messages.imageUrl = "https://upload.wikimedia.org/wikipedia/commons/7/72/Message-icon-grey.png";
         messages.title = "Messages";
         dashboardItems.add(messages);
 
-        Dashboard templates = new Dashboard();
+        DashboardItem templates = new DashboardItem();
         templates.imageUrl = "https://static.thenounproject.com/png/1021190-200.png";
         templates.title = "Templates";
         dashboardItems.add(templates);
 
-        Dashboard series = new Dashboard();
+        DashboardItem series = new DashboardItem();
         series.imageUrl = "https://upload.wikimedia.org/wikipedia/commons/7/72/Message-icon-grey.png";
         series.title = "Series";
         dashboardItems.add(series);
 
-        Dashboard movies = new Dashboard();
+        DashboardItem movies = new DashboardItem();
         movies.imageUrl = "https://upload.wikimedia.org/wikipedia/commons/7/72/Message-icon-grey.png";
         movies.title = "Movies";
         dashboardItems.add(movies);
