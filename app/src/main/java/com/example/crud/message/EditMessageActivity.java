@@ -46,8 +46,8 @@ public class EditMessageActivity extends BaseAddEditMessageActivity {
     }
 
     private void updateMessage(String id, String name, String phoneNumber, String messageTxt) {
-        Message updatedMessage = new Message(name, phoneNumber, messageTxt);
-        Call<Void> call = crudService.updateMessage(id, updatedMessage);
+        Message message = new Message(name, phoneNumber, messageTxt);
+        Call<Void> call = crudService.updateMessage(id, message);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
