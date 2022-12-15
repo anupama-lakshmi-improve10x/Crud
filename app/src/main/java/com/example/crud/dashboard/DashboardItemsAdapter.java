@@ -24,8 +24,8 @@ public class DashboardItemsAdapter extends RecyclerView.Adapter<DashboardViewHol
     public void setData(ArrayList<DashboardItem> dashboardItems){
         this.dashboardItems = dashboardItems;
         notifyDataSetChanged();
-
     }
+
     @NonNull
     @Override
     public DashboardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
