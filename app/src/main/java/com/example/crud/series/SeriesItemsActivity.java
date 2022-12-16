@@ -26,7 +26,7 @@ public class SeriesItemsActivity extends BaseActivity {
 
     private ArrayList<SeriesItems> seriesItems = new ArrayList<>();
     //Todo: change seriesRv and SeriesAdapter to seriesItemsRv,seriesItemsAdapter
-    private RecyclerView seriesRv;
+    private RecyclerView seriesItemsRv;
     private SeriesItemsAdapter seriesItemsAdapter;
     private ProgressBar progressBar;
 
@@ -104,9 +104,9 @@ public class SeriesItemsActivity extends BaseActivity {
     }
 //Todo: setupSeriesItemsRv
     public void setupSeriesListRv() {
-        seriesRv = findViewById(R.id.series_rv);
-        seriesRv.setLayoutManager(new LinearLayoutManager(this));
-        seriesRv.setAdapter(seriesItemsAdapter);
+        seriesItemsRv = findViewById(R.id.series_rv);
+        seriesItemsRv.setLayoutManager(new LinearLayoutManager(this));
+        seriesItemsRv.setAdapter(seriesItemsAdapter);
     }
 
     private void showProgressBar() {
