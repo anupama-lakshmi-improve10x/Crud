@@ -6,7 +6,6 @@ import android.widget.EditText;
 
 import com.example.crud.R;
 import com.example.crud.api.CrudApi;
-import com.example.crud.api.CrudService;
 import com.example.crud.base.BaseActivity;
 
 public class BaseAddEditTemplateActivity extends BaseActivity {
@@ -16,16 +15,14 @@ public class BaseAddEditTemplateActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Todo: change activity_base_add_edit_template
-        setContentView(R.layout.activity_add_edit_template);
+        setContentView(R.layout.activity_base_add_edit_template);
         initViews();
         setupApiService();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //Todo : change base_add_edit_template_menu
-        getMenuInflater().inflate(R.menu.add_edit_message_menu, menu);
+        getMenuInflater().inflate(R.menu.base_add_edit_template_menu, menu);
         return true;
     }
 
