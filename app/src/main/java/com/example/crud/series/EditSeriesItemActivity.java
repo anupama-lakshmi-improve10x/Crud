@@ -14,14 +14,14 @@ import retrofit2.Response;
 
 public class EditSeriesItemActivity extends BaseAddEditSeriesItemsActivity {
 
-    private SeriesItems seriesItems;
+    private SeriesItem seriesItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setTitle("Edit Series");
         if (getIntent().hasExtra(Constants.KEY_SERIES_ITEMS)) {
-            seriesItems = (SeriesItems) getIntent().getSerializableExtra(Constants.KEY_SERIES_ITEMS);
+            seriesItem = (SeriesItem) getIntent().getSerializableExtra(Constants.KEY_SERIES_ITEMS);
             showData();
         }
     }
@@ -32,7 +32,7 @@ public class EditSeriesItemActivity extends BaseAddEditSeriesItemsActivity {
             String seriesId = seriesIdTxt.getText().toString();
             String title = seriesNameTxt.getText().toString();
             String imageUrl = imageUrlTxt.getText().toString();
-            updateSeries(seriesItems.id, seriesId, title, imageUrl);
+            updateSeries(seriesItem.id, seriesId, title, imageUrl);
             return true;
         } else {
             return super.onOptionsItemSelected(item);
@@ -40,14 +40,14 @@ public class EditSeriesItemActivity extends BaseAddEditSeriesItemsActivity {
     }
 
     private void showData() {
-        seriesIdTxt.setText(seriesItems.seriesId);
-        seriesNameTxt.setText(seriesItems.title);
-        imageUrlTxt.setText(seriesItems.imageUrl);
+        seriesIdTxt.setText(seriesItem.seriesId);
+        seriesNameTxt.setText(seriesItem.title);
+        imageUrlTxt.setText(seriesItem.imageUrl);
     }
 
     private void updateSeries(String id, String seriesId, String title, String imageUrl) {
-        SeriesItems seriesItems = new SeriesItems(seriesId, title, imageUrl);
-        Call<Void> call = crudService.updateSeriesItem(id, seriesItems);
+        SeriesItem seriesItem = new SeriesItem(seriesId, title, imageUrl);
+        Call<Void> call = crudService.updateSeriesItem(id, seriesItem);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

@@ -24,7 +24,7 @@ import retrofit2.Response;
 
 public class SeriesItemsActivity extends BaseActivity {
 
-    private ArrayList<SeriesItems> seriesItems = new ArrayList<>();
+    private ArrayList<SeriesItem> seriesItems = new ArrayList<>();
     private RecyclerView seriesItemsRv;
     private SeriesItemsAdapter seriesItemsAdapter;
     private ProgressBar progressBar;
@@ -66,18 +66,18 @@ public class SeriesItemsActivity extends BaseActivity {
 
     private void fetchSeriesList() {
         showProgressBar();
-        Call<List<SeriesItems>> call = crudService.fetchSeriesItems();
-        call.enqueue(new Callback<List<SeriesItems>>() {
+        Call<List<SeriesItem>> call = crudService.fetchSeriesItems();
+        call.enqueue(new Callback<List<SeriesItem>>() {
             @Override
-            public void onResponse(Call<List<SeriesItems>> call, Response<List<SeriesItems>> response) {
+            public void onResponse(Call<List<SeriesItem>> call, Response<List<SeriesItem>> response) {
                 hideProgressBar();
                 showToast("Successfully loaded Series");
-                List<SeriesItems> seriesItems = response.body();
+                List<SeriesItem> seriesItems = response.body();
                 seriesItemsAdapter.setData(seriesItems);
             }
 
             @Override
-            public void onFailure(Call<List<SeriesItems>> call, Throwable t) {
+            public void onFailure(Call<List<SeriesItem>> call, Throwable t) {
                 hideProgressBar();
                 showToast("Failed to load series");
             }
@@ -95,8 +95,8 @@ public class SeriesItemsActivity extends BaseActivity {
             }
 
             @Override
-            public void onEdit(SeriesItems seriesItems) {
-                editSeries(seriesItems);
+            public void onEdit(SeriesItem seriesItem) {
+                editSeries(seriesItem);
             }
         });
 
@@ -132,9 +132,9 @@ public class SeriesItemsActivity extends BaseActivity {
         });
     }
 
-    private void editSeries(SeriesItems seriesItems) {
+    private void editSeries(SeriesItem seriesItem) {
         Intent intent = new Intent(this, EditSeriesItemActivity.class);
-        intent.putExtra(Constants.KEY_SERIES_ITEMS, seriesItems);
+        intent.putExtra(Constants.KEY_SERIES_ITEMS, seriesItem);
         startActivity(intent);
     }
 }

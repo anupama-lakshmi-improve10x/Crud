@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class SeriesItems implements Serializable {
+public class SeriesItem implements Serializable {
 
     @SerializedName("_id")
     public String id;
@@ -12,10 +12,10 @@ public class SeriesItems implements Serializable {
     public String title;
     public String imageUrl;
 
-    public SeriesItems() {
+    public SeriesItem() {
     }
 
-    public SeriesItems(String seriesId, String title, String imageUrl) {
+    public SeriesItem(String seriesId, String title, String imageUrl) {
         this.seriesId = seriesId;
         this.title = title;
         this.imageUrl = imageUrl;
