@@ -22,12 +22,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SeriesListActivity extends BaseActivity {
+public class SeriesItemsActivity extends BaseActivity {
 
-    //Todo: Change seriesListActivity to SeriesItemsActivity
-    //Todo: change seriesList to seriesItems
-
-    private ArrayList<SeriesItems> seriesList = new ArrayList<>();
+    private ArrayList<SeriesItems> seriesItems = new ArrayList<>();
     //Todo: change seriesRv and SeriesAdapter to seriesItemsRv,seriesItemsAdapter
     private RecyclerView seriesRv;
     private SeriesItemsAdapter seriesItemsAdapter;
@@ -90,7 +87,7 @@ public class SeriesListActivity extends BaseActivity {
 //Todo: change MethodName to setupSeriesItemsAdapter
     private void setupSeriesAdapter() {
         seriesItemsAdapter = new SeriesItemsAdapter();
-        seriesItemsAdapter.setData(seriesList);
+        seriesItemsAdapter.setData(seriesItems);
         seriesItemsAdapter.setSeriesOnItemActionListener(new SeriesOnItemActionListener() {
 
             @Override
