@@ -32,8 +32,7 @@ public class SeriesItemsActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Todo: Change id to activity_series_item
-        setContentView(R.layout.activity_series);
+        setContentView(R.layout.activity_series_item);
         log("onCreate");
         getSupportActionBar().setTitle("Series");
         progressBar = findViewById(R.id.series_progress_bar);
@@ -44,15 +43,12 @@ public class SeriesItemsActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        //Todo create onResume in base activity
-        log("onResume");
-        fetchSeriesList();
+        fetchSeriesItems();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //Todo: change id to series_item_menu
-        getMenuInflater().inflate(R.menu.series_menu, menu);
+        getMenuInflater().inflate(R.menu.series_items_menu, menu);
         return true;
     }
 
@@ -66,8 +62,8 @@ public class SeriesItemsActivity extends BaseActivity {
             return super.onOptionsItemSelected(item);
         }
     }
-//Todo: change methodName to fetchSeriesItems
-    private void fetchSeriesList() {
+
+    private void fetchSeriesItems() {
         showProgressBar();
         Call<List<SeriesItem>> call = crudService.fetchSeriesItems();
         call.enqueue(new Callback<List<SeriesItem>>() {
@@ -94,19 +90,18 @@ public class SeriesItemsActivity extends BaseActivity {
 
             @Override
             public void onDelete(String id) {
-                deleteSeries(id);
+                deleteSeriesItem(id);
             }
 
             @Override
             public void onEdit(SeriesItem seriesItem) {
-                editSeries(seriesItem);
+                editSeriesItem(seriesItem);
             }
         });
     }
 
     public void setupSeriesItemsRv() {
-        //Todo: Change id to series_items_rv
-        seriesItemsRv = findViewById(R.id.series_rv);
+        seriesItemsRv = findViewById(R.id.series_items_rv);
         seriesItemsRv.setLayoutManager(new LinearLayoutManager(this));
         seriesItemsRv.setAdapter(seriesItemsAdapter);
     }
@@ -118,14 +113,14 @@ public class SeriesItemsActivity extends BaseActivity {
     private void hideProgressBar() {
         progressBar.setVisibility(View.GONE);
     }
-//Todo: Change deleteSeries method to deleteSeriesItem
-    private void deleteSeries(String id) {
+
+    private void deleteSeriesItem(String id) {
         Call<Void> call = crudService.deleteSeriesItem(id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 showToast("Successfully deleted Series");
-                fetchSeriesList();
+                fetchSeriesItems();
             }
 
             @Override
@@ -134,10 +129,10 @@ public class SeriesItemsActivity extends BaseActivity {
             }
         });
     }
-//Todo: change editSeries to editSeriesItem
-    private void editSeries(SeriesItem seriesItem) {
+
+    private void editSeriesItem(SeriesItem seriesItem) {
         Intent intent = new Intent(this, EditSeriesItemActivity.class);
-        intent.putExtra(Constants.KEY_SERIES_ITEMS, seriesItem);
+        intent.putExtra(Constants.KEY_SERIES_ITEM, seriesItem);
         startActivity(intent);
     }
 }

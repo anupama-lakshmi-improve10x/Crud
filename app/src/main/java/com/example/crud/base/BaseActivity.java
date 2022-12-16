@@ -21,6 +21,12 @@ public class BaseActivity extends AppCompatActivity {
         setupCrudApiService();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        log("onResume");
+    }
+
     protected void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
