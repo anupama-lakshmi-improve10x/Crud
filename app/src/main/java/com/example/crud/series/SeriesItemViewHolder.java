@@ -14,12 +14,12 @@ public class SeriesItemViewHolder extends RecyclerView.ViewHolder {
 
     ImageView seriesImg;
     TextView seriesTxt;
-    ImageButton deleteBtn;
+    ImageButton deleteImgBtn;
 
     public SeriesItemViewHolder(@NonNull View itemView) {
         super(itemView);
         seriesImg = itemView.findViewById(R.id.series_img);
         seriesTxt = itemView.findViewById(R.id.series_txt);
-        deleteBtn = itemView.findViewById(R.id.delete_btn);
+        deleteImgBtn = itemView.findViewById(R.id.delete_img_btn);
     }
 }
