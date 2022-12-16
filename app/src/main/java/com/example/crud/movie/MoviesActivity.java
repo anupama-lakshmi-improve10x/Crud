@@ -33,6 +33,7 @@ public class MoviesActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movies);
+        //Todo: remove onCreate
         log("onCreate");
         getSupportActionBar().setTitle("Movies");
         setupMoviesAdapter();
@@ -42,6 +43,7 @@ public class MoviesActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        //Todo: Remove on Resume
         log("onResume");
         fetchMovies();
     }
