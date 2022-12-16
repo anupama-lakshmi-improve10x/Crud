@@ -20,9 +20,8 @@ public class EditSeriesItemActivity extends BaseAddEditSeriesItemActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setTitle("Edit Series");
-        //Todo: change constants to KEY_SERIES_ITEM
-        if (getIntent().hasExtra(Constants.KEY_SERIES_ITEMS)) {
-            seriesItem = (SeriesItem) getIntent().getSerializableExtra(Constants.KEY_SERIES_ITEMS);
+        if (getIntent().hasExtra(Constants.KEY_SERIES_ITEM)) {
+            seriesItem = (SeriesItem) getIntent().getSerializableExtra(Constants.KEY_SERIES_ITEM);
             showData();
         }
     }
