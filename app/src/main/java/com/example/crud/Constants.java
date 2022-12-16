@@ -9,8 +9,7 @@ public class Constants {
 
     public static final String MESSAGES_END_POINT = "anupamaMessageHistory";
     public static final String TEMPLATES_END_POINT = "anupamaTemplates";
-    //Todo: Change SERIES_END_POINT to SERIES_ITEMS_END_POINT
-    public static final String SERIES_END_POINT = "anupamaseries";
+    public static final String SERIES_ITEMS_END_POINT = "anupamaseries";
     public static final String MOVIES_END_POINT = "anupamaMovies";
 
 
