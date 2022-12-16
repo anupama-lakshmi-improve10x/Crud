@@ -124,16 +124,19 @@ public class TemplatesActivity extends BaseActivity {
     }
 
     private void deleteTemplate(String id) {
+        showProgressBar();
         Call<Void> call = crudService.deleteTemplate(id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
+                hideProgressBar();
                 showToast("Successfully loaded Template");
                 fetchTemplates();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
+                hideProgressBar();
                 showToast("Failed to Delete Template");
             }
         });

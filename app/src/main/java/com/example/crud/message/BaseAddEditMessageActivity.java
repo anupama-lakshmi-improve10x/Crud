@@ -22,7 +22,7 @@ public class BaseAddEditMessageActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.add_edit_message_menu, menu);
+        getMenuInflater().inflate(R.menu.base_add_edit_message_menu, menu);
         return true;
     }
 
