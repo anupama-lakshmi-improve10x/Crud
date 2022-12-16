@@ -12,9 +12,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EditSeriesActivity extends BaseAddEditSeriesItemsActivity {
-
-    //Todo: Change EditSeriesItemActivity
+public class EditSeriesItemActivity extends BaseAddEditSeriesItemsActivity {
 
     private Series series;
 

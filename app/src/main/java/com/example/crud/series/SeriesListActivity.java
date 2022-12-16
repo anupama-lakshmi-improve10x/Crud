@@ -137,7 +137,7 @@ public class SeriesListActivity extends BaseActivity {
     }
 
     private void editSeries(Series series) {
-        Intent intent = new Intent(this, EditSeriesActivity.class);
+        Intent intent = new Intent(this, EditSeriesItemActivity.class);
         intent.putExtra(Constants.KEY_SERIES, series);
         startActivity(intent);
     }
