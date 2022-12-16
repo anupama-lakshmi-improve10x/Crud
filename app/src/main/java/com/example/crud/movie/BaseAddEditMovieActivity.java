@@ -20,8 +20,7 @@ public class BaseAddEditMovieActivity extends BaseActivity {
 
     protected EditText movieIdTxt;
     protected EditText movieNameTxt;
-    //Todo: Change seriesSp to SeriesItemsSp
-    protected Spinner seriesSp;
+    protected Spinner seriesItemSp;
     protected EditText imageUrlTxt;
     protected EditText descriptionTxt;
     protected CustomSeriesItemsAdapter customSeriesItemsAdapter;
@@ -31,8 +30,7 @@ public class BaseAddEditMovieActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Todo: activity_base_edit_movie
-        setContentView(R.layout.activity_add_edit_movie);
+        setContentView(R.layout.activity_base_add_edit_movie);
         initViews();
         setupSeriesItemsSp();
         fetchSeriesItems();
@@ -40,22 +38,20 @@ public class BaseAddEditMovieActivity extends BaseActivity {
 
     private void setupSeriesItemsSp() {
         customSeriesItemsAdapter = new CustomSeriesItemsAdapter(this, android.R.layout.simple_list_item_1, seriesList);
-        seriesSp.setAdapter(customSeriesItemsAdapter);
+        seriesItemSp.setAdapter(customSeriesItemsAdapter);
     }
 
     private void initViews() {
         movieIdTxt = findViewById(R.id.movie_id_txt);
         movieNameTxt = findViewById(R.id.movie_name_txt);
-        //Todo: change id to series_items_sp
-        seriesSp = findViewById(R.id.series_sp);
+        seriesItemSp = findViewById(R.id.series_items_sp);
         imageUrlTxt = findViewById(R.id.image_url_txt);
         descriptionTxt = findViewById(R.id.description_txt);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //Todo: base_add_edit_movie_menu
-        getMenuInflater().inflate(R.menu.add_edit_movie_menu, menu);
+        getMenuInflater().inflate(R.menu.base_add_edit_movie_menu, menu);
         return true;
     }
 
@@ -85,7 +81,7 @@ public class BaseAddEditMovieActivity extends BaseActivity {
         for (int i = 0; i < customSeriesItemsAdapter.getCount(); i++) {
             SeriesItem seriesItem = customSeriesItemsAdapter.getItem(i);
             if (movie.seriesId.equals(seriesItem.seriesId)) {
-                seriesSp.setSelection(i);
+                seriesItemSp.setSelection(i);
             }
         }
     }
