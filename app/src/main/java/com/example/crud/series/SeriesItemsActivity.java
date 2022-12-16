@@ -55,11 +55,11 @@ public class SeriesItemsActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.add) {
+        if (item.getItemId() == R.id.add) {
             Intent intent = new Intent(this, AddSeriesItemActivity.class);
             startActivity(intent);
             return true;
-        } else{
+        } else {
             return super.onOptionsItemSelected(item);
         }
     }
@@ -112,7 +112,7 @@ public class SeriesItemsActivity extends BaseActivity {
         progressBar.setVisibility(View.VISIBLE);
     }
 
-    private void hideProgressBar(){
+    private void hideProgressBar() {
         progressBar.setVisibility(View.GONE);
     }
 

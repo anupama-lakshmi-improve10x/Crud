@@ -17,8 +17,7 @@ public class BaseAddEditTemplateActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit_template);
-        //Todo: add separate method to find view and add progressBar
-        templateTxt = findViewById(R.id.template_txt);
+        initViews();
         setupApiService();
     }
 
@@ -26,6 +25,10 @@ public class BaseAddEditTemplateActivity extends BaseActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.add_edit_message_menu, menu);
         return true;
+    }
+
+    private void initViews() {
+        templateTxt = findViewById(R.id.template_txt);
     }
 
     private void setupApiService() {

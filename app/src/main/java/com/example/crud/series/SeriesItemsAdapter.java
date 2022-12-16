@@ -22,14 +22,14 @@ public class SeriesItemsAdapter extends RecyclerView.Adapter<SeriesItemViewHolde
         notifyDataSetChanged();
     }
 
-    void setSeriesOnItemActionListener(SeriesOnItemActionListener actionListener){
+    void setSeriesOnItemActionListener(SeriesOnItemActionListener actionListener) {
         seriesOnItemActionListener = actionListener;
     }
 
     @NonNull
     @Override
     public SeriesItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view  = LayoutInflater.from(parent.getContext()).inflate(R.layout.series_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.series_item, parent, false);
         SeriesItemViewHolder seriesItemViewHolder = new SeriesItemViewHolder(view);
         return seriesItemViewHolder;
     }
