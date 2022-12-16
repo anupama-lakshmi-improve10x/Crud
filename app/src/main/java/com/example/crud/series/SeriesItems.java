@@ -17,7 +17,7 @@ public class SeriesItems implements Serializable {
 
     public SeriesItems(String seriesId, String title, String imageUrl) {
         this.seriesId = seriesId;
-        this.title =  title;
+        this.title = title;
         this.imageUrl = imageUrl;
     }
 }

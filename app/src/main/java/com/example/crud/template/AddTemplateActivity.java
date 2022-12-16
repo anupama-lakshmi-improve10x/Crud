@@ -11,7 +11,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddTemplateActivity extends BaseAddEditTemplateActivity{
+public class AddTemplateActivity extends BaseAddEditTemplateActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class AddTemplateActivity extends BaseAddEditTemplateActivity{
             String message = templateTxt.getText().toString();
             addTemplate(message);
             return true;
-            } else {
+        } else {
             return super.onOptionsItemSelected(item);
         }
     }
