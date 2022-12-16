@@ -42,16 +42,16 @@ public interface CrudService {
     @PUT(Constants.TEMPLATES_END_POINT + "/{id}")
     Call<Void> updateTemplate(@Path("id") String id, @Body Template template);
 
-    @GET(Constants.SERIES_END_POINT)
+    @GET(Constants.SERIES_ITEMS_END_POINT)
     Call<List<SeriesItems>> fetchSeriesItems();
 
-    @POST(Constants.SERIES_END_POINT)
+    @POST(Constants.SERIES_ITEMS_END_POINT)
     Call<SeriesItems> createSeriesItem(@Body SeriesItems seriesItems);
 
-    @DELETE(Constants.SERIES_END_POINT + "/{id}")
+    @DELETE(Constants.SERIES_ITEMS_END_POINT + "/{id}")
     Call<Void> deleteSeriesItem(@Path("id") String id);
 
-    @PUT(Constants.SERIES_END_POINT + "/{id}")
+    @PUT(Constants.SERIES_ITEMS_END_POINT + "/{id}")
     Call<Void> updateSeriesItem(@Path("id") String id, @Body SeriesItems seriesItems);
 
     @GET(Constants.MOVIES_END_POINT)
