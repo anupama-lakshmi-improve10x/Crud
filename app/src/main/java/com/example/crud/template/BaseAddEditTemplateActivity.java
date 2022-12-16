@@ -16,6 +16,7 @@ public class BaseAddEditTemplateActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Todo: change activity_base_add_edit_template
         setContentView(R.layout.activity_add_edit_template);
         initViews();
         setupApiService();
@@ -23,6 +24,7 @@ public class BaseAddEditTemplateActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        //Todo : change base_add_edit_template_menu
         getMenuInflater().inflate(R.menu.add_edit_message_menu, menu);
         return true;
     }
