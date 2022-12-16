@@ -12,7 +12,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EditTemplateActivity extends BaseAddEditTemplateActivity{
+public class EditTemplateActivity extends BaseAddEditTemplateActivity {
 
     private Template template;
 
@@ -25,16 +25,18 @@ public class EditTemplateActivity extends BaseAddEditTemplateActivity{
             showData();
         }
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.done) {
             String message = templateTxt.getText().toString();
             updateTemplate(template.id, message);
             return true;
-            } else {
+        } else {
             return super.onOptionsItemSelected(item);
         }
     }
+
     private void showData() {
         templateTxt.setText(template.messageText);
     }

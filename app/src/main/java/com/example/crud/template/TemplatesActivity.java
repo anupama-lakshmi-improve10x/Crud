@@ -54,13 +54,13 @@ public class TemplatesActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-       if(item.getItemId() == R.id.add) {
-           Intent intent = new Intent(this, AddTemplateActivity.class);
-           startActivity(intent);
-           return true;
-       } else{
-           return super.onOptionsItemSelected(item);
-       }
+        if (item.getItemId() == R.id.add) {
+            Intent intent = new Intent(this, AddTemplateActivity.class);
+            startActivity(intent);
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
 
     private void initViews() {
@@ -119,7 +119,7 @@ public class TemplatesActivity extends BaseActivity {
         progressBar.setVisibility(View.VISIBLE);
     }
 
-    private void hideProgressBar(){
+    private void hideProgressBar() {
         progressBar.setVisibility(View.GONE);
     }
 
@@ -128,7 +128,7 @@ public class TemplatesActivity extends BaseActivity {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-               showToast("Successfully loaded Template");
+                showToast("Successfully loaded Template");
                 fetchTemplates();
             }
 
