@@ -10,14 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.crud.R;
 
-public class SeriesViewHolder extends RecyclerView.ViewHolder {
+public class SeriesItemViewHolder extends RecyclerView.ViewHolder {
 
-//Todo: change SeriesViewHolder to seriesItemViewHolder
     ImageView seriesImg;
     TextView seriesTxt;
     ImageButton deleteBtn;
 
-    public SeriesViewHolder(@NonNull View itemView) {
+    public SeriesItemViewHolder(@NonNull View itemView) {
         super(itemView);
         seriesImg = itemView.findViewById(R.id.series_img);
         seriesTxt = itemView.findViewById(R.id.series_txt);
