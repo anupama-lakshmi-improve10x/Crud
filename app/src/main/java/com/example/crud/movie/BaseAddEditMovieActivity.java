@@ -20,7 +20,7 @@ public class BaseAddEditMovieActivity extends BaseActivity {
 
     protected EditText movieIdTxt;
     protected EditText movieNameTxt;
-    protected Spinner seriesItemSp;
+    protected Spinner seriesItemsSp;
     protected EditText imageUrlTxt;
     protected EditText descriptionTxt;
     protected CustomSeriesItemsAdapter customSeriesItemsAdapter;
@@ -38,13 +38,13 @@ public class BaseAddEditMovieActivity extends BaseActivity {
 
     private void setupSeriesItemsSp() {
         customSeriesItemsAdapter = new CustomSeriesItemsAdapter(this, android.R.layout.simple_list_item_1, seriesList);
-        seriesItemSp.setAdapter(customSeriesItemsAdapter);
+        seriesItemsSp.setAdapter(customSeriesItemsAdapter);
     }
 
     private void initViews() {
         movieIdTxt = findViewById(R.id.movie_id_txt);
         movieNameTxt = findViewById(R.id.movie_name_txt);
-        seriesItemSp = findViewById(R.id.series_items_sp);
+        seriesItemsSp = findViewById(R.id.series_items_sp);
         imageUrlTxt = findViewById(R.id.image_url_txt);
         descriptionTxt = findViewById(R.id.description_txt);
     }
@@ -81,7 +81,7 @@ public class BaseAddEditMovieActivity extends BaseActivity {
         for (int i = 0; i < customSeriesItemsAdapter.getCount(); i++) {
             SeriesItem seriesItem = customSeriesItemsAdapter.getItem(i);
             if (movie.seriesId.equals(seriesItem.seriesId)) {
-                seriesItemSp.setSelection(i);
+                seriesItemsSp.setSelection(i);
             }
         }
     }

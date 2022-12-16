@@ -30,7 +30,7 @@ public class EditMovieActivity extends BaseAddEditMovieActivity {
         if (item.getItemId() == R.id.save) {
             String movieId = movieIdTxt.getText().toString();
             String movieName = movieNameTxt.getText().toString();
-            SeriesItem seriesItem = (SeriesItem) seriesItemSp.getSelectedItem();
+            SeriesItem seriesItem = (SeriesItem) seriesItemsSp.getSelectedItem();
             String seriesId = seriesItem.seriesId;
             String imageUrl = imageUrlTxt.getText().toString();
             String description = descriptionTxt.getText().toString();
