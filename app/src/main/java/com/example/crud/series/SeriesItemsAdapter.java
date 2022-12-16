@@ -21,7 +21,7 @@ public class SeriesItemsAdapter extends RecyclerView.Adapter<SeriesItemViewHolde
         this.seriesItems = seriesItems;
         notifyDataSetChanged();
     }
-
+//Todo: change obj in params and  use this keyword for all adapter classes
     void setSeriesOnItemActionListener(SeriesOnItemActionListener actionListener) {
         seriesOnItemActionListener = actionListener;
     }
@@ -37,6 +37,7 @@ public class SeriesItemsAdapter extends RecyclerView.Adapter<SeriesItemViewHolde
     @Override
     public void onBindViewHolder(@NonNull SeriesItemViewHolder holder, int position) {
         SeriesItem seriesItem = this.seriesItems.get(position);
+        //Todo: Add if statement.
         Picasso.get().load(seriesItem.imageUrl).into(holder.seriesImg);
         holder.seriesTxt.setText(seriesItem.title);
         holder.deleteBtn.setOnClickListener(view -> {

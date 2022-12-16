@@ -24,6 +24,7 @@ public class AddSeriesItemActivity extends BaseAddEditSeriesItemsActivity {
         if (item.getItemId() == R.id.save) {
             String seriesId = seriesIdTxt.getText().toString();
             String title = seriesNameTxt.getText().toString();
+            //Todo: change obj image to imageUrl
             String image = imageUrlTxt.getText().toString();
             addSeries(seriesId, title, image);
             return true;
@@ -31,7 +32,7 @@ public class AddSeriesItemActivity extends BaseAddEditSeriesItemsActivity {
             return super.onOptionsItemSelected(item);
         }
     }
-
+//Todo: change method name to addSeriesItem
     private void addSeries(String seriesId, String title, String imageUrl) {
         SeriesItem seriesItem = new SeriesItem(seriesId, title, imageUrl);
         Call<SeriesItem> call = crudService.createSeriesItem(seriesItem);

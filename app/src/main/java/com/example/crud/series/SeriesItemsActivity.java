@@ -32,6 +32,7 @@ public class SeriesItemsActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Todo: Change id to activity_series_item
         setContentView(R.layout.activity_series);
         log("onCreate");
         getSupportActionBar().setTitle("Series");
@@ -43,12 +44,14 @@ public class SeriesItemsActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        //Todo create onResume in base activity
         log("onResume");
         fetchSeriesList();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        //Todo: change id to series_item_menu
         getMenuInflater().inflate(R.menu.series_menu, menu);
         return true;
     }
@@ -63,7 +66,7 @@ public class SeriesItemsActivity extends BaseActivity {
             return super.onOptionsItemSelected(item);
         }
     }
-
+//Todo: change methodName to fetchSeriesItems
     private void fetchSeriesList() {
         showProgressBar();
         Call<List<SeriesItem>> call = crudService.fetchSeriesItems();
@@ -99,10 +102,10 @@ public class SeriesItemsActivity extends BaseActivity {
                 editSeries(seriesItem);
             }
         });
-
     }
 
     public void setupSeriesItemsRv() {
+        //Todo: Change id to series_items_rv
         seriesItemsRv = findViewById(R.id.series_rv);
         seriesItemsRv.setLayoutManager(new LinearLayoutManager(this));
         seriesItemsRv.setAdapter(seriesItemsAdapter);
@@ -115,7 +118,7 @@ public class SeriesItemsActivity extends BaseActivity {
     private void hideProgressBar() {
         progressBar.setVisibility(View.GONE);
     }
-
+//Todo: Change deleteSeries method to deleteSeriesItem
     private void deleteSeries(String id) {
         Call<Void> call = crudService.deleteSeriesItem(id);
         call.enqueue(new Callback<Void>() {
@@ -131,7 +134,7 @@ public class SeriesItemsActivity extends BaseActivity {
             }
         });
     }
-
+//Todo: change editSeries to editSeriesItem
     private void editSeries(SeriesItem seriesItem) {
         Intent intent = new Intent(this, EditSeriesItemActivity.class);
         intent.putExtra(Constants.KEY_SERIES_ITEMS, seriesItem);

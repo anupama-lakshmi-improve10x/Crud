@@ -20,6 +20,7 @@ public class EditSeriesItemActivity extends BaseAddEditSeriesItemsActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setTitle("Edit Series");
+        //Todo: change constants to KEY_SERIES_ITEM
         if (getIntent().hasExtra(Constants.KEY_SERIES_ITEMS)) {
             seriesItem = (SeriesItem) getIntent().getSerializableExtra(Constants.KEY_SERIES_ITEMS);
             showData();
@@ -44,7 +45,7 @@ public class EditSeriesItemActivity extends BaseAddEditSeriesItemsActivity {
         seriesNameTxt.setText(seriesItem.title);
         imageUrlTxt.setText(seriesItem.imageUrl);
     }
-
+//Todo: Change updateSeries method to updateSeriesItem
     private void updateSeries(String id, String seriesId, String title, String imageUrl) {
         SeriesItem seriesItem = new SeriesItem(seriesId, title, imageUrl);
         Call<Void> call = crudService.updateSeriesItem(id, seriesItem);
