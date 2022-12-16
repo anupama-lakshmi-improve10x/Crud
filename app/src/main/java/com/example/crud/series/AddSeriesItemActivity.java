@@ -33,17 +33,17 @@ public class AddSeriesItemActivity extends BaseAddEditSeriesItemsActivity {
     }
 
     private void addSeries(String seriesId, String title, String imageUrl) {
-        Series series = new Series(seriesId, title, imageUrl);
-        Call<Series> call = crudService.createSeriesItem(series);
-        call.enqueue(new Callback<Series>() {
+        SeriesItems seriesItems = new SeriesItems(seriesId, title, imageUrl);
+        Call<SeriesItems> call = crudService.createSeriesItem(seriesItems);
+        call.enqueue(new Callback<SeriesItems>() {
             @Override
-            public void onResponse(Call<Series> call, Response<Series> response) {
+            public void onResponse(Call<SeriesItems> call, Response<SeriesItems> response) {
                 showToast("Successfully added the Series");
                 finish();
             }
 
             @Override
-            public void onFailure(Call<Series> call, Throwable t) {
+            public void onFailure(Call<SeriesItems> call, Throwable t) {
                 showToast("Failed to add the series");
             }
         });

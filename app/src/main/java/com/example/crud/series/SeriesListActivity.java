@@ -27,7 +27,7 @@ public class SeriesListActivity extends BaseActivity {
     //Todo: Change seriesListActivity to SeriesItemsActivity
     //Todo: change seriesList to seriesItems
 
-    private ArrayList<Series> seriesList = new ArrayList<>();
+    private ArrayList<SeriesItems> seriesList = new ArrayList<>();
     //Todo: change seriesRv and SeriesAdapter to seriesItemsRv,seriesItemsAdapter
     private RecyclerView seriesRv;
     private SeriesAdapter seriesAdapter;
@@ -70,18 +70,18 @@ public class SeriesListActivity extends BaseActivity {
 
     private void fetchSeriesList() {
         showProgressBar();
-        Call<List<Series>> call = crudService.fetchSeriesItems();
-        call.enqueue(new Callback<List<Series>>() {
+        Call<List<SeriesItems>> call = crudService.fetchSeriesItems();
+        call.enqueue(new Callback<List<SeriesItems>>() {
             @Override
-            public void onResponse(Call<List<Series>> call, Response<List<Series>> response) {
+            public void onResponse(Call<List<SeriesItems>> call, Response<List<SeriesItems>> response) {
                 hideProgressBar();
                 showToast("Successfully loaded Series");
-                List<Series> series = response.body();
-                seriesAdapter.setData(series);
+                List<SeriesItems> seriesItems = response.body();
+                seriesAdapter.setData(seriesItems);
             }
 
             @Override
-            public void onFailure(Call<List<Series>> call, Throwable t) {
+            public void onFailure(Call<List<SeriesItems>> call, Throwable t) {
                 hideProgressBar();
                 showToast("Failed to load series");
             }
@@ -99,8 +99,8 @@ public class SeriesListActivity extends BaseActivity {
             }
 
             @Override
-            public void onEdit(Series series) {
-                editSeries(series);
+            public void onEdit(SeriesItems seriesItems) {
+                editSeries(seriesItems);
             }
         });
 
@@ -136,9 +136,9 @@ public class SeriesListActivity extends BaseActivity {
         });
     }
 
-    private void editSeries(Series series) {
+    private void editSeries(SeriesItems seriesItems) {
         Intent intent = new Intent(this, EditSeriesItemActivity.class);
-        intent.putExtra(Constants.KEY_SERIES, series);
+        intent.putExtra(Constants.KEY_SERIES, seriesItems);
         startActivity(intent);
     }
 }
