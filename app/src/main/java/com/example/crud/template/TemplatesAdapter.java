@@ -21,8 +21,8 @@ public class TemplatesAdapter extends RecyclerView.Adapter<TemplateViewHolder> {
         notifyDataSetChanged();
     }
 
-    void setOnItemActionListener(OnItemActionListener actionListener) {
-        onItemActionListener = actionListener;
+    void setOnItemActionListener(OnItemActionListener onItemActionListener) {
+        this.onItemActionListener = onItemActionListener;
     }
 
     @NonNull
