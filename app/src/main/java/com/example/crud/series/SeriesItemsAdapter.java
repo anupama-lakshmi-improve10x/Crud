@@ -14,10 +14,10 @@ import java.util.List;
 
 public class SeriesItemsAdapter extends RecyclerView.Adapter<SeriesItemViewHolder> {
 
-    private List<SeriesItems> seriesItems;
+    private List<SeriesItem> seriesItems;
     private SeriesOnItemActionListener seriesOnItemActionListener;
 
-    void setData(List<SeriesItems> seriesItems) {
+    void setData(List<SeriesItem> seriesItems) {
         this.seriesItems = seriesItems;
         notifyDataSetChanged();
     }
@@ -36,14 +36,14 @@ public class SeriesItemsAdapter extends RecyclerView.Adapter<SeriesItemViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull SeriesItemViewHolder holder, int position) {
-        SeriesItems seriesItems = this.seriesItems.get(position);
-        Picasso.get().load(seriesItems.imageUrl).into(holder.seriesImg);
-        holder.seriesTxt.setText(seriesItems.title);
+        SeriesItem seriesItem = this.seriesItems.get(position);
+        Picasso.get().load(seriesItem.imageUrl).into(holder.seriesImg);
+        holder.seriesTxt.setText(seriesItem.title);
         holder.deleteBtn.setOnClickListener(view -> {
-            seriesOnItemActionListener.onDelete(seriesItems.id);
+            seriesOnItemActionListener.onDelete(seriesItem.id);
         });
         holder.itemView.setOnClickListener(view -> {
-            seriesOnItemActionListener.onEdit(seriesItems);
+            seriesOnItemActionListener.onEdit(seriesItem);
         });
     }
 

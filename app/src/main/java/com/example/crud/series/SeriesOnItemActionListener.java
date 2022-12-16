@@ -4,5 +4,5 @@ public interface SeriesOnItemActionListener {
 
     void onDelete(String id);
 
-    void onEdit(SeriesItems seriesItems);
+    void onEdit(SeriesItem seriesItem);
 }

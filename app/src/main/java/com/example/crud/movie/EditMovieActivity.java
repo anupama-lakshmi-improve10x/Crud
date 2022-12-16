@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 
 import com.example.crud.Constants;
 import com.example.crud.R;
-import com.example.crud.series.SeriesItems;
+import com.example.crud.series.SeriesItem;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,8 +30,8 @@ public class EditMovieActivity extends BaseAddEditMovieActivity {
         if (item.getItemId() == R.id.save) {
             String movieId = movieIdTxt.getText().toString();
             String movieName = movieNameTxt.getText().toString();
-            SeriesItems seriesItems = (SeriesItems) seriesSp.getSelectedItem();
-            String seriesId = seriesItems.seriesId;
+            SeriesItem seriesItem = (SeriesItem) seriesSp.getSelectedItem();
+            String seriesId = seriesItem.seriesId;
             String imageUrl = imageUrlTxt.getText().toString();
             String description = descriptionTxt.getText().toString();
             updateMovie(movie.id, movieId, seriesId, movieName, imageUrl, description);

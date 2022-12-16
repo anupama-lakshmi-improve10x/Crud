@@ -3,7 +3,7 @@ package com.example.crud.api;
 import com.example.crud.Constants;
 import com.example.crud.message.Message;
 import com.example.crud.movie.Movie;
-import com.example.crud.series.SeriesItems;
+import com.example.crud.series.SeriesItem;
 import com.example.crud.template.Template;
 
 import java.util.List;
@@ -43,16 +43,16 @@ public interface CrudService {
     Call<Void> updateTemplate(@Path("id") String id, @Body Template template);
 
     @GET(Constants.SERIES_ITEMS_END_POINT)
-    Call<List<SeriesItems>> fetchSeriesItems();
+    Call<List<SeriesItem>> fetchSeriesItems();
 
     @POST(Constants.SERIES_ITEMS_END_POINT)
-    Call<SeriesItems> createSeriesItem(@Body SeriesItems seriesItems);
+    Call<SeriesItem> createSeriesItem(@Body SeriesItem seriesItem);
 
     @DELETE(Constants.SERIES_ITEMS_END_POINT + "/{id}")
     Call<Void> deleteSeriesItem(@Path("id") String id);
 
     @PUT(Constants.SERIES_ITEMS_END_POINT + "/{id}")
-    Call<Void> updateSeriesItem(@Path("id") String id, @Body SeriesItems seriesItems);
+    Call<Void> updateSeriesItem(@Path("id") String id, @Body SeriesItem seriesItem);
 
     @GET(Constants.MOVIES_END_POINT)
     Call<List<Movie>> fetchMovies();
