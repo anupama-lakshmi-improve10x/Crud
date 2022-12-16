@@ -16,10 +16,10 @@ public class SeriesAdapter extends RecyclerView.Adapter<SeriesViewHolder> {
 
 //Todo: Change SeriesAdapter to seriesItemsAdapter
     //Todo: change seriesList to seriesItems
-    private List<Series> seriesList;
+    private List<SeriesItems> seriesList;
     private SeriesOnItemActionListener seriesOnItemActionListener;
 
-    void setData(List<Series> seriesList) {
+    void setData(List<SeriesItems> seriesList) {
         this.seriesList = seriesList;
         notifyDataSetChanged();
     }
@@ -38,14 +38,14 @@ public class SeriesAdapter extends RecyclerView.Adapter<SeriesViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull SeriesViewHolder holder, int position) {
-        Series series = this.seriesList.get(position);
-        Picasso.get().load(series.imageUrl).into(holder.seriesImg);
-        holder.seriesTxt.setText(series.title);
+        SeriesItems seriesItems = this.seriesList.get(position);
+        Picasso.get().load(seriesItems.imageUrl).into(holder.seriesImg);
+        holder.seriesTxt.setText(seriesItems.title);
         holder.deleteBtn.setOnClickListener(view -> {
-            seriesOnItemActionListener.onDelete(series.id);
+            seriesOnItemActionListener.onDelete(seriesItems.id);
         });
         holder.itemView.setOnClickListener(view -> {
-            seriesOnItemActionListener.onEdit(series);
+            seriesOnItemActionListener.onEdit(seriesItems);
         });
     }
 

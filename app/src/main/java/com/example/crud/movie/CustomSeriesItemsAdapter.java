@@ -11,13 +11,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.crud.R;
-import com.example.crud.series.Series;
+import com.example.crud.series.SeriesItems;
 
 import java.util.List;
 
-public class CustomSeriesItemsAdapter extends ArrayAdapter<Series> {
+public class CustomSeriesItemsAdapter extends ArrayAdapter<SeriesItems> {
 
-    public CustomSeriesItemsAdapter(@NonNull Context context, int resource, @NonNull List<Series> objects) {
+    public CustomSeriesItemsAdapter(@NonNull Context context, int resource, @NonNull List<SeriesItems> objects) {
         super(context, resource, objects);
     }
 
@@ -25,18 +25,18 @@ public class CustomSeriesItemsAdapter extends ArrayAdapter<Series> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.series_spinner_item, parent, false);
-        Series series = getItem(position);
+        SeriesItems seriesItems = getItem(position);
         TextView titleTxt = view.findViewById(R.id.title_txt);
-        titleTxt.setText(series.seriesId + " _ " + series.title);
+        titleTxt.setText(seriesItems.seriesId + " _ " + seriesItems.title);
         return view;
     }
 
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.series_spinner_item, parent, false);
-        Series series = getItem(position);
+        SeriesItems seriesItems = getItem(position);
         TextView titleTxt = view.findViewById(R.id.title_txt);
-        titleTxt.setText(series.seriesId + " _ " + series.title);
+        titleTxt.setText(seriesItems.seriesId + " _ " + seriesItems.title);
         return view;
     }
 }
