@@ -4,8 +4,7 @@ public class Constants {
 
     public static final String KEY_MESSAGE = "Message";
     public static final String KEY_TEMPLATE = "Template";
-    //Todo: Change KEY_SERIES to KEY_SERIES_ITEMS
-    public static final String KEY_SERIES = "Series";
+    public static final String KEY_SERIES_ITEMS = "Series";
     public static final String KEY_MOVIES = "Movies";
 
     public static final String MESSAGES_END_POINT = "anupamaMessageHistory";
