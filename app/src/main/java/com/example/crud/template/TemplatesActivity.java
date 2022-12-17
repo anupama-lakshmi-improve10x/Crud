@@ -33,8 +33,6 @@ public class TemplatesActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_templates);
-        //Todo: Remove log method in onCreate and onResume for all classes
-        log("onCreate");
         getSupportActionBar().setTitle("Templates");
         initViews();
         setupTemplatesAdapter();
@@ -43,7 +41,6 @@ public class TemplatesActivity extends BaseActivity {
 
     protected void onResume() {
         super.onResume();
-        log("onResume");
         fetchTemplates();
     }
 
