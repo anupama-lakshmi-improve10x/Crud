@@ -24,7 +24,6 @@ public class BaseAddEditMovieActivity extends BaseActivity {
     protected EditText imageUrlTxt;
     protected EditText descriptionTxt;
     protected CustomSeriesItemsAdapter customSeriesItemsAdapter;
-    //Todo: Change the variable name seriesList to seriesItems
     private ArrayList<SeriesItem> seriesItems = new ArrayList<>();
     protected Movie movie;
 
