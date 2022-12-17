@@ -25,7 +25,7 @@ public class BaseAddEditMovieActivity extends BaseActivity {
     protected EditText descriptionTxt;
     protected CustomSeriesItemsAdapter customSeriesItemsAdapter;
     //Todo: Change the variable name seriesList to seriesItems
-    private ArrayList<SeriesItem> seriesList = new ArrayList<>();
+    private ArrayList<SeriesItem> seriesItems = new ArrayList<>();
     protected Movie movie;
 
     @Override
@@ -38,7 +38,7 @@ public class BaseAddEditMovieActivity extends BaseActivity {
     }
 
     private void setupSeriesItemsSp() {
-        customSeriesItemsAdapter = new CustomSeriesItemsAdapter(this, android.R.layout.simple_list_item_1, seriesList);
+        customSeriesItemsAdapter = new CustomSeriesItemsAdapter(this, android.R.layout.simple_list_item_1, seriesItems);
         seriesItemsSp.setAdapter(customSeriesItemsAdapter);
     }
 
