@@ -17,7 +17,6 @@ public class BaseAddEditTemplateActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base_add_edit_template);
         initViews();
-        setupApiService();
     }
 
     @Override
@@ -28,10 +27,5 @@ public class BaseAddEditTemplateActivity extends BaseActivity {
 
     private void initViews() {
         templateTxt = findViewById(R.id.template_txt);
-    }
-//Todo: Remove setupApiService method in baseAddEditTemplateActivity
-    private void setupApiService() {
-        CrudApi crudApi = new CrudApi();
-        crudService = crudApi.createCrudService();
     }
 }
