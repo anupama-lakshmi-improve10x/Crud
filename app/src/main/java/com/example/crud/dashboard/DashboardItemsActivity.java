@@ -17,7 +17,6 @@ public class DashboardItemsActivity extends BaseActivity {
     private ArrayList<DashboardItem> dashboardItems;
     private RecyclerView dashboardItemsRv;
     private DashboardItemsAdapter dashboardItemsAdapter;
-    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,17 +30,14 @@ public class DashboardItemsActivity extends BaseActivity {
     }
 
     private void setupData() {
-        hideProgressBar();
         dashboardItems = new ArrayList<>();
+
         DashboardItem messages = new DashboardItem("Messages", "https://upload.wikimedia.org/wikipedia/commons/7/72/Message-icon-grey.png");
         dashboardItems.add(messages);
-
         DashboardItem templates = new DashboardItem("Templates", "https://static.thenounproject.com/png/1021190-200.png");
         dashboardItems.add(templates);
-
         DashboardItem series = new DashboardItem("Series", "https://upload.wikimedia.org/wikipedia/commons/7/72/Message-icon-grey.png");
         dashboardItems.add(series);
-
         DashboardItem movies = new DashboardItem("Movies","https://upload.wikimedia.org/wikipedia/commons/7/72/Message-icon-grey.png");
         dashboardItems.add(movies);
     }
@@ -58,10 +54,5 @@ public class DashboardItemsActivity extends BaseActivity {
 
     private void initViews() {
         dashboardItemsRv = findViewById(R.id.dash_board_rv);
-        progressBar = findViewById(R.id.progress_bar);
-    }
-
-    private void hideProgressBar(){
-        progressBar.setVisibility(View.GONE);
     }
 }

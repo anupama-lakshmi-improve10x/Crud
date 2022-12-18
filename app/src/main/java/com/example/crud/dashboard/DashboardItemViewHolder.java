@@ -16,7 +16,7 @@ public class DashboardItemViewHolder extends RecyclerView.ViewHolder {
 
     public DashboardItemViewHolder(@NonNull View itemView) {
         super(itemView);
-        dashboardImg = itemView.findViewById(R.id.image_img);
+        dashboardImg = itemView.findViewById(R.id.dashboard_img);
         titleTxt = itemView.findViewById(R.id.title_txt);
     }
 }

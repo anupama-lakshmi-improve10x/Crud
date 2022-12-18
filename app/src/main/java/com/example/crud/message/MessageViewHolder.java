@@ -20,7 +20,7 @@ public class MessageViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         nameTxt = itemView.findViewById(R.id.name_txt);
         mobileNumberTxt = itemView.findViewById(R.id.mobile_number_txt);
-        messageTextTxt = itemView.findViewById(R.id.template_txt);
+        messageTextTxt = itemView.findViewById(R.id.message_text_txt);
         deleteImgBtn = itemView.findViewById(R.id.delete_img_btn);
     }
 }
