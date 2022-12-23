@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.crud.databinding.DashboardItemBinding;
 import com.example.crud.movie.MoviesActivity;
 import com.example.crud.series.SeriesItemsActivity;
 import com.example.crud.template.TemplatesActivity;
@@ -29,29 +30,29 @@ public class DashboardItemsAdapter extends RecyclerView.Adapter<DashboardItemVie
     @NonNull
     @Override
     public DashboardItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.dashboard_item, parent, false);
-        DashboardItemViewHolder dashboardItemViewHolder = new DashboardItemViewHolder(view);
+        DashboardItemBinding binding = DashboardItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        DashboardItemViewHolder dashboardItemViewHolder = new DashboardItemViewHolder(binding);
         return dashboardItemViewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull DashboardItemViewHolder holder, int position) {
         DashboardItem dashboardItem = dashboardItems.get(position);
-        Picasso.get().load(dashboardItem.imageUrl).into(holder.dashboardImg);
-        holder.titleTxt.setText(dashboardItem.title);
-        holder.itemView.setOnClickListener(view -> {
-            if(holder.titleTxt.getText().toString().equalsIgnoreCase("Messages")) {
-                Intent intent = new Intent(holder.itemView.getContext(), MessagesActivity.class);
-                holder.itemView.getContext().startActivity(intent);
-            } else if(holder.titleTxt.getText().toString().equalsIgnoreCase("Templates")) {
-                Intent intent = new Intent(holder.itemView.getContext(), TemplatesActivity.class);
-                holder.itemView.getContext().startActivity(intent);
-            } else if(holder.titleTxt.getText().toString().equalsIgnoreCase("Series")) {
-                Intent intent = new Intent(holder.itemView.getContext(), SeriesItemsActivity.class);
-                holder.itemView.getContext().startActivity(intent);
-            } else if(holder.titleTxt.getText().toString().equalsIgnoreCase("Movies")) {
+        Picasso.get().load(dashboardItem.imageUrl).into(holder.binding.dashboardImg);
+        holder.binding.titleTxt.setText(dashboardItem.title);
+        holder.binding.getRoot().setOnClickListener(view -> {
+            if(holder.binding.titleTxt.getText().toString().equalsIgnoreCase("Messages")) {
+                Intent intent = new Intent(holder.binding.getRoot().getContext(), MessagesActivity.class);
+                holder.binding.getRoot().getContext().startActivity(intent);
+            } else if(holder.binding.titleTxt.getText().toString().equalsIgnoreCase("Templates")) {
+                Intent intent = new Intent(holder.binding.getRoot().getContext(), TemplatesActivity.class);
+                holder.binding.getRoot().getContext().startActivity(intent);
+            } else if(holder.binding.titleTxt.getText().toString().equalsIgnoreCase("Series")) {
+                Intent intent = new Intent(holder.binding.getRoot().getContext(), SeriesItemsActivity.class);
+                holder.binding.getRoot().getContext().startActivity(intent);
+            } else if(holder.binding.titleTxt.getText().toString().equalsIgnoreCase("Movies")) {
                 Intent intent = new Intent(holder.itemView.getContext(), MoviesActivity.class);
-                holder.itemView.getContext().startActivity(intent);
+                holder.binding.getRoot().getContext().startActivity(intent);
             }
         });
     }

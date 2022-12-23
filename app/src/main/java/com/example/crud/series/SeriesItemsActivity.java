@@ -34,7 +34,7 @@ public class SeriesItemsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_series_item);
         getSupportActionBar().setTitle("Series");
-        progressBar = findViewById(R.id.series_progress_bar);
+        initViews();
         setupSeriesItemsAdapter();
         setupSeriesItemsRv();
     }
@@ -100,9 +100,13 @@ public class SeriesItemsActivity extends BaseActivity {
     }
 
     public void setupSeriesItemsRv() {
-        seriesItemsRv = findViewById(R.id.series_items_rv);
         seriesItemsRv.setLayoutManager(new LinearLayoutManager(this));
         seriesItemsRv.setAdapter(seriesItemsAdapter);
+    }
+
+    private void initViews() {
+        progressBar = findViewById(R.id.series_progress_bar);
+        seriesItemsRv = findViewById(R.id.series_items_rv);
     }
 
     private void showProgressBar() {

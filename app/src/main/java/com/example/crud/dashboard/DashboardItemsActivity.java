@@ -4,26 +4,25 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ProgressBar;
 
 import com.example.crud.R;
 import com.example.crud.base.BaseActivity;
+import com.example.crud.databinding.ActivityDashboardItemsBinding;
 
 import java.util.ArrayList;
 
 public class DashboardItemsActivity extends BaseActivity {
 
     private ArrayList<DashboardItem> dashboardItems;
-    private RecyclerView dashboardItemsRv;
+    private ActivityDashboardItemsBinding binding;
     private DashboardItemsAdapter dashboardItemsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
+        binding = ActivityDashboardItemsBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         getSupportActionBar().setTitle("Dashboard");
-        initViews();
         setupData();
         setupDashboardItemsAdapter();
         setupDashboardItemsRv();
@@ -48,11 +47,7 @@ public class DashboardItemsActivity extends BaseActivity {
     }
 
     private void setupDashboardItemsRv() {
-        dashboardItemsRv.setLayoutManager(new LinearLayoutManager(this));
-        dashboardItemsRv.setAdapter(dashboardItemsAdapter);
-    }
-
-    private void initViews() {
-        dashboardItemsRv = findViewById(R.id.dash_board_rv);
+        binding.dashBoardRv.setLayoutManager(new LinearLayoutManager(this));
+        binding.dashBoardRv.setAdapter(dashboardItemsAdapter);
     }
 }
