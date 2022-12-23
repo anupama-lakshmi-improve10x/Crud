@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.crud.R;
+import com.example.crud.databinding.MessageItemBinding;
 
 import java.util.List;
 
@@ -28,18 +29,18 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessageViewHolder> {
     @NonNull
     @Override
     public MessageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.message_item, parent, false);
-        MessageViewHolder messageViewHolder = new MessageViewHolder(view);
+        MessageItemBinding binding = MessageItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        MessageViewHolder messageViewHolder = new MessageViewHolder(binding);
         return messageViewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MessageViewHolder holder, int position) {
         Message message = messages.get(position);
-        holder.nameTxt.setText(message.name);
-        holder.mobileNumberTxt.setText(message.mobileNumber);
-        holder.messageTextTxt.setText(message.message);
-        holder.deleteImgBtn.setOnClickListener(view -> {
+        holder.binding.nameTxt.setText(message.name);
+        holder.binding.mobileNumberTxt.setText(message.mobileNumber);
+        holder.binding.messageTextTxt.setText(message.message);
+        holder.binding.deleteImgBtn.setOnClickListener(view -> {
             onItemActionListener.onDelete(message.id);
         });
         holder.itemView.setOnClickListener(view -> {

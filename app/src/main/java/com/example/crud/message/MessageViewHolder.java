@@ -8,19 +8,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.crud.R;
+import com.example.crud.databinding.MessageItemBinding;
 
 public class MessageViewHolder extends RecyclerView.ViewHolder {
 
-    TextView nameTxt;
-    TextView mobileNumberTxt;
-    TextView messageTextTxt;
-    ImageButton deleteImgBtn;
+    MessageItemBinding binding;
 
-    public MessageViewHolder(@NonNull View itemView) {
-        super(itemView);
-        nameTxt = itemView.findViewById(R.id.name_txt);
-        mobileNumberTxt = itemView.findViewById(R.id.mobile_number_txt);
-        messageTextTxt = itemView.findViewById(R.id.message_text_txt);
-        deleteImgBtn = itemView.findViewById(R.id.delete_img_btn);
+    public MessageViewHolder(MessageItemBinding messageItemBinding) {
+        super(messageItemBinding.getRoot());
+        binding = messageItemBinding;
     }
 }

@@ -22,9 +22,9 @@ public class AddMessageActivity extends BaseAddEditMessageActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.done) {
-            String name = nameTxt.getText().toString();
-            String phoneNumber = phoneNumberTxt.getText().toString();
-            String message = messageTextTxt.getText().toString();
+            String name = binding.nameTxt.getText().toString();
+            String phoneNumber = binding.phoneNumberTxt.getText().toString();
+            String message = binding.messageTextTxt.getText().toString();
             addMessage(name, phoneNumber, message);
             return true;
         } else {
