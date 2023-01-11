@@ -65,10 +65,7 @@ public class BaseAddEditMovieActivity extends BaseActivity {
     }
 
     protected void showData() {
-        binding.movieIdTxt.setText(movie.movieId);
-        binding.movieNameTxt.setText(movie.title);
-        binding.imageUrlTxt.setText(movie.imageUrl);
-        binding.descriptionTxt.setText(movie.description);
+        binding.setMovie(movie);
         for (int i = 0; i < customSeriesItemsAdapter.getCount(); i++) {
             SeriesItem seriesItem = customSeriesItemsAdapter.getItem(i);
             if (movie.seriesId.equals(seriesItem.seriesId)) {
