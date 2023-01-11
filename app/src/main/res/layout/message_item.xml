@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="message"
+            type="com.example.crud.message.Message" />
+    </data>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -32,7 +40,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="4dp"
-                    android:text="TextView"
+                    android:text="@{message.name}"
+                    tools:text = "Anupama"
                     android:textColor="#423F3F"
                     android:textSize="16sp" />
 
@@ -41,7 +50,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView"
+                    android:text="@{message.mobileNumber}"
+                    tools:text = "+91 9885592629"
                     android:textColor="#423F3F"
                     android:textSize="16sp" />
 
@@ -53,7 +63,8 @@
                 android:layout_height="wrap_content"
                 android:maxLines="4"
                 android:paddingTop="4dp"
-                android:text="TextView" />
+                android:text="@{message.message}"
+                tools:text = "Hello, Welcome to Improve 10x"/>
         </LinearLayout>
 
         <ImageButton
@@ -65,3 +76,4 @@
             app:srcCompat="@drawable/ic_baseline_close_24" />
     </LinearLayout>
 </LinearLayout>
+</layout>

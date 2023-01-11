@@ -40,9 +40,7 @@ public class EditMessageActivity extends BaseAddEditMessageActivity {
     }
 
     private void showData() {
-        binding.nameTxt.setText(message.name);
-        binding.phoneNumberTxt.setText(message.mobileNumber);
-        binding.messageTextTxt.setText(message.message);
+        binding.setMessage(message);
     }
 
     private void updateMessage(String id, String name, String phoneNumber, String messageText) {

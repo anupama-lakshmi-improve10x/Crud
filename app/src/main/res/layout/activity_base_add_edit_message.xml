@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
 
+    <data>
+        <variable
+            name="message"
+            type="com.example.crud.message.Message" />
+    </data>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -33,6 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:ems="10"
+            android:text="@{message.name}"
             android:inputType="textPersonName" />
 
         <TextView
@@ -51,6 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:ems="10"
+            android:text="@{message.mobileNumber}"
             android:inputType="textPersonName" />
 
         <TextView
@@ -70,9 +78,11 @@
             android:layout_marginTop="10dp"
             android:ems="10"
             android:gravity="start|top"
+            android:text="@{message.message}"
             android:inputType="textMultiLine" />
 
     </LinearLayout>
 
 </LinearLayout>
+</layout>
 
