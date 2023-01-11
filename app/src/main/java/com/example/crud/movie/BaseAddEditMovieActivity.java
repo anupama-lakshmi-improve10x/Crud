@@ -34,6 +34,7 @@ public class BaseAddEditMovieActivity extends BaseActivity {
     }
 
     private void setupSeriesItemsSp() {
+
         customSeriesItemsAdapter = new CustomSeriesItemsAdapter(this, android.R.layout.simple_list_item_1, seriesItems);
         binding.seriesItemsSp.setAdapter(customSeriesItemsAdapter);
     }

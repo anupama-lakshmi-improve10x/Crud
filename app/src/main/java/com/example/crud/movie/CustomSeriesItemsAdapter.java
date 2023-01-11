@@ -11,11 +11,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.crud.R;
+import com.example.crud.databinding.MovieItemBinding;
+import com.example.crud.databinding.SeriesSpinnerItemBinding;
 import com.example.crud.series.SeriesItem;
 
 import java.util.List;
 
 public class CustomSeriesItemsAdapter extends ArrayAdapter<SeriesItem> {
+
+    private SeriesSpinnerItemBinding binding;
 
     public CustomSeriesItemsAdapter(@NonNull Context context, int resource, @NonNull List<SeriesItem> objects) {
         super(context, resource, objects);
@@ -24,19 +28,17 @@ public class CustomSeriesItemsAdapter extends ArrayAdapter<SeriesItem> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.series_spinner_item, parent, false);
+        binding = SeriesSpinnerItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         SeriesItem seriesItems = getItem(position);
-        TextView titleTxt = view.findViewById(R.id.title_txt);
-        titleTxt.setText(seriesItems.seriesId + " _ " + seriesItems.title);
-        return view;
+        binding.titleTxt.setText(seriesItems.seriesId + " _ " + seriesItems.title);
+        return binding.getRoot();
     }
 
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.series_spinner_item, parent, false);
-        SeriesItem seriesItem = getItem(position);
-        TextView titleTxt = view.findViewById(R.id.title_txt);
-        titleTxt.setText(seriesItem.seriesId + " _ " + seriesItem.title);
-        return view;
+        SeriesSpinnerItemBinding binding = SeriesSpinnerItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        SeriesItem seriesItems = getItem(position);
+        binding.titleTxt.setText(seriesItems.seriesId + " _ " + seriesItems.title);
+        return binding.getRoot();
     }
 }

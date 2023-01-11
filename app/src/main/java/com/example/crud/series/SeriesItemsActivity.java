@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import com.example.crud.Constants;
 import com.example.crud.R;
 import com.example.crud.base.BaseActivity;
+import com.example.crud.databinding.ActivitySeriesItemBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,16 +26,15 @@ import retrofit2.Response;
 public class SeriesItemsActivity extends BaseActivity {
 
     private ArrayList<SeriesItem> seriesItems = new ArrayList<>();
-    private RecyclerView seriesItemsRv;
+    private ActivitySeriesItemBinding binding;
     private SeriesItemsAdapter seriesItemsAdapter;
-    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_series_item);
+        binding = ActivitySeriesItemBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         getSupportActionBar().setTitle("Series");
-        initViews();
         setupSeriesItemsAdapter();
         setupSeriesItemsRv();
     }
@@ -100,21 +100,16 @@ public class SeriesItemsActivity extends BaseActivity {
     }
 
     public void setupSeriesItemsRv() {
-        seriesItemsRv.setLayoutManager(new LinearLayoutManager(this));
-        seriesItemsRv.setAdapter(seriesItemsAdapter);
-    }
-
-    private void initViews() {
-        progressBar = findViewById(R.id.series_progress_bar);
-        seriesItemsRv = findViewById(R.id.series_items_rv);
+        binding.seriesItemsRv.setLayoutManager(new LinearLayoutManager(this));
+        binding.seriesItemsRv.setAdapter(seriesItemsAdapter);
     }
 
     private void showProgressBar() {
-        progressBar.setVisibility(View.VISIBLE);
+        binding.seriesProgressBar.setVisibility(View.VISIBLE);
     }
 
     private void hideProgressBar() {
-        progressBar.setVisibility(View.GONE);
+        binding.seriesProgressBar.setVisibility(View.GONE);
     }
 
     private void deleteSeriesItem(String id) {

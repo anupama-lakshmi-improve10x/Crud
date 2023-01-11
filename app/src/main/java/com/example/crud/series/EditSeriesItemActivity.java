@@ -29,9 +29,9 @@ public class EditSeriesItemActivity extends BaseAddEditSeriesItemActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.save) {
-            String seriesId = seriesIdTxt.getText().toString();
-            String title = seriesNameTxt.getText().toString();
-            String imageUrl = imageUrlTxt.getText().toString();
+            String seriesId = binding.seriesIdTxt.getText().toString();
+            String title = binding.seriesNameTxt.getText().toString();
+            String imageUrl = binding.imageUrlTxt.getText().toString();
             updateSeriesItem(seriesItem.id, seriesId, title, imageUrl);
             return true;
         } else {
@@ -40,9 +40,9 @@ public class EditSeriesItemActivity extends BaseAddEditSeriesItemActivity {
     }
 
     private void showData() {
-        seriesIdTxt.setText(seriesItem.seriesId);
-        seriesNameTxt.setText(seriesItem.title);
-        imageUrlTxt.setText(seriesItem.imageUrl);
+        binding.seriesIdTxt.setText(seriesItem.seriesId);
+        binding.seriesNameTxt.setText(seriesItem.title);
+        binding.imageUrlTxt.setText(seriesItem.imageUrl);
     }
 
     private void updateSeriesItem(String id, String seriesId, String title, String imageUrl) {
