@@ -28,8 +28,8 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Name"
-            android:textColor="#423F3F"
+            android:text="@string/name"
+            android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -47,8 +47,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
-            android:text="Phone Number"
-            android:textColor="#423F3F"
+            android:text="@string/phone_number"
+            android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -66,8 +66,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
-            android:text="Message"
-            android:textColor="#423F3F"
+            android:text="@string/message"
+            android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
 

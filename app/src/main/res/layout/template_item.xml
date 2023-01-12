@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     
     <data>
         <variable
@@ -7,9 +9,7 @@
             type="com.example.crud.template.Template" />
     </data>
    
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -28,9 +28,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:text = "@{template.messageText}"
-           tools:text="Anupama"
-            android:textSize="16sp" />
+            android:text="@{template.messageText}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            tools:text="Anupama" />
 
         <ImageButton
             android:id="@+id/delete_img_btn"
